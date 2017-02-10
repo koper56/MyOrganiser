@@ -1,26 +1,25 @@
 #buttons for MainWindow
-
+#[Kivy        ] v1.9.1
 <Button>:         #for all buttons
     size:         100, 50
-    color:        1, 0, 0, 1 #red
+    color:        1, 0, 0, 1        #red
     font_size:    20
     orientation:  'vertical'
     size_hint:    0.5, 0.5
 
 
-
 <MainWindow>:
 
     Button:
-        pos:       250, 200
+        pos:       root.top/2 + 50, root.top/2
         text:      'BUTTON1'
 
 
     Button:
-        pos:       250, 150
+        pos:       root.top/2 + 50, root.top/2 - 50
         text:      'BUTTON2'
 
 
     Button:
-        pos:      250, 100
+        pos:      root.top/2 + 50, root.top/2 - 100
         text:     'BUTTON3'
