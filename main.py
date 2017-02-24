@@ -1,9 +1,11 @@
-#Kivy v1.9.1
+# Kivy v1.9.1
 from kivy.app import App
-from kivy.uix.widget import Widget
 from kivy.core.window import Window
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+
+# define window size
 Window.size = (400,650)
 
 
@@ -22,20 +24,26 @@ class Button3(Screen):
 class Button4(Screen):
     pass
 
-#control move between screens
+
+
+# load .kv file, baw - buttons and windows
+baw = Builder.load_file('main.kv')
+
+# control move between screens
 screen_manager = ScreenManager()
 
-#define all screens of app
+# define all screens of app
 screen_manager.add_widget(MainWindow(name='MainWindow'))
 screen_manager.add_widget(Button1(name='Button1'))
 screen_manager.add_widget(Button2(name='Button2'))
 screen_manager.add_widget(Button3(name='Button3'))
 screen_manager.add_widget(Button4(name='Button4'))
 
-class MainWindowApp(App):
+
+class MyOrganiserApp(App):
     def build(self):
-        return screen_manager
+        return screen_manager, baw
+
 
 if __name__ == '__main__':
-    MainWindowApp().run()
-
+    MyOrganiserApp().run()

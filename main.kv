@@ -1,0 +1,74 @@
+<Button>:
+    # for all buttons
+    size:         200, 200
+    color:        1, 0, 0, 1        #red
+    font_size:    20
+    size_hint:    0.5, 0.5
+
+<MainWindow>:
+
+    BoxLayout:
+
+        Button:
+            pos:       0, 200
+            text:      'BUTTON1'
+            on_press:  root.manager.trasition.direction = 'left'
+                root.manager.current = 'Button1'
+
+        Button:
+            pos:       0, 0
+            text:      'BUTTON2'
+            on_press:  root.manager.trasition.direction = 'left'
+                root.manager.current = 'Button2'
+
+        Button:
+            pos:       200, 200
+            text:      'BUTTON3'
+            on_press:  root.manager.trasition.direction = 'left'
+                root.manager.current = 'Button3'
+
+        Button:
+            pos:       200, 0
+            text:      'BUTTON4'
+            on_press:  root.manager.trasition.direction = 'left'
+                root.manager.current = 'Button4'
+
+<Button1>:
+
+    BoxLayout:
+
+        Button:
+            pos:       0, 200
+            text:      'back'
+            on_press:  root.manager.trasition.direction = 'right'
+                root.manager.current = 'MainWindow'
+
+<Button2>:
+
+    BoxLayout:
+
+        Button:
+            pos:       0, 200
+            text:      'back'
+            on_press:  root.manager.trasition.direction = 'right'
+                root.manager.current = 'MainWindow'
+
+<Button3>:
+
+    BoxLayout:
+
+        Button:
+            pos:       0, 200
+            text:      'back'
+            on_press:  root.manager.trasition.direction = 'right'
+                root.manager.current = 'MainWindow'
+
+<Button4>:
+
+    BoxLayout:
+
+        Button:
+            pos:       0, 200
+            text:      'back'
+            on_press:  root.manager.trasition.direction = 'right'
+                root.manager.current = 'MainWindow'
