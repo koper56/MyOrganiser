@@ -31,17 +31,17 @@ if is_api_online == True:
     status = weather.get_detailed_status()
 
     # Print weather data from details
-    print('Weather now in', city_input,' \n'
+    print(f'Weather now in {city_input} \n'
           '\n'
-          'Clouds:         ', clouds, '%\n'
-          'Rain:           ', rain, '%\n'
+          f'Clouds:          {clouds} %\n'
+          f'Rain:            {rain} %\n'
           'Wind speed:     ', wind['speed'], ' \n'
           'Wind degree:    ', wind['deg'], ' \n'
-          'Humidity:       ', humidity, '%\n'
+          f'Humidity:        {humidity} %\n'
           'Temperature:    ', temperature['temp'], ' celsius\n'
           'Max temperature:', temperature['temp_max'], ' celsius\n'
           'Min temperature:', temperature['temp_min'], ' celsius\n'
-          'Weather status: ', status)
+          f'Weather status:  {status}')
 
 else:
     print('API is offline...')
