@@ -1,18 +1,19 @@
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
 
-Window.size = (400,650)
+Window.size = (400, 650)
 
-
-class MainWindow(FloatLayout):
+class MainWindow(Screen):
     def __init__(self, **kwargs):
         super(MainWindow, self).__init__(**kwargs)
+        self.name = "mainwindow"
 
-        # Main Label
+
+        # Define position of main window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser MainWindow < < <',
@@ -21,138 +22,200 @@ class MainWindow(FloatLayout):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # Main Menu button 1
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='center')
-        button_settings = Button(text='button1',
-                                 size=(200, 200),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
 
-        # Main Menu button 2
-        button_position = AnchorLayout(anchor_x='right',
-                                       anchor_y='center')
-        button_settings = Button(text='button2',
-                                 size=(200, 200),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
-
-        # Main Menu button 3
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='bottom')
-        button_settings = Button(text='button3',
-                                 size=(200, 200),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
-
-        # Main Menu button 4
-        button_position = AnchorLayout(anchor_x='right',
-                                       anchor_y='bottom')
-        button_settings = Button(text='button4',
-                                 size=(200, 200),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
+        # Define position, size of button 1
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='center')
+        self.button = Button(text='button1',
+                             size=(200, 200),
+                             size_hint=(None, None))
 
 
-class Button1(FloatLayout):
+        self.button.bind(on_release=self.move_direction_button1)
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+
+        # Define position, size of button 2
+        self.Anchor_Layout = AnchorLayout(anchor_x='right',
+                                          anchor_y='center')
+        self.button = Button(text='button2',
+                             size=(200, 200),
+                             size_hint=(None, None))
+
+
+        self.button.bind(on_release=self.move_direction_button2)
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+
+        # Define position, size of button 3
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='button3',
+                             size=(200, 200),
+                             size_hint=(None, None))
+
+        self.button.bind(on_release=self.move_direction_button3)
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+
+        # Define position, size of button 4
+        self.Anchor_Layout = AnchorLayout(anchor_x='right',
+                                          anchor_y='bottom')
+        self.button = Button(text='button4',
+                             size=(200, 200),
+                             size_hint=(None, None))
+
+        self.button.bind(on_release=self.move_direction_button4)
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+
+    # Define move after press buttons from main window
+    def move_direction_button1(self, *args):
+            self.manager.current = "button1"
+
+    def move_direction_button2(self, *args):
+            self.manager.current = "button2"
+
+    def move_direction_button3(self, *args):
+            self.manager.current = "button3"
+
+    def move_direction_button4(self, *args):
+        self.manager.current = "button4"
+
+
+class Button1(Screen):
     def __init__(self, **kwargs):
         super(Button1, self).__init__(**kwargs)
+        self.name = "button1"
 
-        # Window Button1 Label
+        # Define position of button1 label label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button1 < < <',
+        label_settings = Label(text='> > > MyOrganiser Button1 Window < < <',
                                size=(200, 50),
                                size_hint=(None, None))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # back button for Button1 window
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='bottom')
-        button_settings = Button(text='back',
-                                 size=(100, 50),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None))
+        self.button.bind(on_release=self.move_direction_main_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_main_window(self, *args):
+        self.manager.current = "mainwindow"
 
 
-class Button2(FloatLayout):
+class Button2(Screen):
     def __init__(self, **kwargs):
         super(Button2, self).__init__(**kwargs)
+        self.name = "button2"
 
-        # Window Button2 Label
+        # Define position of button2 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button2 < < <',
+        label_settings = Label(text='> > > MyOrganiser Button2 Window < < <',
                                size=(200, 50),
                                size_hint=(None, None))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # back button for Button2 window
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='bottom')
-        button_settings = Button(text='back',
-                                 size=(100, 50),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None))
+        self.button.bind(on_release=self.move_direction_main_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_main_window(self, *args):
+        self.manager.current = "mainwindow"
 
 
-class Button3(FloatLayout):
+class Button3(Screen):
     def __init__(self, **kwargs):
         super(Button3, self).__init__(**kwargs)
+        self.name = "button3"
 
-        # Window Button3 Label
+        # Define position of button3 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button3 < < <',
+        label_settings = Label(text='> > > MyOrganiser Button3 Window < < <',
                                size=(200, 50),
                                size_hint=(None, None))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # back button for Button3 window
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='bottom')
-        button_settings = Button(text='back',
-                                 size=(100, 50),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None))
+        self.button.bind(on_release=self.move_direction_main_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_main_window(self, *args):
+        self.manager.current = "mainwindow"
 
 
-class Button4(FloatLayout):
+class Button4(Screen):
     def __init__(self, **kwargs):
         super(Button4, self).__init__(**kwargs)
+        self.name = "button4"
 
-        # Window Button4 Label
+        # Define position of button4 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button4 < < <',
+        label_settings = Label(text='> > > MyOrganiser Button4 Window < < <',
                                size=(200, 50),
                                size_hint=(None, None))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # back button for Button4 window
-        button_position = AnchorLayout(anchor_x='left',
-                                       anchor_y='bottom')
-        button_settings = Button(text='back',
-                                 size=(100, 50),
-                                 size_hint=(None, None))
-        button_position.add_widget(button_settings)
-        self.add_widget(button_position)
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None))
+        self.button.bind(on_release=self.move_direction_main_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_main_window(self, *args):
+        self.manager.current = "mainwindow"
 
 
-class MyOrganiser(App):
+class MyApp(App):
     def build(self):
-        return MainWindow()
+        screen_manager = ScreenManager()
+        screen_manager.add_widget(MainWindow())
+        screen_manager.add_widget(Button1())
+        screen_manager.add_widget(Button2())
+        screen_manager.add_widget(Button3())
+        screen_manager.add_widget(Button4())
+        return screen_manager
 
-if __name__ == '__main__':
-    MyOrganiser().run()
+
+MyApp().run()
