@@ -6,6 +6,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
 
 Window.size = (400, 650)
+Window.clearcolor = (1, 1, 1, 1)
 
 class MainWindow(Screen):
     def __init__(self, **kwargs):
@@ -18,7 +19,8 @@ class MainWindow(Screen):
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser MainWindow < < <',
                                size=(200, 50),
-                               size_hint=(None, None))
+                               size_hint=(None, None),
+                               color = (0, 0, 0, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -28,8 +30,9 @@ class MainWindow(Screen):
                                           anchor_y='center')
         self.button = Button(text='button1',
                              size=(200, 200),
-                             size_hint=(None, None))
-
+                             size_hint=(None, None),
+                             # light blue
+                             background_color=(1, 2, 2, 1))
 
         self.button.bind(on_release=self.move_direction_button1)
         self.Anchor_Layout.add_widget(self.button)
@@ -41,8 +44,9 @@ class MainWindow(Screen):
                                           anchor_y='center')
         self.button = Button(text='button2',
                              size=(200, 200),
-                             size_hint=(None, None))
-
+                             size_hint=(None, None),
+                             # light blue
+                             background_color=(1, 2, 2, 1))
 
         self.button.bind(on_release=self.move_direction_button2)
         self.Anchor_Layout.add_widget(self.button)
@@ -54,7 +58,9 @@ class MainWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='button3',
                              size=(200, 200),
-                             size_hint=(None, None))
+                             size_hint=(None, None),
+                             # light blue
+                             background_color = (1, 2, 2, 1))
 
         self.button.bind(on_release=self.move_direction_button3)
         self.Anchor_Layout.add_widget(self.button)
@@ -66,7 +72,9 @@ class MainWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='button4',
                              size=(200, 200),
-                             size_hint=(None, None))
+                             size_hint=(None, None),
+                             # light blue
+                             background_color=(1, 2, 2, 1))
 
         self.button.bind(on_release=self.move_direction_button4)
         self.Anchor_Layout.add_widget(self.button)
@@ -97,7 +105,8 @@ class Button1(Screen):
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button1 Window < < <',
                                size=(200, 50),
-                               size_hint=(None, None))
+                               size_hint=(None, None),
+                               color = (0, 0, 0, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -105,8 +114,10 @@ class Button1(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 100),
-                             size_hint=(None, None))
+                             size=(100, 50),
+                             size_hint=(None, None),
+                             # dark red
+                             background_color = (1, 0, 0, 1))
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -127,7 +138,8 @@ class Button2(Screen):
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button2 Window < < <',
                                size=(200, 50),
-                               size_hint=(None, None))
+                               size_hint=(None, None),
+                               color = (0, 0, 0, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -135,8 +147,9 @@ class Button2(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 100),
-                             size_hint=(None, None))
+                             size=(100, 50),
+                             size_hint=(None, None),
+                             background_color = (1, 0, 0, 1))
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -157,7 +170,8 @@ class Button3(Screen):
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button3 Window < < <',
                                size=(200, 50),
-                               size_hint=(None, None))
+                               size_hint=(None, None),
+                               color = (0, 0, 0, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -165,8 +179,9 @@ class Button3(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 100),
-                             size_hint=(None, None))
+                             size=(100, 50),
+                             size_hint=(None, None),
+                             background_color = (1, 0, 0, 1))
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -187,7 +202,8 @@ class Button4(Screen):
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button4 Window < < <',
                                size=(200, 50),
-                               size_hint=(None, None))
+                               size_hint=(None, None),
+                               color = (0, 0, 0, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -195,8 +211,9 @@ class Button4(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 100),
-                             size_hint=(None, None))
+                             size=(100, 50),
+                             size_hint=(None, None),
+                             background_color = (1, 0, 0, 1))
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -207,7 +224,7 @@ class Button4(Screen):
         self.manager.current = "mainwindow"
 
 
-class MyApp(App):
+class MyOrganiser(App):
     def build(self):
         screen_manager = ScreenManager()
         screen_manager.add_widget(MainWindow())
@@ -218,4 +235,4 @@ class MyApp(App):
         return screen_manager
 
 
-MyApp().run()
+MyOrganiser().run()
