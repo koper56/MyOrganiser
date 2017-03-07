@@ -93,7 +93,7 @@ def print_weather_warsaw():
         return result
 
     else:
-        result = '''API is offline...'''
+        result = 'API is offline...'
         return result
 
 # print_weather_warsaw()
