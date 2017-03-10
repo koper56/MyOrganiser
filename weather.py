@@ -51,10 +51,15 @@ def print_weather():
 
     else:
         print('API is offline...')
+
+
 # print_weather()
 
 def print_weather_warsaw():
-    if is_api_online == True:
+
+    # if is_api_online == True
+    if is_api_online:
+        print('API is online...')
 
         city_input = 'Warsaw, pl'
 
@@ -76,24 +81,34 @@ def print_weather_warsaw():
         status = weather.get_detailed_status()
 
         # Print weather data from details
-        result = str(
-              f'Weather now in {city_input} \n'
-              '\n'
-              f'Clouds\t\t\t:\t{clouds} %\n'
-              f'Rain\t\t\t:\t{rain} %\n'
-              f'Wind speed\t\t:\t{wind_speed}\n'
-              f'Wind degree\t\t:\t{wind_deg}\n'
-              f'Humidity\t\t:\t{humidity} %\n'
-              f'Temperature\t\t:\t{temperature_temp} celsius\n'
-              f'Max temperature\t:\t{temperature_max} celsius\n'
-              f'Min temperature\t:\t{temperature_min} celsius\n'
-              f'Weather status\t:\t{status}'
-        )
+        try:
+            with open('weatherdata.txt', mode='w',
+                      encoding='utf-8') as weather_file:
 
-        return result
+                # weather data saved in text file in new line
+                weather_file.write(
+                    f'Weather now in {city_input} \n'
+                    '\n'
+                    f'Clouds\t\t\t:\t{clouds} %\n'
+                    f'Rain\t\t\t:\t{rain} %\n'
+                    f'Wind speed\t\t:\t{wind_speed}\n'
+                    f'Wind degree\t\t:\t{wind_deg}\n'
+                    f'Humidity\t\t:\t{humidity} %\n'
+                    f'Temperature\t\t:\t{temperature_temp} celsius\n'
+                    f'Max temperature\t:\t{temperature_max} celsius\n'
+                    f'Min temperature\t:\t{temperature_min} celsius\n'
+                    f'Weather status\t:\t{status}')
+                weather_file.close()
+                # if weather_file.closed == True
+                if weather_file.closed:
+                    print('weather data saved in text file')
+        except:
+            print('Error with text file')
+            pass
 
     else:
         result = 'API is offline...'
         return result
 
-# print_weather_warsaw()
+
+print_weather_warsaw()
