@@ -106,18 +106,6 @@ class Button1(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # TODO: TypeError: object.__init__() takes no parameters
-        # Define position of weather label
-        label_position = AnchorLayout(anchor_x='right',
-                                      anchor_y='top')
-        label_settings = Label(text=print_weather_warsaw,
-                               multiline=True,
-                               size=self.size,
-                               size_hint=(None, None),
-                               color=(0, 0, 0, 1))
-        label_position.add_widget(label_settings)
-        self.add_widget(label_position)
-
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -130,6 +118,23 @@ class Button1(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+        # Define position of weather label,
+        # run print_weather_warsaw from weather.py,
+        # print text from weatherdata.txt
+        # Todo: print weather in right top corner!
+        print_weather_warsaw()
+        with open("weatherdata.txt") as weatherdata:
+            read_weatherdata = weatherdata.read()
+
+        label_position = AnchorLayout(anchor_x='left',
+                                      anchor_y='top')
+        label_settings = Label(text=read_weatherdata,
+                               size=(100, 100),
+                               color=(0, 0, 0, 1))
+
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
 
     # Define move after press back button
     def move_direction_main_window(self, *args):
