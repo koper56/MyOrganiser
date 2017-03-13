@@ -89,15 +89,15 @@ def print_weather_warsaw():
                 weather_file.write(
                     f'Weather now in {city_input} \n'
                     '\n'
-                    f'Clouds\t\t\t:\t{clouds} %\n'
-                    f'Rain\t\t\t:\t{rain} %\n'
-                    f'Wind speed\t\t:\t{wind_speed}\n'
-                    f'Wind degree\t\t:\t{wind_deg}\n'
-                    f'Humidity\t\t:\t{humidity} %\n'
-                    f'Temperature\t\t:\t{temperature_temp} celsius\n'
-                    f'Max temperature\t:\t{temperature_max} celsius\n'
-                    f'Min temperature\t:\t{temperature_min} celsius\n'
-                    f'Weather status\t:\t{status}')
+                    f'Clouds: {clouds} %\n'
+                    f'Rain: {rain} %\n'
+                    f'Wind speed: {wind_speed}\n'
+                    f'Wind degree: {wind_deg}\n'
+                    f'Humidity: {humidity} %\n'
+                    f'Temperature: {temperature_temp} celsius\n'
+                    f'Max temperature: {temperature_max} celsius\n'
+                    f'Min temperature: {temperature_min} celsius\n'
+                    f'Weather status: {status}')
                 weather_file.close()
                 # if weather_file.closed == True
                 if weather_file.closed:
