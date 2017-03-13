@@ -7,7 +7,22 @@ from kivy.core.window import Window
 from weather import print_weather_warsaw
 
 Window.size = (400, 650)
-Window.clearcolor = (1, 1, 1, 1)
+Window.clearcolor = (0.8, 0.8, 0.8, 1)
+
+# colors:
+#    from rgba to kivy code: 255.0/rgba code
+# window background:
+#   Hex: #CCCCCC
+#   Kivy: 0.8, 0.8, 0.8, 1
+# window title:
+#   Hex: #666666
+#   Kivy: 0.4, 0.4, 0.4, 1
+# button background:
+#   Hex: #CCCC9A
+#   Kivy: 0.8, 0.8, 0.6, 1
+# button title:
+#   Hex: #999967
+#   Kivy: 0.6, 0.6, 0.6, 1
 
 
 class MainWindow(Screen):
@@ -19,9 +34,10 @@ class MainWindow(Screen):
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser MainWindow < < <',
+                               font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0, 0, 0, 1))
+                               color=(0.4, 0.4, 0.4, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -29,10 +45,11 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='center')
         self.button = Button(text='button1',
+                             valign='top',
+                             color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
-                             # light blue
-                             background_color=(1, 2, 2, 1))
+                             background_color=(0.8, 0.8, 0.6, 1))
 
         self.button.bind(on_release=self.move_direction_button1)
         self.Anchor_Layout.add_widget(self.button)
@@ -42,10 +59,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='center')
         self.button = Button(text='button2',
+                             color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
-                             # light blue
-                             background_color=(1, 2, 2, 1))
+                             background_color=(0.8, 0.8, 0.6, 1))
 
         self.button.bind(on_release=self.move_direction_button2)
         self.Anchor_Layout.add_widget(self.button)
@@ -55,10 +72,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='button3',
+                             color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
-                             # light blue
-                             background_color=(1, 2, 2, 1))
+                             background_color=(0.8, 0.8, 0.6, 1))
 
         self.button.bind(on_release=self.move_direction_button3)
         self.Anchor_Layout.add_widget(self.button)
@@ -68,10 +85,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='bottom')
         self.button = Button(text='button4',
+                             color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
-                             # light blue
-                             background_color=(1, 2, 2, 1))
+                             background_color=(0.8, 0.8, 0.6, 1))
 
         self.button.bind(on_release=self.move_direction_button4)
         self.Anchor_Layout.add_widget(self.button)
@@ -100,9 +117,10 @@ class Button1(Screen):
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button1 Window < < <',
+                               font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0, 0, 0, 1))
+                               color=(0.4, 0.4, 0.4, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -122,16 +140,16 @@ class Button1(Screen):
         # Define position of weather label,
         # run print_weather_warsaw from weather.py,
         # print text from weatherdata.txt
-        # Todo: print weather in right top corner!
-        print_weather_warsaw()
-        with open("weatherdata.txt") as weatherdata:
+        # Todo: print weather in right bottom corner!
+        with open('weatherdata.txt', encoding='utf-8') as weatherdata:
             read_weatherdata = weatherdata.read()
 
-        label_position = AnchorLayout(anchor_x='left',
-                                      anchor_y='top')
+        label_position = AnchorLayout(anchor_x='right',
+                                      anchor_y='bottom')
         label_settings = Label(text=read_weatherdata,
-                               size=(100, 100),
-                               color=(0, 0, 0, 1))
+                               font_size='12sp',
+                               size=(200, 200),
+                               color=(0.4, 0.4, 0.4, 1))
 
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
@@ -150,9 +168,10 @@ class Button2(Screen):
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button2 Window < < <',
+                               font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0, 0, 0, 1))
+                               color=(0.4, 0.4, 0.4, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -182,9 +201,10 @@ class Button3(Screen):
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button3 Window < < <',
+                               font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0, 0, 0, 1))
+                               color=(0.4, 0.4, 0.4, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -214,9 +234,10 @@ class Button4(Screen):
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > MyOrganiser Button4 Window < < <',
+                               font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0, 0, 0, 1))
+                               color=(0.4, 0.4, 0.4, 1))
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
