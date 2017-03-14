@@ -9,6 +9,7 @@ from weather import print_weather_warsaw
 Window.size = (400, 650)
 Window.clearcolor = (0.8, 0.8, 0.8, 1)
 
+
 # colors:
 #    from rgba to kivy code: 255.0/rgba code
 # window background:
@@ -108,6 +109,15 @@ class MainWindow(Screen):
         self.manager.current = "button4"
 
 
+# Back button settings
+# back_button = Button(text='back',
+#                      size=(100, 100),
+#                      size_hint=(None, None),
+#                      background_normal="./back.png",
+#                      background_down="./back.png",
+#                      size_hint_x=None)
+
+
 class Button1(Screen):
     def __init__(self, **kwargs):
         super(Button1, self).__init__(**kwargs)
@@ -128,10 +138,11 @@ class Button1(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 50),
+                             size=(100, 100),
                              size_hint=(None, None),
-                             # dark red
-                             background_color=(1, 0, 0, 1))
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -179,9 +190,11 @@ class Button2(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 50),
+                             size=(100, 100),
                              size_hint=(None, None),
-                             background_color=(1, 0, 0, 1))
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -212,9 +225,11 @@ class Button3(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 50),
+                             size=(100, 100),
                              size_hint=(None, None),
-                             background_color=(1, 0, 0, 1))
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
@@ -245,9 +260,11 @@ class Button4(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
-                             size=(100, 50),
+                             size=(100, 100),
                              size_hint=(None, None),
-                             background_color=(1, 0, 0, 1))
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
         self.Anchor_Layout.add_widget(self.button)
