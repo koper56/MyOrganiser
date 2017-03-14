@@ -140,7 +140,6 @@ class Button1(Screen):
         # Define position of weather label,
         # run print_weather_warsaw from weather.py,
         # print text from weatherdata.txt
-        # Todo: print weather in right bottom corner!
         with open('weatherdata.txt', encoding='utf-8') as weatherdata:
             read_weatherdata = weatherdata.read()
 
@@ -148,6 +147,7 @@ class Button1(Screen):
                                       anchor_y='bottom')
         label_settings = Label(text=read_weatherdata,
                                font_size='12sp',
+                               size_hint=(None, None),
                                size=(200, 200),
                                color=(0.4, 0.4, 0.4, 1))
 
