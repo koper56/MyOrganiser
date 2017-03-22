@@ -10,4 +10,3 @@ import:
       tkinter
       pyowm   2.6.1     API: 3680a47900fb30de7d81ef3cb1a7d9fb
       sqlite3 (upgrade to SQLAlchemy)
-
