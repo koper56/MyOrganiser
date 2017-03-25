@@ -6,27 +6,13 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
 from weather import print_weather_warsaw
 
-Window.size = (400, 650)
+
 Window.clearcolor = (0.8, 0.8, 0.8, 1)
-
-
-# colors:
-#    from rgba to kivy code: 255.0/rgba code
-# window background:
-#   Hex: #CCCCCC
-#   Kivy: 0.8, 0.8, 0.8, 1
-# window title:
-#   Hex: #666666
-#   Kivy: 0.4, 0.4, 0.4, 1
-# button background:
-#   Hex: #CCCC9A
-#   Kivy: 0.8, 0.8, 0.6, 1
-# button title:
-#   Hex: #999967
-#   Kivy: 0.6, 0.6, 0.6, 1
+Window.size = (400, 650)
 
 
 class MainWindow(Screen):
+
     def __init__(self, **kwargs):
         super(MainWindow, self).__init__(**kwargs)
         self.name = "mainwindow"
@@ -34,7 +20,7 @@ class MainWindow(Screen):
         # Define position of main window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser MainWindow < < <',
+        label_settings = Label(text='> > > My Clothes Organiser < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -45,7 +31,7 @@ class MainWindow(Screen):
         # Define position, size of button 1
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='center')
-        self.button = Button(text='button1',
+        self.button = Button(text='Choose',
                              valign='top',
                              color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
@@ -59,7 +45,7 @@ class MainWindow(Screen):
         # Define position, size of button 2
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='center')
-        self.button = Button(text='button2',
+        self.button = Button(text='Rate',
                              color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
@@ -72,7 +58,7 @@ class MainWindow(Screen):
         # Define position, size of button 3
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
-        self.button = Button(text='button3',
+        self.button = Button(text='History',
                              color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
@@ -85,7 +71,7 @@ class MainWindow(Screen):
         # Define position, size of button 4
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='bottom')
-        self.button = Button(text='button4',
+        self.button = Button(text='Change data',
                              color=(0.6, 0.6, 0.6, 1),
                              size=(200, 200),
                              size_hint=(None, None),
@@ -94,6 +80,7 @@ class MainWindow(Screen):
         self.button.bind(on_release=self.move_direction_button4)
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
 
     # Define move after press buttons from main window
     def move_direction_button1(self, *args):
@@ -119,6 +106,13 @@ class MainWindow(Screen):
 
 
 class Button1(Screen):
+
+# by kind
+# by name
+# by color
+# by rate
+# by sets
+
     def __init__(self, **kwargs):
         super(Button1, self).__init__(**kwargs)
         self.name = "button1"
@@ -126,7 +120,7 @@ class Button1(Screen):
         # Define position of button1 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button1 Window < < <',
+        label_settings = Label(text='> > > Choose < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -171,6 +165,10 @@ class Button1(Screen):
 
 
 class Button2(Screen):
+
+# 5 stars rate
+# based in data base
+
     def __init__(self, **kwargs):
         super(Button2, self).__init__(**kwargs)
         self.name = "button2"
@@ -178,7 +176,7 @@ class Button2(Screen):
         # Define position of button2 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button2 Window < < <',
+        label_settings = Label(text='> > > Rate < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -206,6 +204,11 @@ class Button2(Screen):
 
 
 class Button3(Screen):
+
+# day by day
+# photo option
+# based in data base
+
     def __init__(self, **kwargs):
         super(Button3, self).__init__(**kwargs)
         self.name = "button3"
@@ -213,7 +216,7 @@ class Button3(Screen):
         # Define position of button3 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button3 Window < < <',
+        label_settings = Label(text='> > > History < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -241,6 +244,11 @@ class Button3(Screen):
 
 
 class Button4(Screen):
+
+# add new cloth
+# change data
+# delete cloth
+
     def __init__(self, **kwargs):
         super(Button4, self).__init__(**kwargs)
         self.name = "button4"
@@ -248,7 +256,7 @@ class Button4(Screen):
         # Define position of button4 label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > MyOrganiser Button4 Window < < <',
+        label_settings = Label(text='> > > Add, change, delete < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
