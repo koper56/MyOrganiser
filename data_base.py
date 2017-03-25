@@ -99,24 +99,20 @@ def print_one_data_from_id():
 
 def update_item():
     input_id = int(input('Select ID number of item to change: '))
-
-    # Get data from rows with selected ID number
-    select_data = select(['*']).where(
-        create_table().c.id == input_id)
+    select_data = select(['*']).where(create_table().c.id == input_id)
     for row in connection.execute(select_data):
         input_name = input('New name for name: {}: '.format(row[1]))
         input_description = input(
             'New description for description: {}: '.format(row[6]))
         input_exclusion = input(
             'New exclusions for exclusion: {}: '.format(row[7]))
-        # TODO: OperationalError
-        update_data = update(create_table()).where(
-            input_id == create_table().c.id).values(
+        # CREATE ONCE
+        table = create_table()
+        update_data = update(table).where(table.c.id == input_id).values(
             name='{}'.format(input_name),
             description='{}'.format(input_description),
             exclusion='{}'.format(input_exclusion))
-
-        # Commit change
+        # Commits changes, IF autocommit is in use
         connection.execute(update_data)
 
 
