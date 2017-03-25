@@ -1,5 +1,5 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine, \
-    select
+from sqlalchemy import Table, Column, Integer, String, MetaData,\
+    create_engine, select, update
 
 # Connect with data base, Echo = True returns commands in SQL language
 engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
@@ -28,12 +28,13 @@ def create_table():
 
 
 def insert_new_data():
+
     # Insert data to new item in clothes_data table
     input_name = input('Name: ')
+    # TODO: add color_palette.py
     input_color_1 = input('Color code: ')
     input_color_2 = input('Color code: ')
     input_color_3 = input('Color code: ')
-    input_photo_source = input('Photo source: ')
     input_description = input('Description: ')
     input_exclusion = input('Exclusions: ')
     input_kind = input('Kind: ')
@@ -45,8 +46,8 @@ def insert_new_data():
                        color_1='{}'.format(input_color_1),
                        color_2='{}'.format(input_color_2),
                        color_3='{}'.format(input_color_3),
-                       photo_source='{}'.format(
-                           input_photo_source),
+                       # TODO: add ID number after source
+                       photo_source='/photos' + 'id_num' + '.jpg',
                        description='{}'.format(
                            input_description),
                        exclusion='{}'.format(
@@ -94,4 +95,35 @@ def print_one_data_from_id():
               row[4],
               'Photo source:', row[5], 'Description:', row[6],
               'Exclusions:', row[7], 'Kind:', row[8])
-# TODO: func for remove item, change item
+
+
+def update_item():
+    input_id = int(input('Select ID number of item to change: '))
+
+    # Get data from rows with selected ID number
+    select_data = select(['*']).where(
+        create_table().c.id == input_id)
+    for row in connection.execute(select_data):
+        input_name = input('New name for name: {}: '.format(row[1]))
+        input_description = input(
+            'New description for description: {}: '.format(row[6]))
+        input_exclusion = input(
+            'New exclusions for exclusion: {}: '.format(row[7]))
+        # TODO: OperationalError
+        update_data = update(create_table()).where(
+            input_id == create_table().c.id).values(
+            name='{}'.format(input_name),
+            description='{}'.format(input_description),
+            exclusion='{}'.format(input_exclusion))
+
+        # Commit change
+        connection.execute(update_data)
+
+
+def delete_item():
+    input_id = int(input('Select ID number of item to delete: '))
+
+    delete = create_table().delete().where(create_table().c.id == input_id)
+
+    # Commit delete
+    connection.execute(delete)
