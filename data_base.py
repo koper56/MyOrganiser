@@ -36,7 +36,7 @@ def next_id_value():
         next_id = select_max.max_id_data + 1
     # Except error when id = 0, set next id value equal 1
     except TypeError:
-        print('First record in data base')
+        print('First data in data base')
         next_id = 1
     return next_id
 
