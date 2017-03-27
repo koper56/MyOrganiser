@@ -1,8 +1,7 @@
-from sqlalchemy import Column, Integer, String, create_engine, select, update, delete
+from sqlalchemy import Column, Integer, String, create_engine, select, update
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import func
-
 
 data_base = declarative_base()
 
@@ -17,6 +16,7 @@ class ClothesData(data_base):
     photo_source = Column(String(20), nullable=False)
     description = Column(String(100), nullable=False)
     exclusion = Column(String(250), nullable=False)
+    clear = Column(String(5), nullable=False)
     kind = Column(String(20), nullable=False)
 
 
@@ -26,7 +26,6 @@ data_base.metadata.create_all(engine)
 data_base_session = sessionmaker(bind=engine)
 session = data_base_session()
 connection = engine.connect()
-
 
 
 # Return last value of id number + 1
@@ -61,11 +60,14 @@ def insert_new_data():
                            color_1='{}'.format(input_color_1),
                            color_2='{}'.format(input_color_2),
                            color_3='{}'.format(input_color_3),
-                           photo_source='/photos/{}.jpg'.format(str(next_id_value())),
+                           photo_source='/photos/{}.jpg'.format(
+                               str(next_id_value())),
                            description='{}'.format(
                                input_description),
                            exclusion='{}'.format(
                                input_exclusion),
+                           # Default clear = True
+                           clear='True',
                            kind='{}'.format(input_kind))
 
     # Commit new data
@@ -132,10 +134,27 @@ def update_item():
 
 
 def delete_item():
-
     input_id = int(input('Select ID number of item to delete: '))
     selected_item = session.query(ClothesData).get(input_id)
 
     session.delete(selected_item)
     # Commit delete
     session.commit()
+
+
+def change_clear():
+    input_id = int(input('Select ID number of item to change clear: '))
+    if select([ClothesData]).where(ClothesData.id == input_id,
+                                   ClothesData.clear == 'True'):
+
+        update_data = update(ClothesData).where(
+            ClothesData.id == input_id).values(clear='False')
+
+    elif select([ClothesData]).where(ClothesData.id == input_id,
+                                     ClothesData.clear == 'False'):
+
+        update_data = update(ClothesData).where(
+            ClothesData.id == input_id).values(clear='True')
+
+    # Commits changes
+    connection.execute(update_data)
