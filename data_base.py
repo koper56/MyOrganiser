@@ -1,36 +1,51 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData,\
-    create_engine, select, update
+from sqlalchemy import Column, Integer, String, create_engine, select, update, delete
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import func
+
+
+data_base = declarative_base()
+
+
+class ClothesData(data_base):
+    __tablename__ = 'ClothesData'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20), nullable=False)
+    color_1 = Column(String(20), nullable=False)
+    color_2 = Column(String(20), nullable=False)
+    color_3 = Column(String(20), nullable=False)
+    photo_source = Column(String(20), nullable=False)
+    description = Column(String(100), nullable=False)
+    exclusion = Column(String(250), nullable=False)
+    kind = Column(String(20), nullable=False)
+
 
 # Connect with data base, Echo = True returns commands in SQL language
 engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
+data_base.metadata.create_all(engine)
+data_base_session = sessionmaker(bind=engine)
+session = data_base_session()
 connection = engine.connect()
 
 
-def create_table():
-    metadata = MetaData()
 
-    # set name of table, names of columns, kind of data in columns
-    clothes_data = Table('clothes_data', metadata,
-                         Column('id', Integer, primary_key=True),
-                         Column('name', String(10)),
-                         Column('color_1', String),
-                         Column('color_2', String),
-                         Column('color_3', String),
-                         Column('photo_source', String),
-                         Column('description', String),
-                         Column('exclusion', String),
-                         Column('kind', String), )
-
-    # commit changes in data base
-    metadata.create_all(engine)
-
-    return clothes_data
+# Return last value of id number + 1
+def next_id_value():
+    max_id = session.query(func.max(ClothesData.id).label("max_id_data"))
+    select_max = max_id.one()
+    try:
+        next_id = select_max.max_id_data + 1
+    # Except error when id = 0, set next id value equal 1
+    except TypeError:
+        print('First record in data base')
+        next_id = 1
+    return next_id
 
 
 def insert_new_data():
-
-    # Insert data to new item in clothes_data table
+    # Insert data to new item in ClothesData table
     input_name = input('Name: ')
+    # Run code with color palette
     import color_palette as color
     input_color_1 = color.get_color()
     import color_palette as color
@@ -41,26 +56,25 @@ def insert_new_data():
     input_exclusion = input('Exclusions: ')
     input_kind = input('Kind: ')
 
-    insert_data = create_table().insert()
-    # TODO: set new ID = last ID in table + 1
-    # For test insert_new_data put id = int value
-    connection.execute(insert_data, id="",
-                       name='{}'.format(input_name),
-                       color_1='{}'.format(input_color_1),
-                       color_2='{}'.format(input_color_2),
-                       color_3='{}'.format(input_color_3),
-                       # TODO: add ID number after source
-                       photo_source='/photos/' + 'id_num' + '.jpg',
-                       description='{}'.format(
-                           input_description),
-                       exclusion='{}'.format(
-                           input_exclusion),
-                       kind='{}'.format(input_kind))
-    str(insert_data)
+    new_data = ClothesData(id=next_id_value(),
+                           name='{}'.format(input_name),
+                           color_1='{}'.format(input_color_1),
+                           color_2='{}'.format(input_color_2),
+                           color_3='{}'.format(input_color_3),
+                           photo_source='/photos/{}.jpg'.format(str(next_id_value())),
+                           description='{}'.format(
+                               input_description),
+                           exclusion='{}'.format(
+                               input_exclusion),
+                           kind='{}'.format(input_kind))
+
+    # Commit new data
+    session.add(new_data)
+    session.commit()
 
 
 def print_all_data_from_all():
-    select_data = select([create_table()])
+    select_data = select([ClothesData])
     result = connection.execute(select_data)
     for row in result:
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
@@ -70,17 +84,16 @@ def print_all_data_from_all():
 
 
 def print_all_name_id_from_all():
-    select_data = select([create_table()])
+    select_data = select([ClothesData])
     result = connection.execute(select_data)
     for row in result:
         print('ID:', row[0], 'Name:', row[1])
 
 
-def print_all_data_from_kind():
+def print_all_data_by_kind():
     input_kind = input('Select kind of clothes: ')
-    # From SQL language * = all
-    select_data = select(['*']).where(
-        create_table().c.kind == input_kind)
+    select_data = select([ClothesData]).where(
+        ClothesData.kind == input_kind)
     for row in connection.execute(select_data):
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
               row[4],
@@ -88,11 +101,10 @@ def print_all_data_from_kind():
               'Exclusions:', row[7], 'Kind:', row[8])
 
 
-def print_one_data_from_id():
+def print_one_data_by_id():
     input_id = int(input('Select ID: '))
-    # From SQL language * = all
-    select_data = select(['*']).where(
-        create_table().c.id == input_id)
+    select_data = select([ClothesData]).where(
+        ClothesData.id == input_id)
     for row in connection.execute(select_data):
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
               row[4],
@@ -102,7 +114,7 @@ def print_one_data_from_id():
 
 def update_item():
     input_id = int(input('Select ID number of item to change: '))
-    select_data = select(['*']).where(create_table().c.id == input_id)
+    select_data = select([ClothesData]).where(ClothesData.id == input_id)
     for row in connection.execute(select_data):
         input_name = input('New name for name: {}: '.format(row[1]))
         input_description = input(
@@ -110,8 +122,8 @@ def update_item():
         input_exclusion = input(
             'New exclusions for exclusion: {}: '.format(row[7]))
         # CREATE ONCE
-        table = create_table()
-        update_data = update(table).where(table.c.id == input_id).values(
+        table = ClothesData
+        update_data = update(table).where(table.id == input_id).values(
             name='{}'.format(input_name),
             description='{}'.format(input_description),
             exclusion='{}'.format(input_exclusion))
@@ -120,9 +132,10 @@ def update_item():
 
 
 def delete_item():
+
     input_id = int(input('Select ID number of item to delete: '))
+    selected_item = session.query(ClothesData).get(input_id)
 
-    delete = create_table().delete().where(create_table().c.id == input_id)
-
+    session.delete(selected_item)
     # Commit delete
-    connection.execute(delete)
+    session.commit()
