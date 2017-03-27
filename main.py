@@ -10,8 +10,8 @@ from weather import print_weather_warsaw
 from rgba to kivy code: rgba code/255.0
 window background = hex(#021C1E); rgba(2, 28, 30, 1), kivy(0.007, 0.1, 0.11, 1)
 label text color = hex(#2C7873); rgba(44, 120, 115, 1), kivy(0.17, 0.47, 0.45, 1)
-button background = hex(#004445); rgba(0, 68, 69, 1)
-button text color = hex(#6FB98F); rgba(111, 185, 143, 1)
+button background = hex(#004445); rgba(0, 68, 69, 1), kivy(0, 0.26, 0.27, 1)
+button text color = hex(#6FB98F); rgba(111, 185, 143, 1), kivy(0.435, 0.725, 0.56, 1)
 '''
 
 # Colors in app
