@@ -13,9 +13,9 @@ def create_table():
     clothes_data = Table('clothes_data', metadata,
                          Column('id', Integer, primary_key=True),
                          Column('name', String(10)),
-                         Column('color_1', String(10)),
-                         Column('color_2', String(10)),
-                         Column('color_3', String(10)),
+                         Column('color_1', String),
+                         Column('color_2', String),
+                         Column('color_3', String),
                          Column('photo_source', String),
                          Column('description', String),
                          Column('exclusion', String),
@@ -31,23 +31,26 @@ def insert_new_data():
 
     # Insert data to new item in clothes_data table
     input_name = input('Name: ')
-    # TODO: add color_palette.py
-    input_color_1 = input('Color code: ')
-    input_color_2 = input('Color code: ')
-    input_color_3 = input('Color code: ')
+    import color_palette as color
+    input_color_1 = color.get_color()
+    import color_palette as color
+    input_color_2 = color.get_color()
+    import color_palette as color
+    input_color_3 = color.get_color()
     input_description = input('Description: ')
     input_exclusion = input('Exclusions: ')
     input_kind = input('Kind: ')
 
     insert_data = create_table().insert()
     # TODO: set new ID = last ID in table + 1
-    connection.execute(insert_data, id=" ",
+    # For test insert_new_data put id = int value
+    connection.execute(insert_data, id="",
                        name='{}'.format(input_name),
                        color_1='{}'.format(input_color_1),
                        color_2='{}'.format(input_color_2),
                        color_3='{}'.format(input_color_3),
                        # TODO: add ID number after source
-                       photo_source='/photos' + 'id_num' + '.jpg',
+                       photo_source='/photos/' + 'id_num' + '.jpg',
                        description='{}'.format(
                            input_description),
                        exclusion='{}'.format(
