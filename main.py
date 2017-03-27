@@ -6,8 +6,21 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
 from weather import print_weather_warsaw
 
+'''
+from rgba to kivy code: rgba code/255.0
+window background = hex(#021C1E); rgba(2, 28, 30, 1), kivy(0.007, 0.1, 0.11, 1)
+label text color = hex(#2C7873); rgba(44, 120, 115, 1), kivy(0.17, 0.47, 0.45, 1)
+button background = hex(#004445); rgba(0, 68, 69, 1)
+button text color = hex(#6FB98F); rgba(111, 185, 143, 1)
+'''
 
-Window.clearcolor = (0.8, 0.8, 0.8, 1)
+# Colors in app
+window_background_color = 0.007, 0.1, 0.11, 1
+label_text_color = 0.17, 0.47, 0.45, 1
+button_background = 0, 0.26, 0.27, 1
+button_text_color = 0.435, 0.725, 0.56, 1
+
+Window.clearcolor = window_background_color
 Window.size = (400, 650)
 
 
@@ -24,7 +37,7 @@ class MainWindow(Screen):
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -33,10 +46,10 @@ class MainWindow(Screen):
                                           anchor_y='center')
         self.button = Button(text='Choose',
                              valign='top',
-                             color=(0.6, 0.6, 0.6, 1),
+                             color=button_text_color,
                              size=(200, 200),
                              size_hint=(None, None),
-                             background_color=(0.8, 0.8, 0.6, 1))
+                             background_color=button_background)
 
         self.button.bind(on_release=self.move_direction_button1)
         self.Anchor_Layout.add_widget(self.button)
@@ -46,10 +59,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='center')
         self.button = Button(text='Rate',
-                             color=(0.6, 0.6, 0.6, 1),
+                             color=button_text_color,
                              size=(200, 200),
                              size_hint=(None, None),
-                             background_color=(0.8, 0.8, 0.6, 1))
+                             background_color=button_background)
 
         self.button.bind(on_release=self.move_direction_button2)
         self.Anchor_Layout.add_widget(self.button)
@@ -59,10 +72,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='History',
-                             color=(0.6, 0.6, 0.6, 1),
+                             color=button_text_color,
                              size=(200, 200),
                              size_hint=(None, None),
-                             background_color=(0.8, 0.8, 0.6, 1))
+                             background_color=button_background)
 
         self.button.bind(on_release=self.move_direction_button3)
         self.Anchor_Layout.add_widget(self.button)
@@ -72,10 +85,10 @@ class MainWindow(Screen):
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='bottom')
         self.button = Button(text='Change data',
-                             color=(0.6, 0.6, 0.6, 1),
+                             color=button_text_color,
                              size=(200, 200),
                              size_hint=(None, None),
-                             background_color=(0.8, 0.8, 0.6, 1))
+                             background_color=button_background)
 
         self.button.bind(on_release=self.move_direction_button4)
         self.Anchor_Layout.add_widget(self.button)
@@ -124,7 +137,7 @@ class Button1(Screen):
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -180,7 +193,7 @@ class Button2(Screen):
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -220,7 +233,7 @@ class Button3(Screen):
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
@@ -260,7 +273,7 @@ class Button4(Screen):
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
