@@ -15,7 +15,7 @@ button text color = hex(#6FB98F); rgba(111, 185, 143, 1), kivy(0.435, 0.725, 0.5
 '''
 
 # Colors in app
-window_background_color = 0.007, 0.1, 0.11, 1
+window_background_color = 0.047, 0.2, 0.11, 1
 label_text_color = 0.17, 0.47, 0.45, 1
 button_background = 0, 0.26, 0.27, 1
 button_text_color = 0.435, 0.725, 0.56, 1
@@ -51,7 +51,7 @@ class MainWindow(Screen):
                              size_hint=(None, None),
                              background_color=button_background)
 
-        self.button.bind(on_release=self.move_direction_button1)
+        self.button.bind(on_release=self.move_direction_choose_window)
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
@@ -64,7 +64,7 @@ class MainWindow(Screen):
                              size_hint=(None, None),
                              background_color=button_background)
 
-        self.button.bind(on_release=self.move_direction_button2)
+        self.button.bind(on_release=self.move_direction_rate_window)
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
@@ -77,7 +77,7 @@ class MainWindow(Screen):
                              size_hint=(None, None),
                              background_color=button_background)
 
-        self.button.bind(on_release=self.move_direction_button3)
+        self.button.bind(on_release=self.move_direction_history_window)
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
@@ -90,23 +90,23 @@ class MainWindow(Screen):
                              size_hint=(None, None),
                              background_color=button_background)
 
-        self.button.bind(on_release=self.move_direction_button4)
+        self.button.bind(on_release=self.move_direction_change_window)
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
 
     # Define move after press buttons from main window
-    def move_direction_button1(self, *args):
-        self.manager.current = "button1"
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
 
-    def move_direction_button2(self, *args):
-        self.manager.current = "button2"
+    def move_direction_rate_window(self, *args):
+        self.manager.current = "ratewindow"
 
-    def move_direction_button3(self, *args):
-        self.manager.current = "button3"
+    def move_direction_history_window(self, *args):
+        self.manager.current = "historywindow"
 
-    def move_direction_button4(self, *args):
-        self.manager.current = "button4"
+    def move_direction_change_window(self, *args):
+        self.manager.current = "changewindow"
 
 
 # Back button settings
@@ -118,7 +118,7 @@ class MainWindow(Screen):
 #                      size_hint_x=None)
 
 
-class Button1(Screen):
+class ChooseWindow(Screen):
 
 # by kind
 # by name
@@ -127,8 +127,8 @@ class Button1(Screen):
 # by sets
 
     def __init__(self, **kwargs):
-        super(Button1, self).__init__(**kwargs)
-        self.name = "button1"
+        super(ChooseWindow, self).__init__(**kwargs)
+        self.name = "choosewindow"
 
         # Define position of button1 label
         label_position = AnchorLayout(anchor_x='center',
@@ -177,14 +177,14 @@ class Button1(Screen):
         self.manager.current = "mainwindow"
 
 
-class Button2(Screen):
+class RateWindow(Screen):
 
 # 5 stars rate
 # based in data base
 
     def __init__(self, **kwargs):
-        super(Button2, self).__init__(**kwargs)
-        self.name = "button2"
+        super(RateWindow, self).__init__(**kwargs)
+        self.name = "ratewindow"
 
         # Define position of button2 label
         label_position = AnchorLayout(anchor_x='center',
@@ -216,15 +216,15 @@ class Button2(Screen):
         self.manager.current = "mainwindow"
 
 
-class Button3(Screen):
+class HistoryWindow(Screen):
 
 # day by day
 # photo option
 # based in data base
 
     def __init__(self, **kwargs):
-        super(Button3, self).__init__(**kwargs)
-        self.name = "button3"
+        super(HistoryWindow, self).__init__(**kwargs)
+        self.name = "historywindow"
 
         # Define position of button3 label
         label_position = AnchorLayout(anchor_x='center',
@@ -256,15 +256,15 @@ class Button3(Screen):
         self.manager.current = "mainwindow"
 
 
-class Button4(Screen):
+class ChangeWindow(Screen):
 
 # add new cloth
 # change data
 # delete cloth
 
     def __init__(self, **kwargs):
-        super(Button4, self).__init__(**kwargs)
-        self.name = "button4"
+        super(ChangeWindow, self).__init__(**kwargs)
+        self.name = "changewindow"
 
         # Define position of button4 label
         label_position = AnchorLayout(anchor_x='center',
@@ -300,10 +300,10 @@ class MyOrganiser(App):
     def build(self):
         screen_manager = ScreenManager()
         screen_manager.add_widget(MainWindow())
-        screen_manager.add_widget(Button1())
-        screen_manager.add_widget(Button2())
-        screen_manager.add_widget(Button3())
-        screen_manager.add_widget(Button4())
+        screen_manager.add_widget(ChooseWindow())
+        screen_manager.add_widget(RateWindow())
+        screen_manager.add_widget(HistoryWindow())
+        screen_manager.add_widget(ChangeWindow())
         return screen_manager
 
 
