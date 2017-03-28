@@ -41,7 +41,7 @@ class MainWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # Define position, size of button 1
+        # Define position, size of choose
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='center')
         self.button = Button(text='Choose',
@@ -55,7 +55,7 @@ class MainWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-        # Define position, size of button 2
+        # Define position, size of rate
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='center')
         self.button = Button(text='Rate',
@@ -68,7 +68,7 @@ class MainWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-        # Define position, size of button 3
+        # Define position, size of history
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='History',
@@ -81,7 +81,7 @@ class MainWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-        # Define position, size of button 4
+        # Define position, size of change data
         self.Anchor_Layout = AnchorLayout(anchor_x='right',
                                           anchor_y='bottom')
         self.button = Button(text='Change data',
@@ -130,7 +130,7 @@ class ChooseWindow(Screen):
         super(ChooseWindow, self).__init__(**kwargs)
         self.name = "choosewindow"
 
-        # Define position of button1 label
+        # Define position of choose window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Choose < < <',
@@ -186,7 +186,7 @@ class RateWindow(Screen):
         super(RateWindow, self).__init__(**kwargs)
         self.name = "ratewindow"
 
-        # Define position of button2 label
+        # Define position of rate rate window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Rate < < <',
@@ -226,7 +226,7 @@ class HistoryWindow(Screen):
         super(HistoryWindow, self).__init__(**kwargs)
         self.name = "historywindow"
 
-        # Define position of button3 label
+        # Define position of history window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > History < < <',
@@ -266,7 +266,7 @@ class ChangeWindow(Screen):
         super(ChangeWindow, self).__init__(**kwargs)
         self.name = "changewindow"
 
-        # Define position of button4 label
+        # Define position of change window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Add, change, delete < < <',
