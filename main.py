@@ -131,13 +131,83 @@ class ChooseWindow(Screen):
         # Define position of choose window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Choose < < <',
+        label_settings = Label(text='> > > Choose by... < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position, size of kinds button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Kinds',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 400),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_choose_kinds_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of names button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Names',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 350),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_choose_names_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of colors button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Colors',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 300),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_choose_colors_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of rates button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Rates',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 250),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_choose_rates_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of sets button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Sets',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 200),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_choose_sets_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -169,6 +239,26 @@ class ChooseWindow(Screen):
 
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+    # Define move after press kinds button
+    def move_direction_choose_kinds_window(self, *args):
+        self.manager.current = "choosekindswindow"
+
+    # Define move after press names button
+    def move_direction_choose_names_window(self, *args):
+        self.manager.current = "choosenameswindow"
+
+    # Define move after press colors button
+    def move_direction_choose_colors_window(self, *args):
+        self.manager.current = "choosecolorswindow"
+
+    # Define move after press rates button
+    def move_direction_choose_rates_window(self, *args):
+        self.manager.current = "chooserateswindow"
+
+    # Define move after press sets button
+    def move_direction_choose_sets_window(self, *args):
+        self.manager.current = "choosesetswindow"
 
     # Define move after press back button
     def move_direction_main_window(self, *args):
@@ -364,12 +454,187 @@ class ChangeWindow(Screen):
         self.manager.current = "deleteclothwindow"
 
 
+class ChooseNames(Screen):
+    def __init__(self, **kwargs):
+        super(ChooseNames, self).__init__(**kwargs)
+        self.name = "choosenameswindow"
+
+        # Define position of choose by names window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Choose by names < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
+
+
+class ChooseKinds(Screen):
+    def __init__(self, **kwargs):
+        super(ChooseKinds, self).__init__(**kwargs)
+        self.name = "choosekindswindow"
+
+        # Define position of choose by kinds window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Choose by kinds < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
+
+
+class ChooseColors(Screen):
+    def __init__(self, **kwargs):
+        super(ChooseColors, self).__init__(**kwargs)
+        self.name = "choosecolorswindow"
+
+        # Define position of choose by colors window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Choose by colors < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
+
+
+class ChooseRates(Screen):
+    def __init__(self, **kwargs):
+        super(ChooseRates, self).__init__(**kwargs)
+        self.name = "chooserateswindow"
+
+        # Define position of choose by rates window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Choose by rates < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
+
+
+class ChooseSets(Screen):
+    def __init__(self, **kwargs):
+        super(ChooseSets, self).__init__(**kwargs)
+        self.name = "choosesetswindow"
+
+        # Define position of choose by sets window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Choose by sets < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_choose_window(self, *args):
+        self.manager.current = "choosewindow"
+
+
 class AddNewClothWindow(Screen):
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
         self.name = "addnewclothwindow"
 
-        # Define position of change window label
+        # Define position of add cloth window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Add new cloth < < <',
@@ -404,7 +669,7 @@ class ChangeClearWindow(Screen):
         super(ChangeClearWindow, self).__init__(**kwargs)
         self.name = "changeclearwindow"
 
-        # Define position of change window label
+        # Define position of change clear of cloth window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Change clear < < <',
@@ -439,7 +704,7 @@ class ChangeClearData(Screen):
         super(ChangeClearData, self).__init__(**kwargs)
         self.name = "changeclothdatawindow"
 
-        # Define position of change window label
+        # Define position of change cloth data window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Change data < < <',
@@ -474,7 +739,7 @@ class DeleteCloth(Screen):
         super(DeleteCloth, self).__init__(**kwargs)
         self.name = "deleteclothwindow"
 
-        # Define position of change window label
+        # Define position of delete cloth window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
         label_settings = Label(text='> > > Delete cloth < < <',
@@ -507,15 +772,27 @@ class DeleteCloth(Screen):
 class MyOrganiser(App):
     def build(self):
         screen_manager = ScreenManager()
+
+        # For Main Window
         screen_manager.add_widget(MainWindow())
         screen_manager.add_widget(ChooseWindow())
         screen_manager.add_widget(RateWindow())
         screen_manager.add_widget(HistoryWindow())
         screen_manager.add_widget(ChangeWindow())
+
+        # For Choose Window
+        screen_manager.add_widget(ChooseKinds())
+        screen_manager.add_widget(ChooseNames())
+        screen_manager.add_widget(ChooseColors())
+        screen_manager.add_widget(ChooseRates())
+        screen_manager.add_widget(ChooseSets())
+
+        # For Change Window
         screen_manager.add_widget(AddNewClothWindow())
         screen_manager.add_widget(ChangeClearWindow())
         screen_manager.add_widget(ChangeClearData())
         screen_manager.add_widget(DeleteCloth())
+
         return screen_manager
 
 
