@@ -3,6 +3,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from weather import print_weather_warsaw
 
@@ -25,7 +26,6 @@ Window.size = (400, 650)
 
 
 class MainWindow(Screen):
-
     def __init__(self, **kwargs):
         super(MainWindow, self).__init__(**kwargs)
         self.name = "mainwindow"
@@ -94,7 +94,6 @@ class MainWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-
     # Define move after press buttons from main window
     def move_direction_choose_window(self, *args):
         self.manager.current = "choosewindow"
@@ -119,12 +118,11 @@ class MainWindow(Screen):
 
 
 class ChooseWindow(Screen):
-
-# by kind
-# by name
-# by color
-# by rate
-# by sets
+    # by kind
+    # by name
+    # by color
+    # by rate
+    # by sets
 
     def __init__(self, **kwargs):
         super(ChooseWindow, self).__init__(**kwargs)
@@ -178,9 +176,8 @@ class ChooseWindow(Screen):
 
 
 class RateWindow(Screen):
-
-# 5 stars rate
-# based in data base
+    # 5 stars rate
+    # based in data base
 
     def __init__(self, **kwargs):
         super(RateWindow, self).__init__(**kwargs)
@@ -217,10 +214,9 @@ class RateWindow(Screen):
 
 
 class HistoryWindow(Screen):
-
-# day by day
-# photo option
-# based in data base
+    # day by day
+    # photo option
+    # based in data base
 
     def __init__(self, **kwargs):
         super(HistoryWindow, self).__init__(**kwargs)
@@ -257,10 +253,10 @@ class HistoryWindow(Screen):
 
 
 class ChangeWindow(Screen):
-
-# add new cloth
-# change data
-# delete cloth
+    # add new cloth
+    # change data
+    # change clear
+    # delete cloth
 
     def __init__(self, **kwargs):
         super(ChangeWindow, self).__init__(**kwargs)
@@ -276,6 +272,20 @@ class ChangeWindow(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position, size of add new cloth button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Add new cloth',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 400),
+                             color=button_text_color,
+                             background_color = button_background)
+        self.button.bind(on_release=self.move_direction_add_new_cloth_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -295,6 +305,45 @@ class ChangeWindow(Screen):
     def move_direction_main_window(self, *args):
         self.manager.current = "mainwindow"
 
+    # Define move after press add new cloth button
+    def move_direction_add_new_cloth_window(self, *args):
+        self.manager.current = "addnewclothwindow"
+
+
+class AddNewClothWindow(Screen):
+    def __init__(self, **kwargs):
+        super(AddNewClothWindow, self).__init__(**kwargs)
+        self.name = "addnewclothwindow"
+
+        # Define position of change window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Add new cloth < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "changewindow"
+
 
 class MyOrganiser(App):
     def build(self):
@@ -304,6 +353,7 @@ class MyOrganiser(App):
         screen_manager.add_widget(RateWindow())
         screen_manager.add_widget(HistoryWindow())
         screen_manager.add_widget(ChangeWindow())
+        screen_manager.add_widget(AddNewClothWindow())
         return screen_manager
 
 
