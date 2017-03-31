@@ -301,6 +301,20 @@ class ChangeWindow(Screen):
         self.Float_Layout.add_widget(self.button)
         self.add_widget(self.Float_Layout)
 
+        # Define position, size of change cloth data button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Change cloth data',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 300),
+                             color=button_text_color,
+                             background_color = button_background)
+        self.button.bind(on_release=self.move_direction_change_clear_data)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -323,9 +337,13 @@ class ChangeWindow(Screen):
     def move_direction_add_new_cloth_window(self, *args):
         self.manager.current = "addnewclothwindow"
 
-    # Define move after press add new cloth button
+    # Define move after press change cloth clear
     def move_direction_change_clear_window(self, *args):
         self.manager.current = "changeclearwindow"
+
+    # Define move after press change cloth data
+    def move_direction_change_clear_data(self, *args):
+        self.manager.current = "changeclothdatawindow"
 
 class AddNewClothWindow(Screen):
     def __init__(self, **kwargs):
@@ -397,6 +415,41 @@ class ChangeClearWindow(Screen):
         self.manager.current = "changewindow"
 
 
+class ChangeClearData(Screen):
+    def __init__(self, **kwargs):
+        super(ChangeClearData, self).__init__(**kwargs)
+        self.name = "changeclothdatawindow"
+
+        # Define position of change window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Change data < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "changewindow"
+
+
 class MyOrganiser(App):
     def build(self):
         screen_manager = ScreenManager()
@@ -407,6 +460,7 @@ class MyOrganiser(App):
         screen_manager.add_widget(ChangeWindow())
         screen_manager.add_widget(AddNewClothWindow())
         screen_manager.add_widget(ChangeClearWindow())
+        screen_manager.add_widget(ChangeClearData())
         return screen_manager
 
 
