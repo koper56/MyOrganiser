@@ -123,6 +123,7 @@ class ChooseWindow(Screen):
     # by color
     # by rate
     # by sets
+    # weather info
 
     def __init__(self, **kwargs):
         super(ChooseWindow, self).__init__(**kwargs)
@@ -306,7 +307,6 @@ class RateWindow(Screen):
 class HistoryWindow(Screen):
     # day by day
     # photo option
-    # based in data base
 
     def __init__(self, **kwargs):
         super(HistoryWindow, self).__init__(**kwargs)
@@ -323,6 +323,34 @@ class HistoryWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position, size of history day by day button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Day by day',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 400),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_day_history)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of photo button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Photo',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 350),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_photo)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -336,6 +364,14 @@ class HistoryWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    # Define move after press day by day button
+    def move_direction_day_history(self, *args):
+        self.manager.current = "dayhistorywindow"
+
+    # Define move after press photo button
+    def move_direction_photo(self, *args):
+        self.manager.current = "photowindow"
 
     # Define move after press back button
     def move_direction_main_window(self, *args):
@@ -629,6 +665,78 @@ class ChooseSets(Screen):
         self.manager.current = "choosewindow"
 
 
+class HistoryDayWindow(Screen):
+    def __init__(self, **kwargs):
+        super(HistoryDayWindow, self).__init__(**kwargs)
+        self.name = "dayhistorywindow"
+
+        # Define position of photo label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > History by day < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "historywindow"
+
+
+class PhotoWindow(Screen):
+    def __init__(self, **kwargs):
+        super(PhotoWindow, self).__init__(**kwargs)
+        self.name = "photowindow"
+
+        # Define position of photo window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Photo < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # TODO: Add photo module
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "historywindow"
+
+
 class AddNewClothWindow(Screen):
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -786,6 +894,10 @@ class MyOrganiser(App):
         screen_manager.add_widget(ChooseColors())
         screen_manager.add_widget(ChooseRates())
         screen_manager.add_widget(ChooseSets())
+
+        # For History Window
+        screen_manager.add_widget(HistoryDayWindow())
+        screen_manager.add_widget(PhotoWindow())
 
         # For Change Window
         screen_manager.add_widget(AddNewClothWindow())
