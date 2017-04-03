@@ -1,9 +1,11 @@
 # MyOrganiser
 
 Simple mobile app with clothes data base (list, add, remove, sets, classification),
-weather, TODO list
+weather, photos
 
 import:
+
+      Python  3.6
       cyton	  0.25.2
       pygame  1.9.3
       kivy    1.9.1
