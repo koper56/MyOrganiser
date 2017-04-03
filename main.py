@@ -267,6 +267,8 @@ class ChooseWindow(Screen):
 
 
 class RateWindow(Screen):
+    # rate cloth
+    # rate set
     # 5 stars rate
     # based in data base
 
@@ -285,6 +287,34 @@ class RateWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position, size of rate cloth button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Cloth',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 400),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_rate_cloth_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
+        # Define position, size of rate set button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+
+        self.button = Button(text='Set',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 350),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.move_direction_rate_set_window)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -298,6 +328,14 @@ class RateWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    # Define move after press cloth button
+    def move_direction_rate_cloth_window(self, *args):
+        self.manager.current = "rateclothwindow"
+
+    # Define move after press set button
+    def move_direction_rate_set_window(self, *args):
+        self.manager.current = "ratesetwindow"
 
     # Define move after press back button
     def move_direction_main_window(self, *args):
@@ -665,7 +703,81 @@ class ChooseSets(Screen):
         self.manager.current = "choosewindow"
 
 
+class RateClothWindow(Screen):
+    def __init__(self, **kwargs):
+        super(RateClothWindow, self).__init__(**kwargs)
+        self.name = "rateclothwindow"
+
+        # Define position of delete cloth window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Rate cloth < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "ratewindow"
+
+
+class RateSetWindow(Screen):
+    def __init__(self, **kwargs):
+        super(RateSetWindow, self).__init__(**kwargs)
+        self.name = "ratesetwindow"
+
+        # Define position of delete cloth window label
+        label_position = AnchorLayout(anchor_x='center',
+                                      anchor_y='top')
+        label_settings = Label(text='> > > Rate set < < <',
+                               font_size='20sp',
+                               size=(200, 50),
+                               size_hint=(None, None),
+                               color=label_text_color)
+        label_position.add_widget(label_settings)
+        self.add_widget(label_position)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             size_hint=(None, None),
+                             background_normal="./back.png",
+                             background_down="./back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Define move after press back button
+    def move_direction_change_window(self, *args):
+        self.manager.current = "ratewindow"
+
+
 class HistoryDayWindow(Screen):
+    # Rate of set
+    # Photo of set
+    # Elements of set
+
     def __init__(self, **kwargs):
         super(HistoryDayWindow, self).__init__(**kwargs)
         self.name = "dayhistorywindow"
@@ -716,7 +828,7 @@ class PhotoWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # TODO: Add photo module
+        # TODO: Add camera module
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -894,6 +1006,10 @@ class MyOrganiser(App):
         screen_manager.add_widget(ChooseColors())
         screen_manager.add_widget(ChooseRates())
         screen_manager.add_widget(ChooseSets())
+
+        # For Rate Window
+        screen_manager.add_widget(RateClothWindow())
+        screen_manager.add_widget(RateSetWindow())
 
         # For History Window
         screen_manager.add_widget(HistoryDayWindow())
