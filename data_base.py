@@ -17,6 +17,7 @@ class ClothesData(data_base):
     description = Column(String(100), nullable=False)
     exclusion = Column(String(250), nullable=False)
     clear = Column(String(5), nullable=False)
+    rate = Column(Integer, nullable=False)
     kind = Column(String(20), nullable=False)
 
 
@@ -42,7 +43,13 @@ def next_id_value():
 
 
 def insert_new_data():
+
     # Insert data to new item in ClothesData table
+    # Default ID = last ID + 1, for first item ID = 1
+    # Default photo source /photos/'ID NUMBER'.jpg
+    # Default clear = True
+    # Default rate = 0
+
     input_name = input('Name: ')
     # Run code with color palette
     import color_palette as color
@@ -66,8 +73,8 @@ def insert_new_data():
                                input_description),
                            exclusion='{}'.format(
                                input_exclusion),
-                           # Default clear = True
                            clear='True',
+                           rate='0',
                            kind='{}'.format(input_kind))
 
     # Commit new data
@@ -82,7 +89,8 @@ def print_all_data_from_all():
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
               row[4],
               'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Kind:', row[8])
+              'Exclusions:', row[7], 'Clear: ', row[8], 'Rate: ', row[9],
+              'Kind:', row[10])
 
 
 def print_all_name_id_from_all():
@@ -100,7 +108,7 @@ def print_all_data_by_kind():
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
               row[4],
               'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Kind:', row[8])
+              'Exclusions:', row[7], 'Kind:', row[10])
 
 
 def print_one_data_by_id():
@@ -111,7 +119,7 @@ def print_one_data_by_id():
         print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
               row[4],
               'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Kind:', row[8])
+              'Exclusions:', row[7], 'Kind:', row[10])
 
 
 def update_item():
@@ -142,6 +150,7 @@ def delete_item():
     session.commit()
 
 
+# TODO: Don't work
 def change_clear():
     input_id = int(input('Select ID number of item to change clear: '))
     if select([ClothesData]).where(ClothesData.id == input_id,
@@ -156,5 +165,18 @@ def change_clear():
         update_data = update(ClothesData).where(
             ClothesData.id == input_id).values(clear='True')
 
-    # Commits changes
-    connection.execute(update_data)
+        # Commits changes
+        connection.execute(update_data)
+
+
+def set_rate():
+    input_id = int(input('Select ID number of item to change: '))
+    select_data = select([ClothesData]).where(ClothesData.id == input_id)
+    for row in connection.execute(select_data):
+        input_rate = input('New rate(1 - 5) for name: {}: '.format(row[1]))
+        # CREATE ONCE
+        table = ClothesData
+        update_data = update(table).where(table.id == input_id).values(
+            rate='{}'.format(input_rate))
+        # Commits changes, IF autocommit is in use
+        connection.execute(update_data)
