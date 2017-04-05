@@ -1,18 +1,4 @@
-# from https://github.com/kivy/kivy/blob/master/examples/camera/main.py
-
-'''
-Camera Example
-==============
-This example demonstrates a simple use of the camera. It shows a window with
-a buttoned labelled 'play' to turn the camera on and off. Note that
-not finding a camera, perhaps because gstreamer is not installed, will
-throw an exception during the kv language processing.
-'''
-
-# Uncomment these lines to see all the messages
-# from kivy.logger import Logger
-# import logging
-# Logger.setLevel(logging.TRACE)
+# basic code from https://github.com/kivy/kivy/blob/master/examples/camera/main.py
 
 from kivy.app import App
 from kivy.lang import Builder
@@ -26,34 +12,32 @@ Builder.load_string('''
         resolution: (640, 480)
         play: False
     ToggleButton:
-        text: 'Play'
+        text: 'Turn on camera'
         on_press: camera.play = not camera.play
         size_hint_y: None
         height: '48dp'
     Button:
-        text: 'Capture'
+        text: 'Take photo'
         size_hint_y: None
         height: '48dp'
-        on_press: root.capture()
+        on_press: root.take_photo()
 ''')
 
 
 class CameraClick(BoxLayout):
-    def capture(self):
-        '''
-        Function to capture the images and give them the names
-        according to their captured time and date.
-        '''
+    # Function to capture the images and give them the names
+    # according to their captured date F. ex 'Captured as IMG_2017_04_05.png'.
+    def take_photo(self):
         camera = self.ids['camera']
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        camera.export_to_png("IMG_{}.png".format(timestr))
-        print("Captured")
+        time_format = time.strftime("%Y_%m_%d")
+        camera.export_to_png("Set_from_{}.png".format(time_format))
+        print("Captured as IMG_{}.png".format(time_format))
 
 
-class TestCamera(App):
+class CameraModule(App):
 
     def build(self):
         return CameraClick()
 
 
-TestCamera().run()
+CameraModule().run()
