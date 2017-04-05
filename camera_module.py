@@ -1,3 +1,5 @@
+# from https://github.com/kivy/kivy/blob/master/examples/camera/main.py
+
 '''
 Camera Example
 ==============
