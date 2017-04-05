@@ -9,13 +9,7 @@ Builder.load_string('''
     Camera:
         id: camera
         resolution: (640, 480)
-        play: False
-    ToggleButton:
-        text: 'Turn on/off camera'
-        on_press: camera.play = not camera.play
-        size_hint_y: None
-        height: '50dp'
-        pos: 0, 100
+        play: True
     Button:
         text: 'Take photo'
         size_hint_y: None
@@ -33,7 +27,7 @@ class CameraClick(FloatLayout):
         camera = self.ids['camera']
         time_format = time.strftime("%Y_%m_%d")
         camera.export_to_png("Set_from_{}.png".format(time_format))
-        print("Captured as IMG_{}.png".format(time_format))
+        print("Captured as 'Set_from_{}.png'".format(time_format))
 
 
 class CameraModule(App):
