@@ -832,7 +832,7 @@ class PhotoWindow(Screen):
 
         # Take camera screen from camera_module.py after press button
         self.Float_Layout = FloatLayout(size=(450, 100))
-        self.button = Button(text='Camera module',
+        self.button = Button(text='Turn on camera',
                              size_hint=(None, None),
                              size=(450, 50),
                              pos=(0, 400),
