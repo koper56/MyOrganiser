@@ -6,7 +6,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from weather import print_weather_warsaw
-
+import camera_module
 '''
 from rgba to kivy code: rgba code/255.0
 window background = hex(#021C1E); rgba(2, 28, 30, 1), kivy(0.007, 0.1, 0.11, 1)
@@ -828,7 +828,7 @@ class PhotoWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # TODO: Add camera module
+        camera_module.CameraModule().run()
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
