@@ -12,7 +12,7 @@ Builder.load_string('''
         resolution: (640, 480)
         play: False
     ToggleButton:
-        text: 'Turn on camera'
+        text: 'Turn on/off camera'
         on_press: camera.play = not camera.play
         size_hint_y: None
         height: '48dp'
@@ -20,7 +20,8 @@ Builder.load_string('''
         text: 'Take photo'
         size_hint_y: None
         height: '48dp'
-        on_press: root.take_photo()
+        on_press: root.take_photo()    
+        on_press: app.stop() 
 ''')
 
 
@@ -35,9 +36,5 @@ class CameraClick(BoxLayout):
 
 
 class CameraModule(App):
-
     def build(self):
         return CameraClick()
-
-
-CameraModule().run()
