@@ -6,7 +6,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from weather import print_weather_warsaw
-import camera_module
+
 '''
 from rgba to kivy code: rgba code/255.0
 window background = hex(#021C1E); rgba(2, 28, 30, 1), kivy(0.007, 0.1, 0.11, 1)
@@ -813,6 +813,8 @@ class HistoryDayWindow(Screen):
 
 
 class PhotoWindow(Screen):
+    import camera_module
+
     def __init__(self, **kwargs):
         super(PhotoWindow, self).__init__(**kwargs)
         self.name = "photowindow"
@@ -828,7 +830,18 @@ class PhotoWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        camera_module.CameraModule().run()
+        # Take camera screen from camera_module.py after press button
+        self.Float_Layout = FloatLayout(size=(450, 100))
+        self.button = Button(text='Camera module',
+                             size_hint=(None, None),
+                             size=(450, 50),
+                             pos=(0, 400),
+                             color=button_text_color,
+                             background_color=button_background)
+        self.button.bind(on_release=self.camera_run)
+
+        self.Float_Layout.add_widget(self.button)
+        self.add_widget(self.Float_Layout)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -843,6 +856,9 @@ class PhotoWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def camera_run(self, *args):
+        return self.camera_module.CameraModule().run()
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
