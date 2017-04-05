@@ -72,7 +72,6 @@ def print_weather_warsaw():
         rain = weather.get_rain()
         wind = weather.get_wind()
         wind_speed = wind['speed']
-        wind_deg = wind['deg']
         humidity = weather.get_humidity()
         temperature = weather.get_temperature('celsius')
         temperature_temp = temperature['temp']
@@ -92,7 +91,6 @@ def print_weather_warsaw():
                     f'Clouds: {clouds} %\n'
                     f'Rain: {rain} %\n'
                     f'Wind speed: {wind_speed}\n'
-                    f'Wind degree: {wind_deg}\n'
                     f'Humidity: {humidity} %\n'
                     f'Temperature: {temperature_temp} celsius\n'
                     f'Max temperature: {temperature_max} celsius\n'
