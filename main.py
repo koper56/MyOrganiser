@@ -6,7 +6,6 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
-from kivy.uix.boxlayout import BoxLayout
 import data_base
 from weather import print_weather_warsaw
 
@@ -23,9 +22,12 @@ window_background_color = 0.047, 0.2, 0.11, 1
 label_text_color = 0.17, 0.47, 0.45, 1
 button_background = 0, 0.26, 0.27, 1
 button_text_color = 0.435, 0.725, 0.56, 1
+data_text_color = 0.17, 0.47, 1, 1
+data_label_background_color = 1, 0.2, 0.11, 1
 
-Window.clearcolor = window_background_color
-Window.size = (400, 650)
+
+# Window.clearcolor = window_background_color
+# Window.size = (400, 650)
 
 
 class MainWindow(Screen):
@@ -547,20 +549,42 @@ class ChooseNames(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # Define search box
-        input_box = BoxLayout(padding=0,
-                              orientation='horizontal',
-                              size=(400, 200),
-                              size_hint=(None, None))
-        self.text_input = TextInput(text='Type name', multiline=False)
-        input_box.add_widget(self.text_input)
-        ok_button = Button(text="OK")
-        ok_button.bind(on_press=self.press_button)
-        input_box.add_widget(ok_button)
-        self.show_label = Label(text="Search")
-        input_box.add_widget(self.show_label)
+        # Define position of text input box
+        self.input_box_pos = AnchorLayout(anchor_x='center',
+                                          anchor_y='bottom')
+        self.input_box = TextInput(text='Type name',
+                                   multiline=False,
+                                   size=(200, 50),
+                                   size_hint=(None, None))
+        self.input_box_pos.add_widget(self.input_box)
+        self.add_widget(self.input_box_pos)
 
-        # Define position and size of back button
+        # Define position of search button
+        self.search_button_pos = AnchorLayout(anchor_x='right',
+                                              anchor_y='bottom')
+        self.search_button = Button(text='OK',
+                                    size=(100, 50),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.search_button_pos.add_widget(self.search_button)
+        self.add_widget(self.search_button_pos)
+
+        # Run function press button after press OK
+        self.search_button.bind(on_press=self.press_button)
+
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        self.search_result = Label(text='Search result',
+                                   font_size='14sp',
+                                   size=(250, 350),
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
@@ -574,11 +598,12 @@ class ChooseNames(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-    # Define search output
+    # Send text after press button OK from input box to function in data base,
+    # take data and return in search result label
     def press_button(self, btn):
-        self.show_label.text = "Result: \n" + \
-                               str(data_base.print_one_data_by_name(
-                                   self.text_input.text))
+        self.search_result.text = \
+            "Result: \n" + \
+            str(data_base.print_one_data_by_name(self.input_box.text))
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):
