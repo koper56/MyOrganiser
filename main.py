@@ -576,9 +576,12 @@ class ChooseNames(Screen):
         # Define position of search result label
         self.search_result_pos = AnchorLayout(anchor_y='center',
                                               anchor_x='center')
+        # text_size=self.size -> Wrapping text
         self.search_result = Label(text='Search result',
-                                   font_size='14sp',
-                                   size=(250, 350),
+                                   font_size='16sp',
+                                   text_size=(200, 600),
+                                   valign='middle',
+                                   halign='center',
                                    size_hint=(None, None),
                                    color=data_text_color)
         self.search_result_pos.add_widget(self.search_result)
