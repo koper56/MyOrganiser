@@ -560,7 +560,7 @@ class ChooseNames(Screen):
         self.show_label = Label(text="Search")
         input_box.add_widget(self.show_label)
 
-        # Define position, size of back button
+        # Define position and size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
         self.button = Button(text='back',
