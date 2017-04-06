@@ -5,6 +5,9 @@ from kivy.uix.label import Label
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
+from kivy.uix.textinput import TextInput
+from kivy.uix.boxlayout import BoxLayout
+import data_base
 from weather import print_weather_warsaw
 
 '''
@@ -544,6 +547,19 @@ class ChooseNames(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define search box
+        input_box = BoxLayout(padding=0,
+                              orientation='horizontal',
+                              size=(400, 200),
+                              size_hint=(None, None))
+        self.text_input = TextInput(text='Type name', multiline=False)
+        input_box.add_widget(self.text_input)
+        ok_button = Button(text="OK")
+        ok_button.bind(on_press=self.press_button)
+        input_box.add_widget(ok_button)
+        self.show_label = Label(text="Search")
+        input_box.add_widget(self.show_label)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -557,6 +573,12 @@ class ChooseNames(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    # Define search output
+    def press_button(self, btn):
+        self.show_label.text = "Result: \n" + \
+                               str(data_base.print_one_data_by_name(
+                                   self.text_input.text))
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):

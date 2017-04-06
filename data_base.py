@@ -111,15 +111,11 @@ def print_all_data_by_kind():
               'Exclusions:', row[7], 'Kind:', row[10])
 
 
-def print_one_data_by_id():
-    input_id = int(input('Select ID: '))
+def print_one_data_by_name(input_name):
     select_data = select([ClothesData]).where(
-        ClothesData.id == input_id)
+        ClothesData.name == input_name)
     for row in connection.execute(select_data):
-        print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
-              row[4],
-              'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Kind:', row[10])
+        return 'ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3], row[4], 'Photo source:', row[5], 'Description:', row[6], 'Exclusions:', row[7], 'Kind:', row[10]
 
 
 def update_item():
@@ -180,3 +176,4 @@ def set_rate():
             rate='{}'.format(input_rate))
         # Commits changes, IF autocommit is in use
         connection.execute(update_data)
+
