@@ -115,7 +115,7 @@ def print_one_data_by_name(input_name):
     select_data = select([ClothesData]).where(
         ClothesData.name == input_name)
     for row in connection.execute(select_data):
-        return 'ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3], row[4], 'Photo source:', row[5], 'Description:', row[6], 'Exclusions:', row[7], 'Kind:', row[10]
+        return 'ID:', row[0], '\nName:', row[1], '\nColors:', row[2], row[3], row[4], '\nPhoto source:', row[5], '\nDescription:', row[6], '\nExclusions:', row[7], '\nKind:', row[10]
 
 
 def update_item():
