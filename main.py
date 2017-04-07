@@ -583,13 +583,28 @@ class ChooseNames(Screen):
         # text_size=self.size -> Wrapping text
         self.search_result = Label(text='Search result',
                                    font_size='16sp',
-                                   text_size=(200, 600),
+                                   text_size=(250, 400),
                                    valign='middle',
-                                   halign='center',
+                                   halign='left',
                                    size_hint=(None, None),
                                    color=data_text_color)
         self.search_result_pos.add_widget(self.search_result)
         self.add_widget(self.search_result_pos)
+
+        # Define position of label with all data
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
+        # text_size=self.size -> Wrapping text
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data = Label(text=names_from_database,
+                              font_size='16sp',
+                              text_size=(100, 400),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -609,9 +624,29 @@ class ChooseNames(Screen):
     # Send text after press button OK from input box to function in data base,
     # take data and return in search result label
     def press_button(self, btn):
-        self.search_result.text = \
-            "Result: \n" + \
-            str(data_base.print_one_data_by_name(self.input_box.text))
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = data_base.print_one_data_by_name(self.input_box.text)
+        self.search_result.text = "Result: \n" \
+                                  "ID: {}\n" \
+                                  "Name: {}\n" \
+                                  "Colors: {} {} {}\n" \
+                                  "Photo: {}\n" \
+                                  "Description: {}\n" \
+                                  "Exclusions: {}\n" \
+                                  "Clear: {}\n" \
+                                  "Rate: {}\n" \
+                                  "Kind: {}".format(function_from_database[0],
+                                                    function_from_database[1],
+                                                    function_from_database[2],
+                                                    function_from_database[3],
+                                                    function_from_database[4],
+                                                    function_from_database[5],
+                                                    function_from_database[6],
+                                                    function_from_database[7],
+                                                    function_from_database[8],
+                                                    function_from_database[9],
+                                                    function_from_database[10])
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):

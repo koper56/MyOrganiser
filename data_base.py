@@ -82,18 +82,12 @@ def insert_new_data():
     session.commit()
 
 
-def print_all_data_from_all():
-    select_data = select([ClothesData])
-    result = connection.execute(select_data)
-    for row in result:
-        print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
-              row[4],
-              'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Clear: ', row[8], 'Rate: ', row[9],
-              'Kind:', row[10])
+def get_names_clothes_data_row():
+    select_data = select([ClothesData.name])
+    return list(connection.execute(select_data))
 
 
-def print_all_name_id_from_all():
+def print_all_name_from_all():
     select_data = select([ClothesData])
     result = connection.execute(select_data)
     for row in result:
@@ -115,7 +109,7 @@ def print_one_data_by_name(input_name):
     select_data = select([ClothesData]).where(
         ClothesData.name == input_name)
     for row in connection.execute(select_data):
-        return 'ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3], row[4], 'Photo source:', row[5], 'Description:', row[6], 'Exclusions:', row[7], 'Kind:', row[10]
+        return row
 
 
 def update_item():
