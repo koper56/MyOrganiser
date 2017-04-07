@@ -595,7 +595,7 @@ class ChooseNames(Screen):
         self.all_data_pos = AnchorLayout(anchor_y='center',
                                          anchor_x='left')
         # text_size=self.size -> Wrapping text
-        names_from_database = str(data_base.get_names_clothes_data_row())
+        names_from_database = str(data_base.get_names_clothes_data_row()).strip('[]')
         self.all_data = Label(text=names_from_database,
                               font_size='16sp',
                               text_size=(100, 400),
