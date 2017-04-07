@@ -220,6 +220,7 @@ class ChooseWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -241,7 +242,7 @@ class ChooseWindow(Screen):
                                font_size='12sp',
                                size_hint=(None, None),
                                size=(200, 200),
-                               color=(0.4, 0.4, 0.4, 1))
+                               color=data_text_color)
 
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
@@ -325,6 +326,7 @@ class RateWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -399,6 +401,7 @@ class HistoryWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -503,6 +506,7 @@ class ChangeWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -592,6 +596,7 @@ class ChooseNames(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -634,6 +639,7 @@ class ChooseKinds(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -669,6 +675,7 @@ class ChooseColors(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -704,6 +711,7 @@ class ChooseRates(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -739,6 +747,7 @@ class ChooseSets(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -774,6 +783,7 @@ class RateClothWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -809,6 +819,7 @@ class RateSetWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -848,6 +859,7 @@ class HistoryDayWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -898,6 +910,7 @@ class PhotoWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -936,6 +949,7 @@ class AddNewClothWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -971,6 +985,7 @@ class ChangeClearWindow(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -1006,6 +1021,7 @@ class ChangeClearData(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
@@ -1041,6 +1057,7 @@ class DeleteCloth(Screen):
                                           anchor_y='bottom')
         self.button = Button(text='back',
                              size=(100, 100),
+                             color=button_text_color,
                              size_hint=(None, None),
                              background_normal="./back.png",
                              background_down="./back.png",
