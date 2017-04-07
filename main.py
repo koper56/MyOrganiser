@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.image import Image
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
@@ -594,8 +595,9 @@ class ChooseNames(Screen):
         # Define position of label with all data
         self.all_data_pos = AnchorLayout(anchor_y='center',
                                          anchor_x='left')
-        # text_size=self.size -> Wrapping text
-        names_from_database = str(data_base.get_names_clothes_data_row()).strip('[]')
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -605,6 +607,15 @@ class ChooseNames(Screen):
                               color=data_text_color)
         self.all_data_pos.add_widget(self.all_data)
         self.add_widget(self.all_data_pos)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        self.show_photo = Image(source='photo/001.jpg',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -627,6 +638,7 @@ class ChooseNames(Screen):
         # Connect with function print_one_data_by_name form data_base.py
         # Give data from list row, return from  print_one_data_by_name
         function_from_database = data_base.print_one_data_by_name(self.input_box.text)
+
         self.search_result.text = "Result: \n" \
                                   "ID: {}\n" \
                                   "Name: {}\n" \
