@@ -87,6 +87,12 @@ def get_names_clothes_data_row():
     return [row[0] for row in connection.execute(select_data)]
 
 
+def get_kinds_clothes_data_row():
+    select_data = select([ClothesData.kind])
+    return [row[0] for row in connection.execute(select_data)]
+
+print(get_kinds_clothes_data_row())
+
 def print_all_name_from_all():
     select_data = select([ClothesData])
     result = connection.execute(select_data)

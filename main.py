@@ -546,7 +546,7 @@ class ChooseNames(Screen):
         # Define position of choose by names window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Choose by names < < <',
+        label_settings = Label(text='> > > Choose by name < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -582,7 +582,8 @@ class ChooseNames(Screen):
         self.search_result_pos = AnchorLayout(anchor_y='center',
                                               anchor_x='center')
         # text_size=self.size -> Wrapping text
-        self.search_result = Label(text='Search result',
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
                                    font_size='16sp',
                                    text_size=(250, 400),
                                    valign='middle',
@@ -599,6 +600,7 @@ class ChooseNames(Screen):
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database,
+                              markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
                               valign='middle',
@@ -648,16 +650,16 @@ class ChooseNames(Screen):
 
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
-        self.search_result.text = "Result: \n" \
-                                  "ID: {}\n" \
-                                  "Name: {}\n" \
-                                  "Colors: {} {} {}\n" \
-                                  "Photo: {}\n" \
-                                  "Description: {}\n" \
-                                  "Exclusions: {}\n" \
-                                  "Clear: {}\n" \
-                                  "Rate: {}\n" \
-                                  "Kind: {}".format(function_from_database[0],
+        self.search_result.text = "[i]Result:[/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors:[/b] ▉▉▉{} ▉▉▉{} ▉▉▉{}\n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {}\n" \
+                                  "[b]Kind:[/b] {}".format(function_from_database[0],
                                                     function_from_database[1],
                                                     function_from_database[2],
                                                     function_from_database[3],
@@ -689,6 +691,13 @@ class ChooseKinds(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # buttons with kinds
+        # after press kind button print clothes from selected kind
+        #
+
+
+
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
