@@ -611,7 +611,8 @@ class ChooseNames(Screen):
         # Define position of label with photo
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
-        self.show_photo = Image(source='photo/001.jpg',
+        # Default icon in source
+        self.show_photo = Image(source='database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
