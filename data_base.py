@@ -91,7 +91,13 @@ def get_kinds_clothes_data_row():
     select_data = select([ClothesData.kind])
     return [row[0] for row in connection.execute(select_data)]
 
-print(get_kinds_clothes_data_row())
+
+# Return all names with input name of kind
+def get_names_clothes_by_kind(input_kind):
+    select_data = select([ClothesData]).where(
+        ClothesData.kind == input_kind)
+    return [row[1] for row in connection.execute(select_data)]
+
 
 def print_all_name_from_all():
     select_data = select([ClothesData])

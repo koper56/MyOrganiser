@@ -578,6 +578,7 @@ class ChooseNames(Screen):
         # Run function press button after press OK
         self.search_button.bind(on_press=self.press_button)
 
+        # Search result label, shows full data of clothes
         # Define position of search result label
         self.search_result_pos = AnchorLayout(anchor_y='center',
                                               anchor_x='center')
@@ -651,12 +652,14 @@ class ChooseNames(Screen):
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
-        # ▉▉▉ characters
+        # ███ characters
         self.search_result.text = "[i]Result:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
-                                  "[b]Colors: [color={}]▉▉▉ [/color][color={}]" \
-                                  "▉▉▉ [/color][color={}]▉▉▉[/color][/b] \n" \
+                                  "[b]Colors: " \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
@@ -688,7 +691,7 @@ class ChooseKinds(Screen):
         # Define position of choose by kinds window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Choose by kinds < < <',
+        label_settings = Label(text='> > > Choose kind < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -696,12 +699,265 @@ class ChooseKinds(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # buttons with kinds
+        # buttons with kinds (t_shirts, tank_tops, hoodies, shirts,
+        # trousers, shorts, shoes, hats, jackets, sunglasses, necklaces,
+        # piercing, rings, bracelets, bags, gloves, scarfs
         # after press kind button print clothes from selected kind
-        #
+        # after type name print full info and photo
 
+        self.kind_t_shirts_pos = FloatLayout(size=(100, 50))
+        self.kind_t_shirts = Button(text='T-shirts',
+                                    size_hint=(None, None),
+                                    size=(100, 50),
+                                    pos=(0, 500),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_t_shirts_pos.add_widget(self.kind_t_shirts)
+        self.add_widget(self.kind_t_shirts_pos)
+        # Run function press_button_t_shirts after press T-shirts
+        self.kind_t_shirts.bind(on_press=self.press_button_t_shirts)
 
+        self.kind_tank_tops_pos = FloatLayout(size=(100, 50))
+        self.kind_tank_tops = Button(text='Tank tops',
+                                     size_hint=(None, None),
+                                     size=(100, 50),
+                                     pos=(0, 450),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_tank_tops_pos.add_widget(self.kind_tank_tops)
+        self.add_widget(self.kind_tank_tops_pos)
+        # Run function press_button_tank_tops after press Tank tops
+        self.kind_tank_tops.bind(on_press=self.press_button_tank_tops)
 
+        self.kind_hoodies_pos = FloatLayout(size=(100, 50))
+        self.kind_hoodies = Button(text='Hoodies',
+                                   size_hint=(None, None),
+                                   size=(100, 50),
+                                   pos=(0, 400),
+                                   color=button_text_color,
+                                   background_color=button_background)
+        self.kind_hoodies_pos.add_widget(self.kind_hoodies)
+        self.add_widget(self.kind_hoodies_pos)
+        # Run function press_button_hoodies after press Hoodies
+        self.kind_hoodies.bind(on_press=self.press_button_hoodies)
+
+        self.kind_shirts_pos = FloatLayout(size=(100, 50))
+        self.kind_shirts = Button(text='Shirts',
+                                  size_hint=(None, None),
+                                  size=(100, 50),
+                                  pos=(0, 350),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_shirts_pos.add_widget(self.kind_shirts)
+        self.add_widget(self.kind_shirts_pos)
+        # Run function press_button_shirts after press Shirts
+        self.kind_shirts.bind(on_press=self.press_button_shirts)
+
+        self.kind_trousers_pos = FloatLayout(size=(100, 50))
+        self.kind_trousers = Button(text='Trousers',
+                                    size_hint=(None, None),
+                                    size=(100, 50),
+                                    pos=(0, 300),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_trousers_pos.add_widget(self.kind_trousers)
+        self.add_widget(self.kind_trousers_pos)
+        # Run function press_button_trousers after press Trousers
+        self.kind_trousers.bind(on_press=self.press_button_trousers)
+
+        self.kind_shorts_pos = FloatLayout(size=(100, 50))
+        self.kind_shorts = Button(text='Shorts',
+                                  size_hint=(None, None),
+                                  size=(100, 50),
+                                  pos=(0, 250),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_shorts_pos.add_widget(self.kind_shorts)
+        self.add_widget(self.kind_shorts_pos)
+        # Run function press_button_shorts after press Shorts
+        self.kind_shorts.bind(on_press=self.press_button_shorts)
+
+        self.kind_shoes_pos = FloatLayout(size=(100, 50))
+        self.kind_shoes = Button(text='Shoes',
+                                 size_hint=(None, None),
+                                 size=(100, 50),
+                                 pos=(0, 200),
+                                 color=button_text_color,
+                                 background_color=button_background)
+        self.kind_shoes_pos.add_widget(self.kind_shoes)
+        self.add_widget(self.kind_shoes_pos)
+        # Run function press_button_shoes after press Shoes
+        self.kind_shoes.bind(on_press=self.press_button_shoes)
+
+        self.kind_hats_pos = FloatLayout(size=(100, 50))
+        self.kind_hats = Button(text='Hats',
+                                size_hint=(None, None),
+                                size=(100, 50),
+                                pos=(0, 150),
+                                color=button_text_color,
+                                background_color=button_background)
+        self.kind_hats_pos.add_widget(self.kind_hats)
+        self.add_widget(self.kind_hats_pos)
+        # Run function press_button_hats after press Hats
+        self.kind_hats.bind(on_press=self.press_button_hats)
+
+        self.kind_jackets_pos = FloatLayout(size=(100, 50))
+        self.kind_jackets = Button(text='Jackets',
+                                   size_hint=(None, None),
+                                   size=(100, 50),
+                                   pos=(100, 500),
+                                   color=button_text_color,
+                                   background_color=button_background)
+        self.kind_jackets_pos.add_widget(self.kind_jackets)
+        self.add_widget(self.kind_jackets_pos)
+        # Run function press_button_jackets after press Jackets
+        self.kind_jackets.bind(on_press=self.press_button_jackets)
+
+        self.kind_sunglasses_pos = FloatLayout(size=(100, 50))
+        self.kind_sunglasses = Button(text='Sunglasses',
+                                      size_hint=(None, None),
+                                      size=(100, 50),
+                                      pos=(100, 450),
+                                      color=button_text_color,
+                                      background_color=button_background)
+        self.kind_sunglasses_pos.add_widget(self.kind_sunglasses)
+        self.add_widget(self.kind_sunglasses_pos)
+        # Run function press_button_sunglasses after press Sunglasses
+        self.kind_sunglasses.bind(on_press=self.press_button_sunglasses)
+
+        self.kind_necklaces_pos = FloatLayout(size=(100, 50))
+        self.kind_necklaces = Button(text='Necklaces',
+                                     size_hint=(None, None),
+                                     size=(100, 50),
+                                     pos=(100, 400),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_necklaces_pos.add_widget(self.kind_necklaces)
+        self.add_widget(self.kind_necklaces_pos)
+        # Run function press_button_necklaces after press Necklaces
+        self.kind_necklaces.bind(on_press=self.press_button_necklaces)
+
+        self.kind_piercing_pos = FloatLayout(size=(100, 50))
+        self.kind_piercing = Button(text='Piercing',
+                                    size_hint=(None, None),
+                                    size=(100, 50),
+                                    pos=(100, 350),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_piercing_pos.add_widget(self.kind_piercing)
+        self.add_widget(self.kind_piercing_pos)
+        # Run function press_button_piercing after press Piercing
+        self.kind_piercing.bind(on_press=self.press_button_piercing)
+
+        self.kind_rings_pos = FloatLayout(size=(100, 50))
+        self.kind_rings = Button(text='Rings',
+                                 size_hint=(None, None),
+                                 size=(100, 50),
+                                 pos=(100, 300),
+                                 color=button_text_color,
+                                 background_color=button_background)
+        self.kind_rings_pos.add_widget(self.kind_rings)
+        self.add_widget(self.kind_rings_pos)
+        # Run function press_button_rings after press Rings
+        self.kind_rings.bind(on_press=self.press_button_rings)
+
+        self.kind_bracelets_pos = FloatLayout(size=(100, 50))
+        self.kind_bracelets = Button(text='Bracelets',
+                                     size_hint=(None, None),
+                                     size=(100, 50),
+                                     pos=(100, 250),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_bracelets_pos.add_widget(self.kind_bracelets)
+        self.add_widget(self.kind_bracelets_pos)
+        # Run function press_button_bracelets after press bracelets
+        self.kind_bracelets.bind(on_press=self.press_button_bracelets)
+
+        self.kind_bags_pos = FloatLayout(size=(100, 50))
+        self.kind_bags = Button(text='Bags',
+                                size_hint=(None, None),
+                                size=(100, 50),
+                                pos=(100, 200),
+                                color=button_text_color,
+                                background_color=button_background)
+        self.kind_bags_pos.add_widget(self.kind_bags)
+        self.add_widget(self.kind_bags_pos)
+        # Run function press_button_bags after press Bags
+        self.kind_bags.bind(on_press=self.press_button_bags)
+
+        self.kind_gloves_pos = FloatLayout(size=(100, 50))
+        self.kind_gloves = Button(text='Gloves',
+                                  size_hint=(None, None),
+                                  size=(100, 50),
+                                  pos=(100, 150),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_gloves_pos.add_widget(self.kind_gloves)
+        self.add_widget(self.kind_gloves_pos)
+        # Run function press_button_gloves after press Gloves
+        self.kind_gloves.bind(on_press=self.press_button_gloves)
+
+        self.kind_scarfs_pos = FloatLayout(size=(100, 50))
+        self.kind_scarfs = Button(text='Scarfs',
+                                  size_hint=(None, None),
+                                  size=(100, 50),
+                                  pos=(200, 500),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_scarfs_pos.add_widget(self.kind_scarfs)
+        self.add_widget(self.kind_scarfs_pos)
+        # Run function press_button_scarfs after press Scarfs
+        self.kind_scarfs.bind(on_press=self.press_button_scarfs)
+
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        # Search result label, shows names of clothes and full data of clothes
+        # text_size=self.size -> Wrapping text
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
+                                   font_size='16sp',
+                                   text_size=(250, 400),
+                                   valign='middle',
+                                   halign='left',
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position of text input box
+        self.input_box_pos = AnchorLayout(anchor_x='center',
+                                          anchor_y='bottom')
+        self.input_box = TextInput(text='Type name',
+                                   multiline=False,
+                                   size=(200, 50),
+                                   size_hint=(None, None))
+        self.input_box_pos.add_widget(self.input_box)
+        self.add_widget(self.input_box_pos)
+
+        # Define position of search button
+        self.search_button_pos = AnchorLayout(anchor_x='right',
+                                              anchor_y='bottom')
+        self.search_button = Button(text='OK',
+                                    size=(100, 50),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.search_button_pos.add_widget(self.search_button)
+        self.add_widget(self.search_button_pos)
+
+        # Run function press button after press OK
+        self.search_button.bind(on_press=self.press_button_ok)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        # Default icon in source
+        self.show_photo = Image(source='database.png',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -717,6 +973,154 @@ class ChooseKinds(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_t_shirts(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('t_shirts')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_tank_tops(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('tank_tops')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_hoodies(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('hoodies')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_shirts(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('shirts')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_trousers(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('trousers')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_shorts(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('shorts')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_shoes(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('shoes')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_hats(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('hats')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_jackets(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('jackets')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_sunglasses(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('sunglasses')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_necklaces(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('necklaces')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_piercing(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('piercing')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_rings(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('rings')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_bracelets(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('bracelets')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_bags(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('bags')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_gloves(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('t_shirts')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_scarfs(self, btn):
+        # Function return all names from kind in search_result label
+        function_from_database = data_base.get_names_clothes_by_kind('scarfs')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}" .format(function_from_database)
+
+    def press_button_ok(self, btn):
+        # After press kind button print names from choose kind in search_
+        # result label
+
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_box.text)
+
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.search_result.text = "[i]Result:[/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors: " \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███[/color][/b] \n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {}\n" \
+                                  "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             function_from_database[1],
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             function_from_database[9],
+             function_from_database[10])
+
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):
