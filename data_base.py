@@ -43,10 +43,10 @@ def next_id_value():
 
 
 def insert_new_data():
-
+    # TODO reformat id number to '001.jpg', '010.jpg', '100.jpg'
     # Insert data to new item in ClothesData table
     # Default ID = last ID + 1, for first item ID = 1
-    # Default photo source /photos/'ID NUMBER'.jpg
+    # Default photo source photo/'ID NUMBER'.jpg
     # Default clear = True
     # Default rate = 0
 
@@ -67,7 +67,7 @@ def insert_new_data():
                            color_1='{}'.format(input_color_1),
                            color_2='{}'.format(input_color_2),
                            color_3='{}'.format(input_color_3),
-                           photo_source='/photos/{}.jpg'.format(
+                           photo_source='photo/{}.jpg'.format(
                                str(next_id_value())),
                            description='{}'.format(
                                input_description),
@@ -84,7 +84,7 @@ def insert_new_data():
 
 def get_names_clothes_data_row():
     select_data = select([ClothesData.name])
-    return list(connection.execute(select_data))
+    return [row[0] for row in connection.execute(select_data)]
 
 
 def print_all_name_from_all():
