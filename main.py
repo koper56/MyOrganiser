@@ -1065,7 +1065,7 @@ class ChooseKinds(Screen):
 
     def press_button_gloves(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('t_shirts')
+        function_from_database = data_base.get_names_clothes_by_kind('gloves')
         self.search_result.text = \
             "[i]Results:[/i] \n{}" .format(function_from_database)
 
