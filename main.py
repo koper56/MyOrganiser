@@ -632,13 +632,21 @@ class ChooseNames(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-    # Send text after press button OK from input box to function in data base,
-    # take data and return in search result label
     def press_button(self, btn):
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
         # Connect with function print_one_data_by_name form data_base.py
         # Give data from list row, return from  print_one_data_by_name
-        function_from_database = data_base.print_one_data_by_name(self.input_box.text)
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_box.text)
 
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
         self.search_result.text = "Result: \n" \
                                   "ID: {}\n" \
                                   "Name: {}\n" \
