@@ -650,10 +650,11 @@ class ChooseNames(Screen):
 
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
+        # Colors take hex color code from data base and set this code for ▉▉▉ characters
         self.search_result.text = "[i]Result:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
-                                  "[b]Colors:[/b] ▉▉▉{} ▉▉▉{} ▉▉▉{}\n" \
+                                  "[b]Colors: [color={}]▉▉▉ [/color][color={}]▉▉▉ [/color][color={}]▉▉▉[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
