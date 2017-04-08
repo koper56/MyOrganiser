@@ -704,7 +704,6 @@ class ChooseKinds(Screen):
         # piercing, rings, bracelets, bags, gloves, scarfs
         # after press kind button print clothes from selected kind
         # after type name print full info and photo
-
         self.kind_t_shirts_pos = FloatLayout(size=(100, 50))
         self.kind_t_shirts = Button(text='T-shirts',
                                     size_hint=(None, None),
