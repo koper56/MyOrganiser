@@ -99,6 +99,13 @@ def get_names_clothes_by_kind(input_kind):
     return [row[1] for row in connection.execute(select_data)]
 
 
+# Return all names with input value of rate
+def get_names_clothes_by_rate(input_rate):
+    select_data = select([ClothesData]).where(
+        ClothesData.rate == input_rate)
+    return [row[1] for row in connection.execute(select_data)]
+
+
 def print_all_name_from_all():
     select_data = select([ClothesData])
     result = connection.execute(select_data)
