@@ -5,6 +5,7 @@ from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.base import stopTouchApp
 import time
+import os
 
 Builder.load_string('''
 <CameraClick>:
@@ -14,9 +15,11 @@ Builder.load_string('''
         play: True
     Button:
         text: 'Take photo'
+        color: 0.435, 0.725, 0.56, 1
+        background_color: 0, 0.26, 0.27, 1
         size_hint_y: None
         height: '50dp'
-        pos: 0, 150
+        pos: 0, 500
         on_press: root.take_photo()
 ''')
 
@@ -29,7 +32,7 @@ class CameraClick(FloatLayout):
         time_format = time.strftime("%Y_%m_%d")
         camera.export_to_png("Set_from_{}.png".format(time_format))
         print("Captured as 'Set_from_{}.png'".format(time_format))
-        stopTouchApp()
+        # Code to stop camera_module after take a shot
 
 
 class CameraModule(App):
