@@ -12,10 +12,14 @@ from weather import print_weather_warsaw
 
 '''
 from rgba to kivy code: rgba code/255.0
-window background = hex(#021C1E); rgba(2, 28, 30, 1), kivy(0.007, 0.1, 0.11, 1)
-label text color = hex(#2C7873); rgba(44, 120, 115, 1), kivy(0.17, 0.47, 0.45, 1)
-button background = hex(#004445); rgba(0, 68, 69, 1), kivy(0, 0.26, 0.27, 1)
-button text color = hex(#6FB98F); rgba(111, 185, 143, 1), kivy(0.435, 0.725, 0.56, 1)
+window background = hex(#021C1E); rgba(2, 28, 30, 1), 
+                    kivy(0.007, 0.1, 0.11, 1)
+label text color = hex(#2C7873); rgba(44, 120, 115, 1), 
+                   kivy(0.17, 0.47, 0.45, 1)
+button background = hex(#004445); rgba(0, 68, 69, 1), 
+                    kivy(0, 0.26, 0.27, 1)
+button text color = hex(#6FB98F); rgba(111, 185, 143, 1), 
+                    kivy(0.435, 0.725, 0.56, 1)
 '''
 
 # Colors in app
@@ -223,8 +227,8 @@ class ChooseWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -329,8 +333,8 @@ class RateWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -404,8 +408,8 @@ class HistoryWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -509,8 +513,8 @@ class ChangeWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -615,7 +619,7 @@ class ChooseNames(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source='database.png',
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -628,8 +632,8 @@ class ChooseNames(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -952,7 +956,7 @@ class ChooseKinds(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source='database.png',
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -965,8 +969,8 @@ class ChooseKinds(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1149,8 +1153,8 @@ class ChooseColors(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1185,8 +1189,8 @@ class ChooseRates(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1221,8 +1225,8 @@ class ChooseSets(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1257,8 +1261,8 @@ class RateClothWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1293,8 +1297,8 @@ class RateSetWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1333,8 +1337,8 @@ class HistoryDayWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1384,8 +1388,8 @@ class PhotoWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1423,8 +1427,8 @@ class AddNewClothWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1459,8 +1463,8 @@ class ChangeClearWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1495,8 +1499,8 @@ class ChangeClearData(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -1531,8 +1535,8 @@ class DeleteCloth(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal="./back.png",
-                             background_down="./back.png",
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
