@@ -979,105 +979,112 @@ class ChooseKinds(Screen):
 
     def press_button_t_shirts(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('t_shirts')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            't_shirts')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_tank_tops(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('tank_tops')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'tank_tops')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_hoodies(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('hoodies')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_shirts(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('shirts')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_trousers(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('trousers')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'trousers')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_shorts(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('shorts')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_shoes(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('shoes')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_hats(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('hats')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_jackets(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('jackets')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_sunglasses(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('sunglasses')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'sunglasses')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_necklaces(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('necklaces')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'necklaces')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_piercing(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('piercing')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'piercing')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_rings(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('rings')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_bracelets(self, btn):
         # Function return all names from kind in search_result label
-        function_from_database = data_base.get_names_clothes_by_kind('bracelets')
+        function_from_database = data_base.get_names_clothes_by_kind(
+            'bracelets')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_bags(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('bags')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_gloves(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('gloves')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_scarfs(self, btn):
         # Function return all names from kind in search_result label
         function_from_database = data_base.get_names_clothes_by_kind('scarfs')
         self.search_result.text = \
-            "[i]Results:[/i] \n{}" .format(function_from_database)
+            "[i]Results:[/i] \n{}".format(function_from_database)
 
     def press_button_ok(self, btn):
         # After press kind button print names from choose kind in search_
@@ -1123,7 +1130,6 @@ class ChooseKinds(Screen):
              function_from_database[8],
              function_from_database[9],
              function_from_database[10])
-
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):
@@ -1182,6 +1188,136 @@ class ChooseRates(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position, size of 1st star
+        self.one_star_button_pos = FloatLayout(size=(100, 100))
+        self.one_star_button = Button(text='1',
+                                      size=(100, 100),
+                                      pos=(150, 450),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.one_star_button_pos.add_widget(self.one_star_button)
+        self.add_widget(self.one_star_button_pos)
+        # Run function press_button_one_star after press '1'
+        self.one_star_button.bind(on_press=self.press_button_one_star)
+
+        # Define position, size of 2nd star
+        self.two_star_button_pos = FloatLayout(size=(100, 100))
+        self.two_star_button = Button(text='2',
+                                      size=(100, 100),
+                                      pos=(250, 450),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.two_star_button_pos.add_widget(self.two_star_button)
+        self.add_widget(self.two_star_button_pos)
+        # Run function press_button_two_star after press '2'
+        self.two_star_button.bind(on_press=self.press_button_two_star)
+
+        # Define position, size of 3rd star
+        self.three_star_button_pos = FloatLayout(size=(100, 100))
+        self.three_star_button = Button(text='3',
+                                        size=(100, 100),
+                                        pos=(350, 450),
+                                        color=button_text_color,
+                                        size_hint=(None, None),
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
+                                        size_hint_x=None)
+
+        self.three_star_button_pos.add_widget(self.three_star_button)
+        self.add_widget(self.three_star_button_pos)
+        # Run function press_button_three_star after press '3'
+        self.three_star_button.bind(on_press=self.press_button_three_star)
+
+        # Define position, size of 4th star
+        self.four_star_button_pos = FloatLayout(size=(100, 100))
+        self.four_star_button = Button(text='4',
+                                       size=(100, 100),
+                                       pos=(450, 450),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.four_star_button_pos.add_widget(self.four_star_button)
+        self.add_widget(self.four_star_button_pos)
+        # Run function press_button_four_star after press '4'
+        self.four_star_button.bind(on_press=self.press_button_four_star)
+
+        # Define position, size of 5th star
+        self.five_star_button_pos = FloatLayout(size=(100, 100))
+        self.five_star_button = Button(text='5',
+                                       size=(100, 100),
+                                       pos=(550, 450),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.five_star_button_pos.add_widget(self.five_star_button)
+        self.add_widget(self.five_star_button_pos)
+        # Run function press_button_five_star after press '5'
+        self.five_star_button.bind(on_press=self.press_button_five_star)
+
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        # Search result label, shows names of clothes and full data of clothes
+        # text_size=self.size -> Wrapping text
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
+                                   font_size='16sp',
+                                   text_size=(250, 400),
+                                   valign='middle',
+                                   halign='left',
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position of text input box
+        self.input_box_pos = AnchorLayout(anchor_x='center',
+                                          anchor_y='bottom')
+        self.input_box = TextInput(text='Type name',
+                                   multiline=False,
+                                   size=(200, 50),
+                                   size_hint=(None, None))
+        self.input_box_pos.add_widget(self.input_box)
+        self.add_widget(self.input_box_pos)
+
+        # Define position of search button
+        self.search_button_pos = AnchorLayout(anchor_x='right',
+                                              anchor_y='bottom')
+        self.search_button = Button(text='OK',
+                                    size=(100, 50),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.search_button_pos.add_widget(self.search_button)
+        self.add_widget(self.search_button_pos)
+
+        # Run function press button after press OK
+        self.search_button.bind(on_press=self.press_button_ok)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        # Default icon in source
+        self.show_photo = Image(source='png/database.png',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -1196,6 +1332,81 @@ class ChooseRates(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_one_star(self, btn):
+        # Function return all names with this rate in search_result label
+        function_from_database = data_base.get_names_clothes_by_rate('1')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}".format(function_from_database)
+
+    def press_button_two_star(self, btn):
+        # Function return all names with this rate in search_result label
+        function_from_database = data_base.get_names_clothes_by_rate('2')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}".format(function_from_database)
+
+    def press_button_three_star(self, btn):
+        # Function return all names with this rate in search_result label
+        function_from_database = data_base.get_names_clothes_by_rate('3')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}".format(function_from_database)
+
+    def press_button_four_star(self, btn):
+        # Function return all names with this rate in search_result label
+        function_from_database = data_base.get_names_clothes_by_rate('4')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}".format(function_from_database)
+
+    def press_button_five_star(self, btn):
+        # Function return all names with this rate in search_result label
+        function_from_database = data_base.get_names_clothes_by_rate('5')
+        self.search_result.text = \
+            "[i]Results:[/i] \n{}".format(function_from_database)
+
+    def press_button_ok(self, btn):
+        # After press rate button print names of clothes with choose rate in
+        # search_result label
+
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_box.text)
+
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.search_result.text = "[i]Result:[/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors: " \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███[/color][/b] \n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {}\n" \
+                                  "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             function_from_database[1],
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             function_from_database[9],
+             function_from_database[10])
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):
