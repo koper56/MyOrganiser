@@ -1687,9 +1687,9 @@ class ChangeClearWindow(Screen):
         self.manager.current = "changewindow"
 
 
-class ChangeClearData(Screen):
+class ChangeClothData(Screen):
     def __init__(self, **kwargs):
-        super(ChangeClearData, self).__init__(**kwargs)
+        super(ChangeClothData, self).__init__(**kwargs)
         self.name = "changeclothdatawindow"
 
         # Define position of change cloth data window label
@@ -1702,6 +1702,108 @@ class ChangeClearData(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position of input name box
+        self.input_name_pos = FloatLayout(size=(300, 50))
+        self.input_name = TextInput(text='Type name of cloth',
+                                    multiline=False,
+                                    size=(300, 50),
+                                    pos=(150, 450),
+                                    size_hint=(None, None))
+        self.input_name_pos.add_widget(self.input_name)
+        self.add_widget(self.input_name_pos)
+
+        # Define position of input new name box
+        self.input_new_name_pos = FloatLayout(size=(300, 50))
+        self.input_new_name = TextInput(text='New name',
+                                        multiline=False,
+                                        size=(300, 50),
+                                        pos=(150, 350),
+                                        size_hint=(None, None))
+        self.input_new_name_pos.add_widget(self.input_new_name)
+        self.add_widget(self.input_new_name_pos)
+
+        # Define position of input new description box
+        self.input_description_pos = FloatLayout(size=(300, 50))
+        self.input_description = TextInput(text='New description',
+                                           multiline=False,
+                                           size=(300, 50),
+                                           pos=(150, 250),
+                                           size_hint=(None, None))
+        self.input_description_pos.add_widget(self.input_description)
+        self.add_widget(self.input_description_pos)
+
+        # Define position of input new exclusions box
+        self.input_exclusions_pos = FloatLayout(size=(300, 50))
+        self.input_exclusions = TextInput(text='New exclusions',
+                                          multiline=False,
+                                          size=(300, 50),
+                                          pos=(150, 150),
+                                          size_hint=(None, None))
+        self.input_exclusions_pos.add_widget(self.input_exclusions)
+        self.add_widget(self.input_exclusions_pos)
+
+        # Define position of check button
+        self.check_button_pos = AnchorLayout(anchor_x='center',
+                                             anchor_y='bottom')
+        self.check_button = Button(text='CHECK',
+                                   size=(100, 50),
+                                   color=button_text_color,
+                                   background_color=button_background,
+                                   size_hint=(None, None))
+        self.check_button_pos.add_widget(self.check_button)
+        self.add_widget(self.check_button_pos)
+
+        # Run function press button after press CHECK
+        self.check_button.bind(on_press=self.press_button_check)
+
+        # Define position of save button
+        self.save_button_pos = AnchorLayout(anchor_x='right',
+                                            anchor_y='bottom')
+        self.save_button = Button(text='SAVE',
+                                  size=(100, 50),
+                                  color=button_text_color,
+                                  background_color=button_background,
+                                  size_hint=(None, None))
+        self.save_button_pos.add_widget(self.save_button)
+        self.add_widget(self.save_button_pos)
+
+        # Run function press button after press SAVE
+        self.save_button.bind(on_press=self.press_button_save)
+
+
+        # Define position of label with all data
+        self.all_data_pos = FloatLayout(size=(100, 450))
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data = Label(text=names_from_database,
+                              markup=True,
+                              font_size='16sp',
+                              text_size=(100, 450),
+                              pos=(0, 450),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
+
+        # Check data label, shows full data of clothes
+        # Define position of check data label
+        self.check_label_pos = AnchorLayout(anchor_y='center',
+                                            anchor_x='right')
+        # text_size=self.size -> Wrapping text
+        self.check_label = Label(text='[i]Check data[/i]',
+                                 markup=True,
+                                 font_size='16sp',
+                                 text_size=(300, 400),
+                                 valign='middle',
+                                 halign='left',
+                                 size_hint=(None, None),
+                                 color=data_text_color)
+        self.check_label_pos.add_widget(self.check_label)
+        self.add_widget(self.check_label_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -1717,6 +1819,52 @@ class ChangeClearData(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_check(self, btn):
+        # Function return in label cloth data with changed name,
+        #  description and exclusion
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_name.text)
+
+        # Data for text in check_label with new data and data from data base
+        # for typed name in input_name
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.check_label.text = "[i]Check data:[/i] \n" \
+                                "[b]ID:[/b] {}\n" \
+                                "[b]Name:[/b] {}\n" \
+                                "[b]Colors: " \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███[/color][/b] \n" \
+                                "[b]Photo:[/b] {}\n" \
+                                "[b]Description:[/b] {}\n" \
+                                "[b]Exclusions:[/b] {}\n" \
+                                "[b]Clear:[/b] {}\n" \
+                                "[b]Rate:[/b] {}\n" \
+                                "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             self.input_new_name.text,
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             self.input_description.text,
+             self.input_exclusions.text,
+             function_from_database[8],
+             function_from_database[9],
+             function_from_database[10])
+
+    def press_button_save(self, btn):
+        # Function commit in database changed name, description and exclusion
+        data_base.update_item(self.input_name.text, self.input_new_name.text,
+                              self.input_description.text,
+                              self.input_exclusions.text)
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -1788,7 +1936,7 @@ class MyOrganiser(App):
         # For Change Window
         screen_manager.add_widget(AddNewClothWindow())
         screen_manager.add_widget(ChangeClearWindow())
-        screen_manager.add_widget(ChangeClearData())
+        screen_manager.add_widget(ChangeClothData())
         screen_manager.add_widget(DeleteCloth())
 
         return screen_manager
