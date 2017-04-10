@@ -131,9 +131,9 @@ def print_one_data_by_name(input_name):
         return row
 
 
-def update_item(input_id, input_name, input_description, input_exclusion):
-    update_data = update(ClothesData).where(ClothesData.id == input_id).values(
-            name='{}'.format(input_name),
+def update_item(input_name, input_new_name, input_description, input_exclusion):
+    update_data = update(ClothesData).where(ClothesData.name == input_name).values(
+            name='{}'.format(input_new_name),
             description='{}'.format(input_description),
             exclusion='{}'.format(input_exclusion))
     # Commits changes in ClothesData table
