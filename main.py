@@ -1970,28 +1970,6 @@ class AddNewClothWindow(Screen):
         # Run function press button after press SAVE
         # self.save_button.bind(on_press=self.press_button_save)
 
-    def press_button_t_shirts(self, btn):
-        next_id = data_base.next_id_value()
-        self.check_label.text = "[i]Check data:[/i] \n" \
-                                "[b]ID:[/b] {}\n" \
-                                "[b]Name:[/b] {}\n" \
-                                "[b]Colors: " \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███[/color][/b] \n" \
-                                "[b]Photo:[/b] photo/{}.jpg \n" \
-                                "[b]Description:[/b] {}\n" \
-                                "[b]Exclusions:[/b] {}\n" \
-                                "[b]Kind:[/b] t_shirts".format \
-            (next_id,
-             self.input_name.text,
-             set_color1.input_color_1,
-             set_color2.input_color_2,
-             set_color3.input_color_3,
-             next_id,
-             self.input_description.text,
-             self.input_exclusions.text)
-
         # Check data label, shows full data of clothes
         # Define position of check data label
         self.check_label_pos = AnchorLayout(anchor_y='center',
@@ -2022,6 +2000,29 @@ class AddNewClothWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+
+    def press_button_t_shirts(self, btn):
+        next_id = data_base.next_id_value()
+        self.check_label.text = "[i]Check data:[/i] \n" \
+                                "[b]ID:[/b] {}\n" \
+                                "[b]Name:[/b] {}\n" \
+                                "[b]Colors: " \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███[/color][/b] \n" \
+                                "[b]Photo:[/b] photo/{}.jpg \n" \
+                                "[b]Description:[/b] {}\n" \
+                                "[b]Exclusions:[/b] {}\n" \
+                                "[b]Kind:[/b] t_shirts".format \
+            (next_id,
+             self.input_name.text,
+             set_color1.input_color_1,
+             set_color2.input_color_2,
+             set_color3.input_color_3,
+             next_id,
+             self.input_description.text,
+             self.input_exclusions.text)
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
