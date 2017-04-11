@@ -1615,6 +1615,24 @@ class PhotoWindow(Screen):
         self.manager.current = "historywindow"
 
 
+def set_color1(col):
+    import color_palette as color
+    input_color_1 = color.get_color()
+    return input_color_1
+
+
+def set_color2(col):
+    import color_palette as color
+    input_color_2 = color.get_color()
+    return input_color_2
+
+
+def set_color3(col):
+    import color_palette as color
+    input_color_3 = color.get_color()
+    return input_color_3
+
+
 class AddNewClothWindow(Screen):
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -1630,6 +1648,365 @@ class AddNewClothWindow(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position of input new name box
+        self.input_name_pos = FloatLayout(size=(300, 50))
+        self.input_name = TextInput(text='Name',
+                                    multiline=False,
+                                    size=(300, 50),
+                                    pos=(150, 450),
+                                    size_hint=(None, None))
+        self.input_name_pos.add_widget(self.input_name)
+        self.add_widget(self.input_name_pos)
+
+        # Define position of input new description box
+        self.input_description_pos = FloatLayout(size=(300, 50))
+        self.input_description = TextInput(text='New description',
+                                           multiline=False,
+                                           size=(300, 50),
+                                           pos=(150, 400),
+                                           size_hint=(None, None))
+        self.input_description_pos.add_widget(self.input_description)
+        self.add_widget(self.input_description_pos)
+
+        # Define position of input new exclusions box
+        self.input_exclusions_pos = FloatLayout(size=(300, 50))
+        self.input_exclusions = TextInput(text='New exclusions',
+                                          multiline=False,
+                                          size=(300, 50),
+                                          pos=(150, 350),
+                                          size_hint=(None, None))
+        self.input_exclusions_pos.add_widget(self.input_exclusions)
+        self.add_widget(self.input_exclusions_pos)
+
+        # Define position of set color 1 button
+        self.set_color1_button_pos = FloatLayout(size=(75, 25))
+        self.set_color1_button = Button(text='Color 1',
+                                        font_size=12,
+                                        size_hint=(None, None),
+                                        size=(75, 25),
+                                        pos=(150, 200),
+                                        color=button_text_color,
+                                        background_color=button_background)
+        self.set_color1_button_pos.add_widget(self.set_color1_button)
+        self.add_widget(self.set_color1_button_pos)
+        # Run function set_color1 after press Color 1
+        self.set_color1_button.bind(on_press=set_color1)
+
+        # Define position of set color 2 button
+        self.set_color2_button_pos = FloatLayout(size=(75, 25))
+        self.set_color2_button = Button(text='Color 2',
+                                        font_size=12,
+                                        size_hint=(None, None),
+                                        size=(75, 25),
+                                        pos=(300, 200),
+                                        color=button_text_color,
+                                        background_color=button_background)
+        self.set_color2_button_pos.add_widget(self.set_color2_button)
+        self.add_widget(self.set_color2_button_pos)
+        # Run function set_color2 after press Color 2
+        self.set_color2_button.bind(on_press=set_color2)
+
+        # Define position of set color 3 button
+        self.set_color3_button_pos = FloatLayout(size=(75, 25))
+        self.set_color3_button = Button(text='Color 3',
+                                        font_size=12,
+                                        size_hint=(None, None),
+                                        size=(75, 25),
+                                        pos=(450, 200),
+                                        color=button_text_color,
+                                        background_color=button_background)
+        self.set_color3_button_pos.add_widget(self.set_color3_button)
+        self.add_widget(self.set_color3_button_pos)
+        # Run function set_color3 after press Color 3
+        self.set_color3_button.bind(on_press=set_color3)
+
+        # buttons with kinds (t_shirts, tank_tops, hoodies, shirts,
+        # trousers, shorts, shoes, hats, jackets, sunglasses, necklaces,
+        # piercing, rings, bracelets, bags, gloves, scarfs
+        # after press kind button print input text in check label
+        self.kind_t_shirts_pos = FloatLayout(size=(75, 25))
+        self.kind_t_shirts = Button(text='T-shirts',
+                                    font_size=12,
+                                    size_hint=(None, None),
+                                    size=(75, 25),
+                                    pos=(150, 150),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_t_shirts_pos.add_widget(self.kind_t_shirts)
+        self.add_widget(self.kind_t_shirts_pos)
+        # Run function press_button_t_shirts after press T-shirts
+        self.kind_t_shirts.bind(on_press=self.press_button_t_shirts)
+
+        self.kind_tank_tops_pos = FloatLayout(size=(75, 25))
+        self.kind_tank_tops = Button(text='Tank tops',
+                                     font_size=12,
+                                     size_hint=(None, None),
+                                     size=(75, 25),
+                                     pos=(225, 150),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_tank_tops_pos.add_widget(self.kind_tank_tops)
+        self.add_widget(self.kind_tank_tops_pos)
+        # Run function press_button_tank_tops after press Tank tops
+        # self.kind_tank_tops.bind(on_press=self.press_button_tank_tops)
+
+        self.kind_hoodies_pos = FloatLayout(size=(75, 25))
+        self.kind_hoodies = Button(text='Hoodies',
+                                   font_size=12,
+                                   size_hint=(None, None),
+                                   size=(75, 25),
+                                   pos=(300, 150),
+                                   color=button_text_color,
+                                   background_color=button_background)
+        self.kind_hoodies_pos.add_widget(self.kind_hoodies)
+        self.add_widget(self.kind_hoodies_pos)
+        # Run function press_button_hoodies after press Hoodies
+        # self.kind_hoodies.bind(on_press=self.press_button_hoodies)
+
+        self.kind_shirts_pos = FloatLayout(size=(75, 25))
+        self.kind_shirts = Button(text='Shirts',
+                                  font_size=12,
+                                  size_hint=(None, None),
+                                  size=(75, 25),
+                                  pos=(375, 150),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_shirts_pos.add_widget(self.kind_shirts)
+        self.add_widget(self.kind_shirts_pos)
+        # Run function press_button_shirts after press Shirts
+        # self.kind_shirts.bind(on_press=self.press_button_shirts)
+
+        self.kind_trousers_pos = FloatLayout(size=(75, 25))
+        self.kind_trousers = Button(text='Trousers',
+                                    font_size=12,
+                                    size_hint=(None, None),
+                                    size=(75, 25),
+                                    pos=(450, 150),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_trousers_pos.add_widget(self.kind_trousers)
+        self.add_widget(self.kind_trousers_pos)
+        # Run function press_button_trousers after press Trousers
+        # self.kind_trousers.bind(on_press=self.press_button_trousers)
+
+        self.kind_shorts_pos = FloatLayout(size=(75, 25))
+        self.kind_shorts = Button(text='Shorts',
+                                  font_size=12,
+                                  size_hint=(None, None),
+                                  size=(75, 25),
+                                  pos=(150, 125),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_shorts_pos.add_widget(self.kind_shorts)
+        self.add_widget(self.kind_shorts_pos)
+        # Run function press_button_shorts after press Shorts
+        # self.kind_shorts.bind(on_press=self.press_button_shorts)
+
+        self.kind_shoes_pos = FloatLayout(size=(75, 25))
+        self.kind_shoes = Button(text='Shoes',
+                                 font_size=12,
+                                 size_hint=(None, None),
+                                 size=(75, 25),
+                                 pos=(225, 125),
+                                 color=button_text_color,
+                                 background_color=button_background)
+        self.kind_shoes_pos.add_widget(self.kind_shoes)
+        self.add_widget(self.kind_shoes_pos)
+        # Run function press_button_shoes after press Shoes
+        # self.kind_shoes.bind(on_press=self.press_button_shoes)
+
+        self.kind_hats_pos = FloatLayout(size=(75, 25))
+        self.kind_hats = Button(text='Hats',
+                                font_size=12,
+                                size_hint=(None, None),
+                                size=(75, 25),
+                                pos=(300, 125),
+                                color=button_text_color,
+                                background_color=button_background)
+        self.kind_hats_pos.add_widget(self.kind_hats)
+        self.add_widget(self.kind_hats_pos)
+        # Run function press_button_hats after press Hats
+        # self.kind_hats.bind(on_press=self.press_button_hats)
+
+        self.kind_jackets_pos = FloatLayout(size=(75, 25))
+        self.kind_jackets = Button(text='Jackets',
+                                   font_size=12,
+                                   size_hint=(None, None),
+                                   size=(75, 25),
+                                   pos=(375, 125),
+                                   color=button_text_color,
+                                   background_color=button_background)
+        self.kind_jackets_pos.add_widget(self.kind_jackets)
+        self.add_widget(self.kind_jackets_pos)
+        # Run function press_button_jackets after press Jackets
+        # self.kind_jackets.bind(on_press=self.press_button_jackets)
+
+        self.kind_sunglasses_pos = FloatLayout(size=(75, 25))
+        self.kind_sunglasses = Button(text='Sunglasses',
+                                      font_size=12,
+                                      size_hint=(None, None),
+                                      size=(75, 25),
+                                      pos=(450, 125),
+                                      color=button_text_color,
+                                      background_color=button_background)
+        self.kind_sunglasses_pos.add_widget(self.kind_sunglasses)
+        self.add_widget(self.kind_sunglasses_pos)
+        # Run function press_button_sunglasses after press Sunglasses
+        # self.kind_sunglasses.bind(on_press=self.press_button_sunglasses)
+
+        self.kind_necklaces_pos = FloatLayout(size=(75, 25))
+        self.kind_necklaces = Button(text='Necklaces',
+                                     font_size=12,
+                                     size_hint=(None, None),
+                                     size=(75, 25),
+                                     pos=(150, 100),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_necklaces_pos.add_widget(self.kind_necklaces)
+        self.add_widget(self.kind_necklaces_pos)
+        # Run function press_button_necklaces after press Necklaces
+        # self.kind_necklaces.bind(on_press=self.press_button_necklaces)
+
+        self.kind_piercing_pos = FloatLayout(size=(75, 25))
+        self.kind_piercing = Button(text='Piercing',
+                                    font_size=12,
+                                    size_hint=(None, None),
+                                    size=(75, 25),
+                                    pos=(225, 100),
+                                    color=button_text_color,
+                                    background_color=button_background)
+        self.kind_piercing_pos.add_widget(self.kind_piercing)
+        self.add_widget(self.kind_piercing_pos)
+        # Run function press_button_piercing after press Piercing
+        # self.kind_piercing.bind(on_press=self.press_button_piercing)
+
+        self.kind_rings_pos = FloatLayout(size=(75, 25))
+        self.kind_rings = Button(text='Rings',
+                                 font_size=12,
+                                 size_hint=(None, None),
+                                 size=(75, 25),
+                                 pos=(300, 100),
+                                 color=button_text_color,
+                                 background_color=button_background)
+        self.kind_rings_pos.add_widget(self.kind_rings)
+        self.add_widget(self.kind_rings_pos)
+        # Run function press_button_rings after press Rings
+        # self.kind_rings.bind(on_press=self.press_button_rings)
+
+        self.kind_bracelets_pos = FloatLayout(size=(75, 25))
+        self.kind_bracelets = Button(text='Bracelets',
+                                     font_size=12,
+                                     size_hint=(None, None),
+                                     size=(75, 25),
+                                     pos=(375, 100),
+                                     color=button_text_color,
+                                     background_color=button_background)
+        self.kind_bracelets_pos.add_widget(self.kind_bracelets)
+        self.add_widget(self.kind_bracelets_pos)
+        # Run function press_button_bracelets after press bracelets
+        # self.kind_bracelets.bind(on_press=self.press_button_bracelets)
+
+        self.kind_bags_pos = FloatLayout(size=(75, 25))
+        self.kind_bags = Button(text='Bags',
+                                font_size=12,
+                                size_hint=(None, None),
+                                size=(75, 25),
+                                pos=(450, 100),
+                                color=button_text_color,
+                                background_color=button_background)
+        self.kind_bags_pos.add_widget(self.kind_bags)
+        self.add_widget(self.kind_bags_pos)
+        # Run function press_button_bags after press Bags
+        # self.kind_bags.bind(on_press=self.press_button_bags)
+
+        self.kind_gloves_pos = FloatLayout(size=(75, 25))
+        self.kind_gloves = Button(text='Gloves',
+                                  font_size=12,
+                                  size_hint=(None, None),
+                                  size=(75, 25),
+                                  pos=(150, 75),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_gloves_pos.add_widget(self.kind_gloves)
+        self.add_widget(self.kind_gloves_pos)
+        # Run function press_button_gloves after press Gloves
+        # self.kind_gloves.bind(on_press=self.press_button_gloves)
+
+        self.kind_scarfs_pos = FloatLayout(size=(75, 25))
+        self.kind_scarfs = Button(text='Scarfs',
+                                  font_size=12,
+                                  size_hint=(None, None),
+                                  size=(75, 25),
+                                  pos=(225, 75),
+                                  color=button_text_color,
+                                  background_color=button_background)
+        self.kind_scarfs_pos.add_widget(self.kind_scarfs)
+        self.add_widget(self.kind_scarfs_pos)
+        # Run function press_button_scarfs after press Scarfs
+        # self.kind_scarfs.bind(on_press=self.press_button_scarfs)
+
+        # Define position of info label
+        self.info_label_pos = AnchorLayout(anchor_x='center',
+                                           anchor_y='bottom')
+        self.info_label = Label(text='Select kind to check data',
+                                size=(100, 50),
+                                color=label_text_color,
+                                size_hint=(None, None))
+        self.info_label_pos.add_widget(self.info_label)
+        self.add_widget(self.info_label_pos)
+
+        # Define position of save button
+        self.save_button_pos = AnchorLayout(anchor_x='right',
+                                            anchor_y='bottom')
+        self.save_button = Button(text='SAVE',
+                                  size=(100, 50),
+                                  color=button_text_color,
+                                  background_color=button_background,
+                                  size_hint=(None, None))
+        self.save_button_pos.add_widget(self.save_button)
+        self.add_widget(self.save_button_pos)
+
+        # Run function press button after press SAVE
+        # self.save_button.bind(on_press=self.press_button_save)
+
+    def press_button_t_shirts(self, btn):
+        next_id = data_base.next_id_value()
+        self.check_label.text = "[i]Check data:[/i] \n" \
+                                "[b]ID:[/b] {}\n" \
+                                "[b]Name:[/b] {}\n" \
+                                "[b]Colors: " \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███[/color][/b] \n" \
+                                "[b]Photo:[/b] photo/{}.jpg \n" \
+                                "[b]Description:[/b] {}\n" \
+                                "[b]Exclusions:[/b] {}\n" \
+                                "[b]Kind:[/b] t_shirts".format \
+            (next_id,
+             self.input_name.text,
+             set_color1.input_color_1,
+             set_color2.input_color_2,
+             set_color3.input_color_3,
+             next_id,
+             self.input_description.text,
+             self.input_exclusions.text)
+
+        # Check data label, shows full data of clothes
+        # Define position of check data label
+        self.check_label_pos = AnchorLayout(anchor_y='center',
+                                            anchor_x='right')
+        # text_size=self.size -> Wrapping text
+        self.check_label = Label(text='[i]Check data[/i]',
+                                 markup=True,
+                                 font_size='16sp',
+                                 text_size=(300, 400),
+                                 valign='middle',
+                                 halign='left',
+                                 size_hint=(None, None),
+                                 color=data_text_color)
+        self.check_label_pos.add_widget(self.check_label)
+        self.add_widget(self.check_label_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -1770,7 +2147,6 @@ class ChangeClothData(Screen):
 
         # Run function press button after press SAVE
         self.save_button.bind(on_press=self.press_button_save)
-
 
         # Define position of label with all data
         self.all_data_pos = FloatLayout(size=(100, 450))
