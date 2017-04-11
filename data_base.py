@@ -42,7 +42,7 @@ def next_id_value():
     return next_id
 
 
-def insert_new_data():
+def insert_new_data(input_name, input_description, input_exclusion, input_kind):
     # TODO reformat id number to '001.jpg', '010.jpg', '100.jpg'
     # Insert data to new item in ClothesData table
     # Default ID = last ID + 1, for first item ID = 1
@@ -50,7 +50,6 @@ def insert_new_data():
     # Default clear = True
     # Default rate = 0
 
-    input_name = input('Name: ')
     # Run code with color palette
     import color_palette as color
     input_color_1 = color.get_color()
@@ -58,9 +57,6 @@ def insert_new_data():
     input_color_2 = color.get_color()
     import color_palette as color
     input_color_3 = color.get_color()
-    input_description = input('Description: ')
-    input_exclusion = input('Exclusions: ')
-    input_kind = input('Kind: ')
 
     new_data = ClothesData(id=next_id_value(),
                            name='{}'.format(input_name),
