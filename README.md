@@ -14,3 +14,5 @@ _import:_
       SQLAlchemy
 
 In first run app create file _weatherdata.txt_ with weather info from _weather.py_.
+With first data app create _file.db_.
+Store clothes photos in ./photo
