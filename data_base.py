@@ -42,7 +42,8 @@ def next_id_value():
     return next_id
 
 
-def insert_new_data(input_name, input_description, input_exclusion, input_kind):
+def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
+                    input_description, input_exclusion, input_kind):
     # TODO reformat id number to '001.jpg', '010.jpg', '100.jpg'
     # Insert data to new item in ClothesData table
     # Default ID = last ID + 1, for first item ID = 1
@@ -50,13 +51,15 @@ def insert_new_data(input_name, input_description, input_exclusion, input_kind):
     # Default clear = True
     # Default rate = 0
 
-    # Run code with color palette
+    '''
+    Run code with color palette
     import color_palette as color
     input_color_1 = color.get_color()
     import color_palette as color
     input_color_2 = color.get_color()
     import color_palette as color
     input_color_3 = color.get_color()
+    '''
 
     new_data = ClothesData(id=next_id_value(),
                            name='{}'.format(input_name),
@@ -76,6 +79,10 @@ def insert_new_data(input_name, input_description, input_exclusion, input_kind):
     # Commit new data
     session.add(new_data)
     session.commit()
+    print('New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
+          'Photo Source: photo/{}.jpg, Description: {}, Exclusion: {}, '
+          'Clear: True, '
+          'Rate: 0, Kind: {}'.format(next_id_value(), input_name, input_color_1, input_color_2, input_color_3, next_id_value(), input_description, input_exclusion, input_kind))
 
 
 def get_names_clothes_data_row():
