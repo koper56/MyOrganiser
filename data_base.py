@@ -82,7 +82,11 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
     print('New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
           'Photo Source: photo/{}.jpg, Description: {}, Exclusion: {}, '
           'Clear: True, '
-          'Rate: 0, Kind: {}'.format(next_id_value(), input_name, input_color_1, input_color_2, input_color_3, next_id_value(), input_description, input_exclusion, input_kind))
+          'Rate: 0, Kind: {}'.format(next_id_value(), input_name,
+                                     input_color_1, input_color_2,
+                                     input_color_3, next_id_value(),
+                                     input_description, input_exclusion,
+                                     input_kind))
 
 
 def get_names_clothes_data_row():
@@ -134,41 +138,31 @@ def print_one_data_by_name(input_name):
         return row
 
 
-def update_item(input_name, input_new_name, input_description, input_exclusion):
-    update_data = update(ClothesData).where(ClothesData.name == input_name).values(
-            name='{}'.format(input_new_name),
-            description='{}'.format(input_description),
-            exclusion='{}'.format(input_exclusion))
+def update_item(input_name, input_new_name, input_description,
+                input_exclusion):
+    update_data = update(ClothesData).where(
+        ClothesData.name == input_name).values(
+        name='{}'.format(input_new_name),
+        description='{}'.format(input_description),
+        exclusion='{}'.format(input_exclusion))
     # Commits changes in ClothesData table
     connection.execute(update_data)
 
 
-def delete_item():
-    input_id = int(input('Select ID number of item to delete: '))
-    selected_item = session.query(ClothesData).get(input_id)
+def delete_item(input_name):
+    selected_item = session.query(ClothesData).get(input_name)
 
     session.delete(selected_item)
     # Commit delete
     session.commit()
 
 
-# TODO: Don't work
-def change_clear():
-    input_id = int(input('Select ID number of item to change clear: '))
-    if select([ClothesData]).where(ClothesData.id == input_id,
-                                   ClothesData.clear == 'True'):
-
-        update_data = update(ClothesData).where(
-            ClothesData.id == input_id).values(clear='False')
-
-    elif select([ClothesData]).where(ClothesData.id == input_id,
-                                     ClothesData.clear == 'False'):
-
-        update_data = update(ClothesData).where(
-            ClothesData.id == input_id).values(clear='True')
-
-        # Commits changes
-        connection.execute(update_data)
+def update_clear(input_name, input_clear):
+    update_data = update(ClothesData).where(
+        ClothesData.name == input_name).values(
+        clear='{}'.format(input_clear))
+    # Commits changes in ClothesData table
+    connection.execute(update_data)
 
 
 def set_rate():
