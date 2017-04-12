@@ -1615,24 +1615,6 @@ class PhotoWindow(Screen):
         self.manager.current = "historywindow"
 
 
-def set_color1(col):
-    import color_palette as color
-    input_color_1 = color.get_color()
-    return input_color_1
-
-
-def set_color2(col):
-    import color_palette as color
-    input_color_2 = color.get_color()
-    return input_color_2
-
-
-def set_color3(col):
-    import color_palette as color
-    input_color_3 = color.get_color()
-    return input_color_3
-
-
 class AddNewClothWindow(Screen):
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -1690,8 +1672,9 @@ class AddNewClothWindow(Screen):
                                         background_color=button_background)
         self.set_color1_button_pos.add_widget(self.set_color1_button)
         self.add_widget(self.set_color1_button_pos)
-        # Run function set_color1 after press Color 1
-        self.set_color1_button.bind(on_press=set_color1)
+        # Run function get_color from color_palette.py after press Color 1
+        # self.set_color1_button.bind(on_press=color_palette.get_color())
+
 
         # Define position of set color 2 button
         self.set_color2_button_pos = FloatLayout(size=(75, 25))
@@ -1704,8 +1687,8 @@ class AddNewClothWindow(Screen):
                                         background_color=button_background)
         self.set_color2_button_pos.add_widget(self.set_color2_button)
         self.add_widget(self.set_color2_button_pos)
-        # Run function set_color2 after press Color 2
-        self.set_color2_button.bind(on_press=set_color2)
+        # Run function get_color from color_palette.py after press Color 2
+        # self.set_color1_button.bind(on_press=color_palette.get_color())
 
         # Define position of set color 3 button
         self.set_color3_button_pos = FloatLayout(size=(75, 25))
@@ -1718,8 +1701,8 @@ class AddNewClothWindow(Screen):
                                         background_color=button_background)
         self.set_color3_button_pos.add_widget(self.set_color3_button)
         self.add_widget(self.set_color3_button_pos)
-        # Run function set_color3 after press Color 3
-        self.set_color3_button.bind(on_press=set_color3)
+        # Run function get_color from color_palette.py after press Color 3
+        # self.set_color1_button.bind(on_press=color_palette.get_color())
 
         # buttons with kinds (t_shirts, tank_tops, hoodies, shirts,
         # trousers, shorts, shoes, hats, jackets, sunglasses, necklaces,
@@ -1735,8 +1718,11 @@ class AddNewClothWindow(Screen):
                                     background_color=button_background)
         self.kind_t_shirts_pos.add_widget(self.kind_t_shirts)
         self.add_widget(self.kind_t_shirts_pos)
-        # Run function press_button_t_shirts after press T-shirts
+        # Run function press_button_kind, and press_button_t_shirts
+        #  after press T-shirts
+        self.kind_t_shirts.bind(on_press=self.press_button_kind)
         self.kind_t_shirts.bind(on_press=self.press_button_t_shirts)
+
 
         self.kind_tank_tops_pos = FloatLayout(size=(75, 25))
         self.kind_tank_tops = Button(text='Tank tops',
@@ -1749,7 +1735,8 @@ class AddNewClothWindow(Screen):
         self.kind_tank_tops_pos.add_widget(self.kind_tank_tops)
         self.add_widget(self.kind_tank_tops_pos)
         # Run function press_button_tank_tops after press Tank tops
-        # self.kind_tank_tops.bind(on_press=self.press_button_tank_tops)
+        self.kind_tank_tops.bind(on_press=self.press_button_kind)
+        self.kind_tank_tops.bind(on_press=self.press_button_tank_tops)
 
         self.kind_hoodies_pos = FloatLayout(size=(75, 25))
         self.kind_hoodies = Button(text='Hoodies',
@@ -1762,7 +1749,8 @@ class AddNewClothWindow(Screen):
         self.kind_hoodies_pos.add_widget(self.kind_hoodies)
         self.add_widget(self.kind_hoodies_pos)
         # Run function press_button_hoodies after press Hoodies
-        # self.kind_hoodies.bind(on_press=self.press_button_hoodies)
+        self.kind_hoodies.bind(on_press=self.press_button_kind)
+        self.kind_hoodies.bind(on_press=self.press_button_hoodies)
 
         self.kind_shirts_pos = FloatLayout(size=(75, 25))
         self.kind_shirts = Button(text='Shirts',
@@ -1775,7 +1763,8 @@ class AddNewClothWindow(Screen):
         self.kind_shirts_pos.add_widget(self.kind_shirts)
         self.add_widget(self.kind_shirts_pos)
         # Run function press_button_shirts after press Shirts
-        # self.kind_shirts.bind(on_press=self.press_button_shirts)
+        self.kind_shirts.bind(on_press=self.press_button_kind)
+        self.kind_shirts.bind(on_press=self.press_button_shirts)
 
         self.kind_trousers_pos = FloatLayout(size=(75, 25))
         self.kind_trousers = Button(text='Trousers',
@@ -1788,7 +1777,8 @@ class AddNewClothWindow(Screen):
         self.kind_trousers_pos.add_widget(self.kind_trousers)
         self.add_widget(self.kind_trousers_pos)
         # Run function press_button_trousers after press Trousers
-        # self.kind_trousers.bind(on_press=self.press_button_trousers)
+        self.kind_trousers.bind(on_press=self.press_button_kind)
+        self.kind_trousers.bind(on_press=self.press_button_trousers)
 
         self.kind_shorts_pos = FloatLayout(size=(75, 25))
         self.kind_shorts = Button(text='Shorts',
@@ -1801,7 +1791,8 @@ class AddNewClothWindow(Screen):
         self.kind_shorts_pos.add_widget(self.kind_shorts)
         self.add_widget(self.kind_shorts_pos)
         # Run function press_button_shorts after press Shorts
-        # self.kind_shorts.bind(on_press=self.press_button_shorts)
+        self.kind_shorts.bind(on_press=self.press_button_kind)
+        self.kind_shorts.bind(on_press=self.press_button_shorts)
 
         self.kind_shoes_pos = FloatLayout(size=(75, 25))
         self.kind_shoes = Button(text='Shoes',
@@ -1814,7 +1805,8 @@ class AddNewClothWindow(Screen):
         self.kind_shoes_pos.add_widget(self.kind_shoes)
         self.add_widget(self.kind_shoes_pos)
         # Run function press_button_shoes after press Shoes
-        # self.kind_shoes.bind(on_press=self.press_button_shoes)
+        self.kind_shoes.bind(on_press=self.press_button_kind)
+        self.kind_shoes.bind(on_press=self.press_button_shoes)
 
         self.kind_hats_pos = FloatLayout(size=(75, 25))
         self.kind_hats = Button(text='Hats',
@@ -1827,7 +1819,8 @@ class AddNewClothWindow(Screen):
         self.kind_hats_pos.add_widget(self.kind_hats)
         self.add_widget(self.kind_hats_pos)
         # Run function press_button_hats after press Hats
-        # self.kind_hats.bind(on_press=self.press_button_hats)
+        self.kind_hats.bind(on_press=self.press_button_kind)
+        self.kind_hats.bind(on_press=self.press_button_hats)
 
         self.kind_jackets_pos = FloatLayout(size=(75, 25))
         self.kind_jackets = Button(text='Jackets',
@@ -1840,7 +1833,8 @@ class AddNewClothWindow(Screen):
         self.kind_jackets_pos.add_widget(self.kind_jackets)
         self.add_widget(self.kind_jackets_pos)
         # Run function press_button_jackets after press Jackets
-        # self.kind_jackets.bind(on_press=self.press_button_jackets)
+        self.kind_jackets.bind(on_press=self.press_button_kind)
+        self.kind_jackets.bind(on_press=self.press_button_jackets)
 
         self.kind_sunglasses_pos = FloatLayout(size=(75, 25))
         self.kind_sunglasses = Button(text='Sunglasses',
@@ -1853,7 +1847,8 @@ class AddNewClothWindow(Screen):
         self.kind_sunglasses_pos.add_widget(self.kind_sunglasses)
         self.add_widget(self.kind_sunglasses_pos)
         # Run function press_button_sunglasses after press Sunglasses
-        # self.kind_sunglasses.bind(on_press=self.press_button_sunglasses)
+        self.kind_sunglasses.bind(on_press=self.press_button_kind)
+        self.kind_sunglasses.bind(on_press=self.press_button_sunglasses)
 
         self.kind_necklaces_pos = FloatLayout(size=(75, 25))
         self.kind_necklaces = Button(text='Necklaces',
@@ -1866,7 +1861,8 @@ class AddNewClothWindow(Screen):
         self.kind_necklaces_pos.add_widget(self.kind_necklaces)
         self.add_widget(self.kind_necklaces_pos)
         # Run function press_button_necklaces after press Necklaces
-        # self.kind_necklaces.bind(on_press=self.press_button_necklaces)
+        self.kind_necklaces.bind(on_press=self.press_button_kind)
+        self.kind_necklaces.bind(on_press=self.press_button_necklaces)
 
         self.kind_piercing_pos = FloatLayout(size=(75, 25))
         self.kind_piercing = Button(text='Piercing',
@@ -1879,7 +1875,8 @@ class AddNewClothWindow(Screen):
         self.kind_piercing_pos.add_widget(self.kind_piercing)
         self.add_widget(self.kind_piercing_pos)
         # Run function press_button_piercing after press Piercing
-        # self.kind_piercing.bind(on_press=self.press_button_piercing)
+        self.kind_piercing.bind(on_press=self.press_button_kind)
+        self.kind_piercing.bind(on_press=self.press_button_piercing)
 
         self.kind_rings_pos = FloatLayout(size=(75, 25))
         self.kind_rings = Button(text='Rings',
@@ -1892,7 +1889,8 @@ class AddNewClothWindow(Screen):
         self.kind_rings_pos.add_widget(self.kind_rings)
         self.add_widget(self.kind_rings_pos)
         # Run function press_button_rings after press Rings
-        # self.kind_rings.bind(on_press=self.press_button_rings)
+        self.kind_rings.bind(on_press=self.press_button_kind)
+        self.kind_rings.bind(on_press=self.press_button_rings)
 
         self.kind_bracelets_pos = FloatLayout(size=(75, 25))
         self.kind_bracelets = Button(text='Bracelets',
@@ -1905,7 +1903,8 @@ class AddNewClothWindow(Screen):
         self.kind_bracelets_pos.add_widget(self.kind_bracelets)
         self.add_widget(self.kind_bracelets_pos)
         # Run function press_button_bracelets after press bracelets
-        # self.kind_bracelets.bind(on_press=self.press_button_bracelets)
+        self.kind_bracelets.bind(on_press=self.press_button_kind)
+        self.kind_bracelets.bind(on_press=self.press_button_bracelets)
 
         self.kind_bags_pos = FloatLayout(size=(75, 25))
         self.kind_bags = Button(text='Bags',
@@ -1918,7 +1917,8 @@ class AddNewClothWindow(Screen):
         self.kind_bags_pos.add_widget(self.kind_bags)
         self.add_widget(self.kind_bags_pos)
         # Run function press_button_bags after press Bags
-        # self.kind_bags.bind(on_press=self.press_button_bags)
+        self.kind_bags.bind(on_press=self.press_button_kind)
+        self.kind_bags.bind(on_press=self.press_button_bags)
 
         self.kind_gloves_pos = FloatLayout(size=(75, 25))
         self.kind_gloves = Button(text='Gloves',
@@ -1931,7 +1931,8 @@ class AddNewClothWindow(Screen):
         self.kind_gloves_pos.add_widget(self.kind_gloves)
         self.add_widget(self.kind_gloves_pos)
         # Run function press_button_gloves after press Gloves
-        # self.kind_gloves.bind(on_press=self.press_button_gloves)
+        self.kind_gloves.bind(on_press=self.press_button_kind)
+        self.kind_gloves.bind(on_press=self.press_button_gloves)
 
         self.kind_scarfs_pos = FloatLayout(size=(75, 25))
         self.kind_scarfs = Button(text='Scarfs',
@@ -1944,7 +1945,8 @@ class AddNewClothWindow(Screen):
         self.kind_scarfs_pos.add_widget(self.kind_scarfs)
         self.add_widget(self.kind_scarfs_pos)
         # Run function press_button_scarfs after press Scarfs
-        # self.kind_scarfs.bind(on_press=self.press_button_scarfs)
+        self.kind_scarfs.bind(on_press=self.press_button_kind)
+        self.kind_scarfs.bind(on_press=self.press_button_scarfs)
 
         # Define position of info label
         self.info_label_pos = AnchorLayout(anchor_x='center',
@@ -1968,7 +1970,7 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.save_button_pos)
 
         # Run function press button after press SAVE
-        # self.save_button.bind(on_press=self.press_button_save)
+        self.save_button.bind(on_press=self.press_save_button)
 
         # Check data label, shows full data of clothes
         # Define position of check data label
@@ -2001,9 +2003,66 @@ class AddNewClothWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-
+    # Functions under define 'kind_name" for press_button_kind
+    # and press_save_button
+    # Functions runs after press one of kind buttons
     def press_button_t_shirts(self, btn):
+        self.kind_name = 't_shirts'
+
+    def press_button_tank_tops(self, btn):
+        self.kind_name = 'tank_tops'
+
+    def press_button_hoodies(self, btn):
+        self.kind_name = 'hoodies'
+
+    def press_button_shirts(self, btn):
+        self.kind_name = 'shirts'
+
+    def press_button_trousers(self, btn):
+        self.kind_name = 'trousers'
+
+    def press_button_shorts(self, btn):
+        self.kind_name = 'shorts'
+
+    def press_button_shoes(self, btn):
+        self.kind_name = 'shoes'
+
+    def press_button_hats(self, btn):
+        self.kind_name = 'hats'
+
+    def press_button_jackets(self, btn):
+        self.kind_name = 'jackets'
+
+    def press_button_sunglasses(self, btn):
+        self.kind_name = 'sunglasses'
+
+    def press_button_necklaces(self, btn):
+        self.kind_name = 'necklaces'
+
+    def press_button_piercing(self, btn):
+        self.kind_name = 'piercing'
+
+    def press_button_rings(self, btn):
+        self.kind_name = 'rings'
+
+    def press_button_bracelets(self, btn):
+        self.kind_name = 'bracelets'
+
+    def press_button_bags(self, btn):
+        self.kind_name = 'bags'
+
+    def press_button_gloves(self, btn):
+        self.kind_name = 'gloves'
+
+    def press_button_scarfs(self, btn):
+        self.kind_name = 'scarfs'
+
+    def press_button_kind(self, btn):
         next_id = data_base.next_id_value()
+        # Test color code
+        input_color_1 = "37ff26"
+        input_color_2 = "37ff26"
+        input_color_3 = "37ff26"
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \
@@ -2014,15 +2073,27 @@ class AddNewClothWindow(Screen):
                                 "[b]Photo:[/b] photo/{}.jpg \n" \
                                 "[b]Description:[/b] {}\n" \
                                 "[b]Exclusions:[/b] {}\n" \
-                                "[b]Kind:[/b] t_shirts".format \
+                                "[b]Kind:[/b] {}".format \
             (next_id,
              self.input_name.text,
-             set_color1.input_color_1,
-             set_color2.input_color_2,
-             set_color3.input_color_3,
+             input_color_1,
+             input_color_2,
+             input_color_3,
              next_id,
              self.input_description.text,
-             self.input_exclusions.text)
+             self.input_exclusions.text,
+             self.kind_name)
+
+    def press_save_button(self, btn):
+        # Function commit in database changed name, description and exclusion
+        # Test color code
+        data_base.insert_new_data(self.input_name.text,
+                                  '37ff26',
+                                  '37ff26',
+                                  '37ff26',
+                                  self.input_description.text,
+                                  self.input_exclusions.text,
+                                  self.kind_name)
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
