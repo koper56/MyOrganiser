@@ -2094,6 +2094,7 @@ class AddNewClothWindow(Screen):
                                   self.input_description.text,
                                   self.input_exclusions.text,
                                   self.kind_name)
+        self.check_label.text = "SAVED!"
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
