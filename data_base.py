@@ -149,8 +149,8 @@ def update_item(input_name, input_new_name, input_description,
     connection.execute(update_data)
 
 
-def delete_item(input_name):
-    selected_item = session.query(ClothesData).get(input_name)
+def delete_item(input_id):
+    selected_item = session.query(ClothesData).get(input_id)
 
     session.delete(selected_item)
     # Commit delete
