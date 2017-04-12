@@ -7,6 +7,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
+from kivy.uix.colorpicker import ColorPicker
 import data_base
 from weather import print_weather_warsaw
 
@@ -1672,9 +1673,9 @@ class AddNewClothWindow(Screen):
                                         background_color=button_background)
         self.set_color1_button_pos.add_widget(self.set_color1_button)
         self.add_widget(self.set_color1_button_pos)
+
         # Run function get_color from color_palette.py after press Color 1
         # self.set_color1_button.bind(on_press=color_palette.get_color())
-
 
         # Define position of set color 2 button
         self.set_color2_button_pos = FloatLayout(size=(75, 25))
@@ -1688,7 +1689,7 @@ class AddNewClothWindow(Screen):
         self.set_color2_button_pos.add_widget(self.set_color2_button)
         self.add_widget(self.set_color2_button_pos)
         # Run function get_color from color_palette.py after press Color 2
-        # self.set_color1_button.bind(on_press=color_palette.get_color())
+        # self.set_color1_button.bind(on_press=color.ColorPalette().run())
 
         # Define position of set color 3 button
         self.set_color3_button_pos = FloatLayout(size=(75, 25))
@@ -1722,7 +1723,6 @@ class AddNewClothWindow(Screen):
         #  after press T-shirts
         self.kind_t_shirts.bind(on_press=self.press_button_kind)
         self.kind_t_shirts.bind(on_press=self.press_button_t_shirts)
-
 
         self.kind_tank_tops_pos = FloatLayout(size=(75, 25))
         self.kind_tank_tops = Button(text='Tank tops',
@@ -2116,6 +2116,170 @@ class ChangeClearWindow(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position of input name box
+        self.input_name_pos = FloatLayout(size=(300, 50))
+        self.input_name = TextInput(text='Type name of cloth',
+                                    multiline=False,
+                                    size=(300, 50),
+                                    pos=(150, 400),
+                                    size_hint=(None, None))
+        self.input_name_pos.add_widget(self.input_name)
+        self.add_widget(self.input_name_pos)
+
+        # Define size, position, colors of Question Label
+        self.question_label_pos = FloatLayout(size=(300, 50))
+        self.question_label = Label(text='[i]Select clear: [/i]',
+                                    markup=True,
+                                    pos=(-125, 0),
+                                    font_size='16sp',
+                                    color=label_text_color)
+        self.question_label_pos.add_widget(self.question_label)
+        self.add_widget(self.question_label_pos)
+
+        # Define size, position, colors of True button
+        self.true_clear_button_pos = FloatLayout(size=(150, 50))
+        self.true_clear_button = Button(text='True',
+                                        pos=(150, 150),
+                                        color=button_text_color,
+                                        background_color=button_background,
+                                        size_hint=(None, None))
+        self.true_clear_button_pos.add_widget(self.true_clear_button)
+        self.add_widget(self.true_clear_button_pos)
+
+        # Run function press_true_clear and press_button_check after press True
+        self.true_clear_button.bind(on_press=self.press_button_check)
+        self.true_clear_button.bind(on_press=self.press_true_clear)
+
+
+        # Define size, position, colors of False button
+        self.false_clear_button_pos = FloatLayout(size=(150, 50))
+        self.false_clear_button = Button(text='False',
+                                         pos=(300, 150),
+                                         color=button_text_color,
+                                         background_color=button_background,
+                                         size_hint=(None, None))
+        self.false_clear_button_pos.add_widget(self.false_clear_button)
+        self.add_widget(self.false_clear_button_pos)
+
+        # Run function press_false_clear and press_button_check after press False
+        self.false_clear_button.bind(on_press=self.press_button_check)
+        self.false_clear_button.bind(on_press=self.press_false_clear)
+
+
+        # Define position of save button
+        self.save_button_pos = AnchorLayout(anchor_x='right',
+                                            anchor_y='bottom')
+        self.save_button = Button(text='SAVE',
+                                  size=(100, 50),
+                                  color=button_text_color,
+                                  background_color=button_background,
+                                  size_hint=(None, None))
+        self.save_button_pos.add_widget(self.save_button)
+        self.add_widget(self.save_button_pos)
+
+        # Run function press button after press SAVE
+        self.save_button.bind(on_press=self.press_button_save)
+
+        # Define position of label with all data
+        self.all_data_pos = FloatLayout(size=(100, 450))
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data = Label(text=names_from_database,
+                              markup=True,
+                              font_size='16sp',
+                              text_size=(100, 450),
+                              pos=(0, 450),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
+
+        # Check data label, shows full data of clothes
+        # Define position of check data label
+        self.check_label_pos = AnchorLayout(anchor_y='center',
+                                            anchor_x='right')
+        # text_size=self.size -> Wrapping text
+        self.check_label = Label(text='[i]Check data[/i]',
+                                 markup=True,
+                                 font_size='16sp',
+                                 text_size=(300, 400),
+                                 valign='middle',
+                                 halign='left',
+                                 size_hint=(None, None),
+                                 color=data_text_color)
+        self.check_label_pos.add_widget(self.check_label)
+        self.add_widget(self.check_label_pos)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             color=button_text_color,
+                             size_hint=(None, None),
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_change_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    # Functions below set select_clear to True/False after press button
+    def press_true_clear(self, btn):
+        self.select_clear = 'True'
+
+    def press_false_clear(self, btn):
+        self.select_clear = 'False'
+
+    def press_button_check(self, btn):
+        # Function return in label cloth data with changed name,
+        #  description and exclusion
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_name.text)
+
+        # Data for text in check_label with new data and data from data base
+        # for typed name in input_name
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.check_label.text = "[i]Check data:[/i] \n" \
+                                "[b]ID:[/b] {}\n" \
+                                "[b]Name:[/b] {}\n" \
+                                "[b]Colors: " \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███ [/color]" \
+                                "[color={}]███[/color][/b] \n" \
+                                "[b]Photo:[/b] {}\n" \
+                                "[b]Description:[/b] {}\n" \
+                                "[b]Exclusions:[/b] {}\n" \
+                                "[b]Clear:[/b] {} -> {}\n" \
+                                "[b]Rate:[/b] {}\n" \
+                                "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             self.input_name.text,
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             self.select_clear,
+             function_from_database[9],
+             function_from_database[10])
+
+    def press_button_save(self, btn):
+        # Function commit in database changed name, description and exclusion
+        data_base.update_clear(self.input_name.text, self.select_clear)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
