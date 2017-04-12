@@ -1,15 +1,30 @@
-from tkinter import Button, mainloop
-from tkinter.colorchooser import askcolor
+from kivy.app import App
+from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.colorpicker import ColorPicker
 
 
-# choose color from color palette
-def get_color():
-    color = askcolor()
-    print('RGB code:', color[0], '\nHEX code:', color[1])
-    # Take HEX code without #, this code works in kivy
-    set_color = color[1][1:]
-    return set_color
+class ColorScreen(Screen):
+    def __init__(self, **kwargs):
+        super(ColorScreen, self).__init__(**kwargs)
+        self.name = "ColorScreen"
+        self.color_picker = ColorPicker()
+        self.add_widget(self.color_picker)
+
+        # To monitor changes, we can bind to color property changes
+        def on_color(instance, value):
+            print("RGBA = ", str(value))  # or instance.color
+            print("HSV = ", str(instance.hsv))
+            print("HEX = ", str(instance.hex_color))
+
+        self.color_picker.bind(color=on_color)
 
 
-Button(text='Select Color', command=get_color).pack()
-mainloop()
+class ColorPalette(App):
+    def build(self):
+        screen_manager = ScreenManager()
+        screen_manager.add_widget(ColorScreen())
+
+        return screen_manager
+
+
+ColorPalette().run()
