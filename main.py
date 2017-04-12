@@ -2151,7 +2151,6 @@ class ChangeClearWindow(Screen):
         self.true_clear_button.bind(on_press=self.press_button_check)
         self.true_clear_button.bind(on_press=self.press_true_clear)
 
-
         # Define size, position, colors of False button
         self.false_clear_button_pos = FloatLayout(size=(150, 50))
         self.false_clear_button = Button(text='False',
@@ -2165,7 +2164,6 @@ class ChangeClearWindow(Screen):
         # Run function press_false_clear and press_button_check after press False
         self.false_clear_button.bind(on_press=self.press_button_check)
         self.false_clear_button.bind(on_press=self.press_false_clear)
-
 
         # Define position of save button
         self.save_button_pos = AnchorLayout(anchor_x='right',
@@ -2500,6 +2498,88 @@ class DeleteCloth(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position of text input box
+        self.input_box_pos = FloatLayout(size=(200, 50))
+        self.input_box = TextInput(text='Type name',
+                                   multiline=False,
+                                   pos=(200, 0),
+                                   size=(200, 50),
+                                   size_hint=(None, None))
+        self.input_box_pos.add_widget(self.input_box)
+        self.add_widget(self.input_box_pos)
+
+        # Define position of check button
+        self.search_button_pos = AnchorLayout(anchor_x='right',
+                                              anchor_y='bottom')
+        self.search_button = Button(text='CHECK',
+                                    size=(100, 50),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.search_button_pos.add_widget(self.search_button)
+        self.add_widget(self.search_button_pos)
+
+        # Run function press button after press CHECK
+        self.search_button.bind(on_press=self.press_button_check)
+
+        # Define position of delete button
+        self.delete_button_pos = FloatLayout(size=(100, 50))
+        self.delete_button = Button(text='[color=FF0000]DELETE[/color]',
+                                    markup=True,
+                                    size=(100, 50),
+                                    pos=(600, 0),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.delete_button_pos.add_widget(self.delete_button)
+        self.add_widget(self.delete_button_pos)
+
+        # Run function press button after press DELETE
+        self.delete_button.bind(on_press=self.press_button_delete)
+
+        # Search result label, shows full data of clothes
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        # text_size=self.size -> Wrapping text
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
+                                   font_size='16sp',
+                                   text_size=(250, 400),
+                                   valign='middle',
+                                   halign='left',
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position of label with all data
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data = Label(text=names_from_database,
+                              markup=True,
+                              font_size='16sp',
+                              text_size=(100, 400),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        # Default icon in source
+        self.show_photo = Image(source='png/database.png',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
@@ -2514,6 +2594,62 @@ class DeleteCloth(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_check(self, btn):
+        # Send text after press button CHECK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_box.text)
+
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.search_result.text = "[i][color=FF0000]Delete:[/color][/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors: " \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███[/color][/b] \n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {}\n" \
+                                  "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             function_from_database[1],
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             function_from_database[9],
+             function_from_database[10])
+
+    # Function delete item by ID number
+    def press_button_delete(self, btn):
+
+        # Take all data from data base by name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_box.text)
+
+        # Delete data by ID number
+        data_base.delete_item(function_from_database[0])
+
+        # Put DELETED! in search_result label
+        self.search_result.text = "DELETED!"
+
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
