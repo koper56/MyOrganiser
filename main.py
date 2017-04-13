@@ -314,10 +314,22 @@ class RateWindow(Screen):
         super(RateWindow, self).__init__(**kwargs)
         self.name = "ratewindow"
 
+        # Define size and position of ornaments
+        # Line(points=[x start, y start, x end, y end], width=1)
+        with self.canvas:
+            Line(points=[0, 450, 450, 450], width=1)
+            Line(points=[0, 350, 450, 350], width=1)
+            Line(points=[450, 450, 450, 350], width=1)
+            Line(points=[200, 550, 600, 550], width=1)
+            Line(points=[200, 550, 200, 600], width=1)
+            Line(points=[600, 550, 600, 600], width=1)
+            Line(points=[525, 0, 525, 550], width=1)
+            Line(points=[450, 400, 525, 400], width=1)
+
         # Define position of rate rate window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Rate < < <',
+        label_settings = Label(text='Rate',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -389,10 +401,22 @@ class HistoryWindow(Screen):
         super(HistoryWindow, self).__init__(**kwargs)
         self.name = "historywindow"
 
+        # Define size and position of ornaments
+        # Line(points=[x start, y start, x end, y end], width=1)
+        with self.canvas:
+            Line(points=[0, 450, 450, 450], width=1)
+            Line(points=[0, 350, 450, 350], width=1)
+            Line(points=[450, 450, 450, 350], width=1)
+            Line(points=[200, 550, 600, 550], width=1)
+            Line(points=[200, 550, 200, 600], width=1)
+            Line(points=[600, 550, 600, 600], width=1)
+            Line(points=[525, 0, 525, 550], width=1)
+            Line(points=[450, 400, 525, 400], width=1)
+
         # Define position of history window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > History < < <',
+        label_settings = Label(text='History',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
