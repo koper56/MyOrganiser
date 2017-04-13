@@ -165,6 +165,14 @@ def update_clear(input_name, input_clear):
     connection.execute(update_data)
 
 
+def update_rate(input_name, input_rate):
+    update_data = update(ClothesData).where(
+        ClothesData.name == input_name).values(
+        rate='{}'.format(input_rate))
+    # Commits changes in ClothesData table
+    connection.execute(update_data)
+
+
 def set_rate():
     input_id = int(input('Select ID number of item to change: '))
     select_data = select([ClothesData]).where(ClothesData.id == input_id)
