@@ -1455,6 +1455,9 @@ class RateClothWindow(Screen):
         super(RateClothWindow, self).__init__(**kwargs)
         self.name = "rateclothwindow"
 
+        # Default value of input_rate.text
+        self.input_rate = '?'
+
         # Define position of delete cloth window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
@@ -1465,6 +1468,177 @@ class RateClothWindow(Screen):
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position, size of 1st star
+        self.one_star_button_pos = FloatLayout(size=(100, 100))
+        self.one_star_button = Button(text='1',
+                                      markup=True,
+                                      size=(100, 100),
+                                      pos=(150, 450),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.one_star_button_pos.add_widget(self.one_star_button)
+        self.add_widget(self.one_star_button_pos)
+        # Run function press_button_one_star and press_check_button after press '1'
+        self.one_star_button.bind(on_press=self.press_button_one_star)
+        self.one_star_button.bind(on_press=self.press_check_button)
+
+        # Define position, size of 2nd star
+        self.two_star_button_pos = FloatLayout(size=(100, 100))
+        self.two_star_button = Button(text='2',
+                                      markup=True,
+                                      size=(100, 100),
+                                      pos=(250, 450),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.two_star_button_pos.add_widget(self.two_star_button)
+        self.add_widget(self.two_star_button_pos)
+        # Run function press_button_two_star and press_check_button after press '2'
+        self.two_star_button.bind(on_press=self.press_button_two_star)
+        self.two_star_button.bind(on_press=self.press_check_button)
+
+        # Define position, size of 3rd star
+        self.three_star_button_pos = FloatLayout(size=(100, 100))
+        self.three_star_button = Button(text='3',
+                                        markup=True,
+                                        size=(100, 100),
+                                        pos=(350, 450),
+                                        color=button_text_color,
+                                        size_hint=(None, None),
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
+                                        size_hint_x=None)
+
+        self.three_star_button_pos.add_widget(self.three_star_button)
+        self.add_widget(self.three_star_button_pos)
+        # Run function press_button_three_star and press_check_button after press '3'
+        self.three_star_button.bind(on_press=self.press_button_three_star)
+        self.three_star_button.bind(on_press=self.press_check_button)
+
+        # Define position, size of 4th star
+        self.four_star_button_pos = FloatLayout(size=(100, 100))
+        self.four_star_button = Button(text='4',
+                                       markup=True,
+                                       size=(100, 100),
+                                       pos=(450, 450),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.four_star_button_pos.add_widget(self.four_star_button)
+        self.add_widget(self.four_star_button_pos)
+        # Run function press_button_four_star and press_check_button after press '4'
+        self.four_star_button.bind(on_press=self.press_button_four_star)
+        self.four_star_button.bind(on_press=self.press_check_button)
+
+        # Define position, size of 5th star
+        self.five_star_button_pos = FloatLayout(size=(100, 100))
+        self.five_star_button = Button(text='5',
+                                       markup=True,
+                                       size=(100, 100),
+                                       pos=(550, 450),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.five_star_button_pos.add_widget(self.five_star_button)
+        self.add_widget(self.five_star_button_pos)
+        # Run function press_button_five_star and press_check_button after press '5'
+        self.five_star_button.bind(on_press=self.press_button_five_star)
+        self.five_star_button.bind(on_press=self.press_check_button)
+
+        # Search result label, shows full data of clothes
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        # text_size=self.size -> Wrapping text
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
+                                   font_size='16sp',
+                                   text_size=(250, 400),
+                                   valign='middle',
+                                   halign='left',
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        # Default icon in source
+        self.show_photo = Image(source='png/database.png',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
+
+        # Define position of label with all data
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data = Label(text=names_from_database,
+                              markup=True,
+                              font_size='16sp',
+                              text_size=(100, 400),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
+
+        # Define position of text input box
+        self.input_name_pos = AnchorLayout(anchor_x='center',
+                                           anchor_y='bottom')
+        self.input_name = TextInput(text='Type name',
+                                    multiline=False,
+                                    size=(200, 50),
+                                    size_hint=(None, None))
+        self.input_name_pos.add_widget(self.input_name)
+        self.add_widget(self.input_name_pos)
+
+        # Define position of check button
+        self.check_button_pos = FloatLayout(size=(100, 50))
+        self.check_button = Button(text='CHECK',
+                                   size=(100, 50),
+                                   pos=(600, 0),
+                                   color=button_text_color,
+                                   background_color=button_background,
+                                   size_hint=(None, None))
+        self.check_button_pos.add_widget(self.check_button)
+        self.add_widget(self.check_button_pos)
+
+        # Run function press button after press CHECK
+        self.check_button.bind(on_press=self.press_check_button)
+
+        # Define position of save button
+        self.save_button_pos = AnchorLayout(anchor_x='right',
+                                            anchor_y='bottom')
+        self.save_button = Button(text='SAVE',
+                                  size=(100, 50),
+                                  color=button_text_color,
+                                  background_color=button_background,
+                                  size_hint=(None, None))
+        self.save_button_pos.add_widget(self.save_button)
+        self.add_widget(self.save_button_pos)
+
+        # Run function press button after press DELETE
+        self.save_button.bind(on_press=self.press_save_button)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -1480,6 +1654,85 @@ class RateClothWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_one_star(self, btn):
+        self.input_rate = '1'
+
+    def press_button_two_star(self, btn):
+        self.input_rate = '2'
+
+    def press_button_three_star(self, btn):
+        self.input_rate = '3'
+
+    def press_button_four_star(self, btn):
+        self.input_rate = '4'
+
+    def press_button_five_star(self, btn):
+        self.input_rate = '5'
+
+    def press_check_button(self, btn):
+        # Send text after press button CHECK from input name box to function
+        # in data base, take data and return in search_result label and
+        # photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_name(self.input_name.text)
+
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        '''
+
+        # Change color of value in star to red for rate of selected cloth
+        # after press CHECK
+        if function_from_database[9] == '1':
+            self.one_star_button.text = '[color=FF0000]1[/color]'
+        elif function_from_database[9] == '2':
+            self.two_star_button.text = '[color=FF0000]2[/color]'
+        elif function_from_database[9] == '3':
+            self.three_star_button.text = '[color=FF0000]3[/color]'
+        elif function_from_database[9] == '4':
+            self.four_star_button.text = '[color=FF0000]4[/color]'
+        elif function_from_database[9] == '5':
+            self.five_star_button.text = '[color=FF0000]5[/color]'
+        '''
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
+        # Colors take hex color code from data base and set this code for
+        # ███ characters
+        self.search_result.text = "[i]Result:[/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors: " \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███ [/color]" \
+                                  "[color={}]███[/color][/b] \n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {} -> {}\n" \
+                                  "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             function_from_database[1],
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             function_from_database[9],
+             self.input_rate,
+             function_from_database[10])
+
+    # Commit changes after press button SAVE
+    def press_save_button(self, btn):
+        data_base.update_rate(self.input_name.text, self.input_rate)
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -2639,7 +2892,6 @@ class DeleteCloth(Screen):
 
     # Function delete item by ID number
     def press_button_delete(self, btn):
-
         # Take all data from data base by name
         function_from_database = \
             data_base.print_one_data_by_name(self.input_box.text)
@@ -2649,7 +2901,6 @@ class DeleteCloth(Screen):
 
         # Put DELETED! in search_result label
         self.search_result.text = "DELETED!"
-
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
