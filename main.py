@@ -7,10 +7,8 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
-from kivy.uix.colorpicker import ColorPicker
-import data_base
-from weather import print_weather_warsaw
 from kivy.graphics import *
+import data_base
 
 '''
 from rgba to kivy code: rgba code/255.0
