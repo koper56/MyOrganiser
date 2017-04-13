@@ -120,17 +120,6 @@ def print_all_name_from_all():
         print('ID:', row[0], 'Name:', row[1])
 
 
-def print_all_data_by_kind():
-    input_kind = input('Select kind of clothes: ')
-    select_data = select([ClothesData]).where(
-        ClothesData.kind == input_kind)
-    for row in connection.execute(select_data):
-        print('ID:', row[0], 'Name:', row[1], 'Colors:', row[2], row[3],
-              row[4],
-              'Photo source:', row[5], 'Description:', row[6],
-              'Exclusions:', row[7], 'Kind:', row[10])
-
-
 def print_one_data_by_name(input_name):
     select_data = select([ClothesData]).where(
         ClothesData.name == input_name)
@@ -171,16 +160,3 @@ def update_rate(input_name, input_rate):
         rate='{}'.format(input_rate))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-
-
-def set_rate():
-    input_id = int(input('Select ID number of item to change: '))
-    select_data = select([ClothesData]).where(ClothesData.id == input_id)
-    for row in connection.execute(select_data):
-        input_rate = input('New rate(1 - 5) for name: {}: '.format(row[1]))
-        # CREATE ONCE
-        table = ClothesData
-        update_data = update(table).where(table.id == input_id).values(
-            rate='{}'.format(input_rate))
-        # Commits changes, IF autocommit is in use
-        connection.execute(update_data)
