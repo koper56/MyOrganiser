@@ -45,12 +45,12 @@ class MainWindow(Screen):
         # Define size and position of ornaments
         # Line(points=[x start, y start, x end, y end], width=1)
         with self.canvas:
-            Line(points=[400, 0, 400, 500], width=1)
+            Line(points=[400, 0, 400, 550], width=1)
             Line(points=[0, 200, 800, 200], width=1)
             Line(points=[0, 400, 800, 400], width=1)
-            Line(points=[200, 500, 600, 500], width=1)
-            Line(points=[200, 500, 200, 600], width=1)
-            Line(points=[600, 500, 600, 600], width=1)
+            Line(points=[200, 550, 600, 550], width=1)
+            Line(points=[200, 550, 200, 600], width=1)
+            Line(points=[600, 550, 600, 600], width=1)
 
         # Define position of main window label
         label_position = AnchorLayout(anchor_x='center',
@@ -151,10 +151,25 @@ class ChooseWindow(Screen):
         super(ChooseWindow, self).__init__(**kwargs)
         self.name = "choosewindow"
 
+        # Define size and position of ornaments
+        # Line(points=[x start, y start, x end, y end], width=1)
+        with self.canvas:
+            Line(points=[0, 450, 450, 450], width=1)
+            Line(points=[0, 200, 450, 200], width=1)
+            Line(points=[450, 450, 450, 200], width=1)
+            Line(points=[200, 550, 600, 550], width=1)
+            Line(points=[200, 550, 200, 600], width=1)
+            Line(points=[600, 550, 600, 600], width=1)
+            Line(points=[525, 0, 525, 550], width=1)
+            Line(points=[525, 325, 450, 325], width=1)
+            Line(points=[575, 0, 575, 200], width=1)
+            Line(points=[575, 200, 800, 200], width=1)
+            Line(points=[575, 100, 525, 100], width=1)
+
         # Define position of choose window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Choose by... < < <',
+        label_settings = Label(text='Choose by...',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -451,10 +466,22 @@ class ChangeWindow(Screen):
         super(ChangeWindow, self).__init__(**kwargs)
         self.name = "changewindow"
 
+        # Define size and position of ornaments
+        # Line(points=[x start, y start, x end, y end], width=1)
+        with self.canvas:
+            Line(points=[0, 450, 450, 450], width=1)
+            Line(points=[0, 250, 450, 250], width=1)
+            Line(points=[450, 450, 450, 250], width=1)
+            Line(points=[200, 550, 600, 550], width=1)
+            Line(points=[200, 550, 200, 600], width=1)
+            Line(points=[600, 550, 600, 600], width=1)
+            Line(points=[525, 0, 525, 550], width=1)
+            Line(points=[450, 350, 525, 350], width=1)
+
         # Define position of change window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Add, change, delete < < <',
+        label_settings = Label(text='Add, change, delete',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
