@@ -10,6 +10,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.colorpicker import ColorPicker
 import data_base
 from weather import print_weather_warsaw
+from kivy.graphics import *
 
 '''
 from rgba to kivy code: rgba code/255.0
@@ -30,10 +31,10 @@ button_background = 0, 0.26, 0.27, 1
 button_text_color = 0.435, 0.725, 0.56, 1
 data_text_color = 0.17, 0.47, 1, 1
 data_label_background_color = 1, 0.2, 0.11, 1
-
+ornaments_color = 1, 1, 1, 1
 
 # Window.clearcolor = window_background_color
-# Window.size = (400, 650)
+Window.size = (800, 600)
 
 
 class MainWindow(Screen):
@@ -41,10 +42,20 @@ class MainWindow(Screen):
         super(MainWindow, self).__init__(**kwargs)
         self.name = "mainwindow"
 
+        # Define size and position of ornaments
+        # Line(points=[x start, y start, x end, y end], width=1)
+        with self.canvas:
+            Line(points=[400, 0, 400, 500], width=1)
+            Line(points=[0, 200, 800, 200], width=1)
+            Line(points=[0, 400, 800, 400], width=1)
+            Line(points=[200, 500, 600, 500], width=1)
+            Line(points=[200, 500, 200, 600], width=1)
+            Line(points=[600, 500, 600, 600], width=1)
+
         # Define position of main window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > My Clothes Organiser < < <',
+        label_settings = Label(text='My Clothes Organiser',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
