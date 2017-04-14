@@ -126,15 +126,6 @@ class MainWindow(Screen):
         self.manager.current = "changewindow"
 
 
-# Back button settings
-# back_button = Button(text='back',
-#                      size=(100, 100),
-#                      size_hint=(None, None),
-#                      background_normal="./back.png",
-#                      background_down="./back.png",
-#                      size_hint_x=None)
-
-
 class ChooseWindow(Screen):
     # by kind
     # by name
