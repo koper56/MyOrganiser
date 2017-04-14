@@ -1941,7 +1941,7 @@ class PhotoWindow(Screen):
         self.add_widget(self.Anchor_Layout)
 
     def camera_run(self, *args):
-        return self.workspace.PopupRun().run()
+        return self.camera_module.PopupRun().run()
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
