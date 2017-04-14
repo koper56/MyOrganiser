@@ -42,10 +42,11 @@ class ConfirmPopup(GridLayout):
 
     # Function to capture the images and give them the names
     # according to their captured date F. ex 'Captured as IMG_2017_04_05.png'.
+    # Store photos in /sets directory
     def take_photo(self):
         camera = self.ids['camera']
         time_format = time.strftime("%Y_%m_%d")
-        camera.export_to_png("Set_from_{}.png".format(time_format))
+        camera.export_to_png("sets/Set_from_{}.png".format(time_format))
         print("Captured as 'Set_from_{}.png'".format(time_format))
 
 
