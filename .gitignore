@@ -1,3 +1,17 @@
+# Data files for project
+photo/
+workspace.py
+weatherdata.txt
+test_sqlalchemy.db
+*.png
+
+.DS_Store
+.idea/.DS_Store
+.idea/MyOrganiser_git_null.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
