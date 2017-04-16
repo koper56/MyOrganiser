@@ -1928,6 +1928,7 @@ class PhotoWindow(Screen):
 
 class AddNewClothWindow(Screen):
     import color_palette
+    import camera_module_new_cloth
 
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -1973,6 +1974,21 @@ class AddNewClothWindow(Screen):
                                           size_hint=(None, None))
         self.input_exclusions_pos.add_widget(self.input_exclusions)
         self.add_widget(self.input_exclusions_pos)
+
+        # Define position of take photo button
+        self.photo_button_pos = FloatLayout(size=(75, 25))
+        self.photo_button = Button(text='Photo',
+                                        font_size=12,
+                                        size_hint=(None, None),
+                                        size=(75, 25),
+                                        pos=(150, 250),
+                                        color=button_text_color,
+                                        background_color=button_background)
+        self.photo_button_pos.add_widget(self.photo_button)
+        self.add_widget(self.photo_button_pos)
+
+        # Run camera from camera_module_new_cloth.py after press photo
+        self.photo_button.bind(on_press=self.run_camera)
 
         # Define position of set color 1 button
         self.set_color1_button_pos = FloatLayout(size=(75, 25))
@@ -2315,6 +2331,10 @@ class AddNewClothWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
+    # Function run camera module iin popup
+    def run_camera(self, *args):
+        return self.camera_module_new_cloth.PopupRun().run()
+
     # Function run color palette module in popup
     def pick_color1(self, *args):
         self.color3 = self.color_palette.PopupRun().run()
@@ -2389,8 +2409,8 @@ class AddNewClothWindow(Screen):
 
         # Take value of color from pick_color1/2/3 functions
         input_color_1 = '37ff26'
-        input_color_2 = '37ff26'
-        input_color_3 = '37ff26'
+        input_color_2 = '37ff25'
+        input_color_3 = '37ff24'
 
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
