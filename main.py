@@ -1927,6 +1927,8 @@ class PhotoWindow(Screen):
 
 
 class AddNewClothWindow(Screen):
+    import color_palette
+
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
         self.name = "addnewclothwindow"
@@ -1985,7 +1987,7 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.set_color1_button_pos)
 
         # Run function get_color from color_palette.py after press Color 1
-        # self.set_color1_button.bind(on_press=color_palette.get_color())
+        self.set_color1_button.bind(on_press=self.pick_color1)
 
         # Define position of set color 2 button
         self.set_color2_button_pos = FloatLayout(size=(75, 25))
@@ -1999,7 +2001,7 @@ class AddNewClothWindow(Screen):
         self.set_color2_button_pos.add_widget(self.set_color2_button)
         self.add_widget(self.set_color2_button_pos)
         # Run function get_color from color_palette.py after press Color 2
-        # self.set_color1_button.bind(on_press=color.ColorPalette().run())
+        self.set_color2_button.bind(on_press=self.pick_color2)
 
         # Define position of set color 3 button
         self.set_color3_button_pos = FloatLayout(size=(75, 25))
@@ -2013,7 +2015,7 @@ class AddNewClothWindow(Screen):
         self.set_color3_button_pos.add_widget(self.set_color3_button)
         self.add_widget(self.set_color3_button_pos)
         # Run function get_color from color_palette.py after press Color 3
-        # self.set_color1_button.bind(on_press=color_palette.get_color())
+        self.set_color3_button.bind(on_press=self.pick_color3)
 
         # buttons with kinds (t_shirts, tank_tops, hoodies, shirts,
         # trousers, shorts, shoes, hats, jackets, sunglasses, necklaces,
@@ -2313,6 +2315,21 @@ class AddNewClothWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
+    # Function run color palette module in popup
+    def pick_color1(self, *args):
+        self.color3 = self.color_palette.PopupRun().run()
+        return self.color_palette.PopupRun().run()
+
+    # Function run color palette module in popup
+    def pick_color2(self, *args):
+        self.color3 = self.color_palette.PopupRun().run()
+        return self.color_palette.PopupRun().run()
+
+    # Function run color palette module in popup
+    def pick_color3(self, *args):
+        self.color3 = self.color_palette.PopupRun().run()
+        return self.color_palette.PopupRun().run()
+
     # Functions under define 'kind_name" for press_button_kind
     # and press_save_button
     # Functions runs after press one of kind buttons
@@ -2369,10 +2386,12 @@ class AddNewClothWindow(Screen):
 
     def press_button_kind(self, btn):
         next_id = data_base.next_id_value()
-        # Test color code
-        input_color_1 = "37ff26"
-        input_color_2 = "37ff26"
-        input_color_3 = "37ff26"
+
+        # Take value of color from pick_color1/2/3 functions
+        input_color_1 = '37ff26'
+        input_color_2 = '37ff26'
+        input_color_3 = '37ff26'
+
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \

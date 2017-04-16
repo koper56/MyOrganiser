@@ -1,30 +1,59 @@
+from kivy.lang import Builder
 from kivy.app import App
-from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.popup import Popup
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.colorpicker import ColorPicker
 
+Builder.load_string('''
+<PaintWindow>:
+    orientation: 'vertical'
 
-class ColorScreen(Screen):
-    def __init__(self, **kwargs):
-        super(ColorScreen, self).__init__(**kwargs)
-        self.name = "ColorScreen"
-        self.color_picker = ColorPicker()
-        self.add_widget(self.color_picker)
+<PopupColor>:
+    title: 'Pick a Color'
+    size_hint: 1.0, 0.6
+    id: popupcolor
 
-        # To monitor changes, we can bind to color property changes
+    BoxLayout:
+        orientation: 'vertical'
+
+        ColorPicker:
+            size_hint: 1.0, 1.0
+
+        Button:
+            text: 'PICK AND CLOSE'
+            color: 0.435, 0.725, 0.56, 1
+            background_color: 0, 0.26, 0.27, 1
+            size_hint: 1.0, 0.2
+            on_press: popupcolor.on_press_dismiss()
+''')
+
+
+class PaintWindow(BoxLayout):
+    pass
+
+
+class PopupColor(Popup):
+    def on_press_dismiss(self, *args):
+        self.dismiss()
+        return False
+
+
+class PopupRun(App):
+    def build(self):
+        main_window = PaintWindow()
+        popup = PopupColor()
+        popup_color = ColorPicker()
+        popup.open()
+
         def on_color(instance, value):
-            print("RGBA = ", str(value))  # or instance.color
+            print("RGBA = ", str(value))
             print("HSV = ", str(instance.hsv))
             print("HEX = ", str(instance.hex_color))
+            hex_color = str(instance.hex_color)
+            # Return hex color code without '#'
+            return hex_color[1:]
 
-        self.color_picker.bind(color=on_color)
+        # Run function after change color in ColorPicker
+        popup_color.bind(color=on_color)
 
-
-class ColorPalette(App):
-    def build(self):
-        screen_manager = ScreenManager()
-        screen_manager.add_widget(ColorScreen())
-
-        return screen_manager
-
-
-ColorPalette().run()
+        return main_window
