@@ -1,3 +1,4 @@
+# Camera module for History/Sets
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.properties import StringProperty
@@ -54,7 +55,7 @@ class PopupRun(App):
     def build(self):
         content = ConfirmPopup()
         content.bind(on_answer=self._on_answer)
-        self.popup = Popup(title="Camera module",
+        self.popup = Popup(title="Camera module for sets",
                            content=content,
                            size_hint=(None, None),
                            size=(480, 600),
