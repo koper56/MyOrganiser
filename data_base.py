@@ -186,7 +186,7 @@ def insert_new_history_data(input_description, input_rate):
     new_data = HistoryData(id=next_id_history(),
                            date='{}'.format(time_format),
                            photo_source='sets/Set_from_{}.png'.format(
-                               str(next_id_value())),
+                               time_format),
                            description='{}'.format(
                                input_description),
                            rate='{}'.format(input_rate))
@@ -195,7 +195,7 @@ def insert_new_history_data(input_description, input_rate):
     session.add(new_data)
     session.commit()
     print('New Data: ID: {}, Date: {}, Photo: sets/Set_from_{}.png, '
-          'Description: {}, Set rate: {}'.format(next_id_history(),
+          'Description: {}, Set rate: {}'.format(next_id_history()-1,
                                                  time_format,
                                                  time_format,
                                                  input_description,
