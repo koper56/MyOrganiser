@@ -37,7 +37,8 @@ class PopupColor(Popup):
     def on_press_dismiss(self, colorpicker, *args):
         self.dismiss()
         color = str(colorpicker.hex_color)[1:]
-        print(color)
+        print('Picked color HEX code: #', color)
+
         return color
 
 
@@ -46,6 +47,5 @@ class PopupRun(App):
         main_window = PaintWindow()
         popup = PopupColor()
         popup.open()
-
 
         return main_window
