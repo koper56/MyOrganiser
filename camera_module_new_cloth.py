@@ -47,6 +47,7 @@ class ConfirmPopup(GridLayout):
     # Store photos in /photo directory
     def take_photo(self):
         camera = self.ids['camera']
+        # Function takes next ID value for new cloth from data base
         id_data = next_id_value()
         camera.export_to_png("photo/{}.png".format(id_data))
         print("Captured as '{}.png' in photo/ ".format(id_data))
