@@ -47,7 +47,7 @@ class ConfirmPopup(GridLayout):
     # Store photos in /sets directory
     def take_photo(self):
         camera = self.ids['camera']
-        time_format = time.strftime("%Y_%m_%d")
+        time_format = time.strftime("%d_%m_%Y")
         camera.export_to_png("sets/Set_from_{}.png".format(time_format))
         print("Captured as 'Set_from_{}.png'".format(time_format))
 
