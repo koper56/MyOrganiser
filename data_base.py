@@ -2,10 +2,19 @@ from sqlalchemy import Column, Integer, String, create_engine, select, update
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import func
+import time
 
+
+# Connect with database file, Echo = True returns commands in SQL language
 data_base = declarative_base()
+engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
+data_base.metadata.create_all(engine)
+data_base_session = sessionmaker(bind=engine)
+session = data_base_session()
+connection = engine.connect()
 
 
+# Create table with clothes data
 class ClothesData(data_base):
     __tablename__ = 'ClothesData'
     id = Column(Integer, primary_key=True)
@@ -21,12 +30,14 @@ class ClothesData(data_base):
     kind = Column(String(20), nullable=False)
 
 
-# Connect with data base, Echo = True returns commands in SQL language
-engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
-data_base.metadata.create_all(engine)
-data_base_session = sessionmaker(bind=engine)
-session = data_base_session()
-connection = engine.connect()
+# Create table with sets data
+class HistoryData(data_base):
+    __tablename__ = 'HistoryData'
+    id = Column(Integer, primary_key=True)
+    date = Column(String(20), nullable=False)
+    photo_source = Column(String(20), nullable=False)
+    description = Column(String(100), nullable=False)
+    rate = Column(Integer, nullable=False)
 
 
 # Return last value of id number + 1
@@ -44,29 +55,18 @@ def next_id_value():
 
 def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
                     input_description, input_exclusion, input_kind):
-    # TODO reformat id number to '001.jpg', '010.jpg', '100.jpg'
     # Insert data to new item in ClothesData table
     # Default ID = last ID + 1, for first item ID = 1
-    # Default photo source photo/'ID NUMBER'.jpg
+    # Default photo source photo/'ID NUMBER'.png
     # Default clear = True
     # Default rate = 0
-
-    '''
-    Run code with color palette
-    import color_palette as color
-    input_color_1 = color.get_color()
-    import color_palette as color
-    input_color_2 = color.get_color()
-    import color_palette as color
-    input_color_3 = color.get_color()
-    '''
 
     new_data = ClothesData(id=next_id_value(),
                            name='{}'.format(input_name),
                            color_1='{}'.format(input_color_1),
                            color_2='{}'.format(input_color_2),
                            color_3='{}'.format(input_color_3),
-                           photo_source='photo/{}.jpg'.format(
+                           photo_source='photo/{}.png'.format(
                                str(next_id_value())),
                            description='{}'.format(
                                input_description),
@@ -80,7 +80,7 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
     session.add(new_data)
     session.commit()
     print('New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
-          'Photo Source: photo/{}.jpg, Description: {}, Exclusion: {}, '
+          'Photo Source: photo/{}.png, Description: {}, Exclusion: {}, '
           'Clear: True, '
           'Rate: 0, Kind: {}'.format(next_id_value(), input_name,
                                      input_color_1, input_color_2,
@@ -160,3 +160,43 @@ def update_rate(input_name, input_rate):
         rate='{}'.format(input_rate))
     # Commits changes in ClothesData table
     connection.execute(update_data)
+
+
+# Return last value of id number + 1
+def next_id_history():
+    max_id = session.query(func.max(HistoryData.id).label("max_id_data"))
+    select_max = max_id.one()
+    try:
+        next_id = select_max.max_id_data + 1
+    # Except error when id = 0, set next id value equal 1
+    except TypeError:
+        print('First data in data base')
+        next_id = 1
+    return next_id
+
+
+def insert_new_history_data(input_description, input_rate):
+    # Insert new history to HistoryData table
+    # Default ID = last ID + 1, for first item ID = 1
+    # Default photo source 'sets/Set_from_d_m_y.png'
+
+    # Take time and store in format day_month_year
+    time_format = time.strftime("%d_%m_%Y")
+
+    new_data = HistoryData(id=next_id_history(),
+                           date='{}'.format(time_format),
+                           photo_source='sets/Set_from_{}.png'.format(
+                               str(next_id_value())),
+                           description='{}'.format(
+                               input_description),
+                           rate='{}'.format(input_rate))
+
+    # Commit new data
+    session.add(new_data)
+    session.commit()
+    print('New Data: ID: {}, Date: {}, Photo: sets/Set_from_{}.png, '
+          'Description: {}, Set rate: {}'.format(next_id_history(),
+                                                 time_format,
+                                                 time_format,
+                                                 input_description,
+                                                 input_rate))
