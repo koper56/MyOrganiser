@@ -1,10 +1,11 @@
-# Camera module for History/Sets
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.properties import StringProperty
 from kivy.app import App
 from kivy.lang import Builder
 import time
+
+# Camera module for History/Sets
 
 Builder.load_string('''
 <ConfirmPopup>:
