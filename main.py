@@ -2004,7 +2004,7 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.set_color1_button_pos)
 
         # Run function get_color from color_palette.py after press Color 1
-        self.set_color1_button.bind(on_press=self.pick_color1)
+        self.set_color1_button.bind(on_press=self.press_button_color1)
 
         # Define position of set color 2 button
         self.set_color2_button_pos = FloatLayout(size=(75, 25))
@@ -2018,7 +2018,7 @@ class AddNewClothWindow(Screen):
         self.set_color2_button_pos.add_widget(self.set_color2_button)
         self.add_widget(self.set_color2_button_pos)
         # Run function get_color from color_palette.py after press Color 2
-        self.set_color2_button.bind(on_press=self.pick_color2)
+        self.set_color2_button.bind(on_press=self.press_button_color2)
 
         # Define position of set color 3 button
         self.set_color3_button_pos = FloatLayout(size=(75, 25))
@@ -2032,7 +2032,7 @@ class AddNewClothWindow(Screen):
         self.set_color3_button_pos.add_widget(self.set_color3_button)
         self.add_widget(self.set_color3_button_pos)
         # Run function get_color from color_palette.py after press Color 3
-        self.set_color3_button.bind(on_press=self.pick_color3)
+        self.set_color3_button.bind(on_press=self.press_button_color3)
 
         # buttons with kinds (t_shirts, tank_tops, hoodies, shirts,
         # trousers, shorts, shoes, hats, jackets, sunglasses, necklaces,
@@ -2334,21 +2334,19 @@ class AddNewClothWindow(Screen):
 
     # Function run camera module in popup
     def camera_run(self, *args):
-        return self.camera_module_new_cloth.PopupRun().run()
+        self.camera_module_new_cloth.PopupRun().run()
 
     # Function run color palette module in popup
-    def pick_color1(self, *args):
+    def press_button_color1(self, btn):
         self.color_palette.PopupRun().run()
 
     # Function run color palette module in popup
-    def pick_color2(self, *args):
-        self.color2 = self.color_palette.PopupRun().run()
-        return self.color_palette.PopupRun().run()
+    def press_button_color2(self, btn):
+        self.color_palette.PopupRun().run()
 
     # Function run color palette module in popup
-    def pick_color3(self, *args):
-        self.color3 = self.color_palette.PopupRun().run()
-        return self.color_palette.PopupRun().run()
+    def press_button_color3(self, btn):
+        self.color_palette.PopupRun().run()
 
     # Functions under define 'kind_name" for press_button_kind
     # and press_save_button
@@ -2408,9 +2406,6 @@ class AddNewClothWindow(Screen):
         next_id = data_base.next_id_value()
 
         # Take value of color from pick_color1/2/3 functions
-        input_color_2 = 'None'
-        input_color_3 = 'None'
-
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \
@@ -2424,9 +2419,9 @@ class AddNewClothWindow(Screen):
                                 "[b]Kind:[/b] {}".format \
             (next_id,
              self.input_name.text,
-             self.color_from_pick_color1,
-             input_color_2,
-             input_color_3,
+             self.press_button_color1,
+             self.press_button_color2,
+             self.press_button_color3,
              next_id,
              self.input_description.text,
              self.input_exclusions.text,
@@ -2436,9 +2431,9 @@ class AddNewClothWindow(Screen):
         # Function commit in database changed name, description and exclusion
         # Test color code
         data_base.insert_new_data(self.input_name.text,
-                                  self.color_from_pick_color1,
-                                  '37ff26',
-                                  '37ff26',
+                                  self.press_button_color1,
+                                  self.press_button_color2,
+                                  self.press_button_color3,
                                   self.input_description.text,
                                   self.input_exclusions.text,
                                   self.kind_name)
