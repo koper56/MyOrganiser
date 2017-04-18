@@ -1927,8 +1927,8 @@ class PhotoWindow(Screen):
 
 
 class AddNewClothWindow(Screen):
-    import color_palette
     import camera_module_new_cloth
+    import color_palette
 
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -1988,7 +1988,7 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.photo_button_pos)
 
         # Run camera from camera_module_new_cloth.py after press photo
-        self.photo_button.bind(on_press=self.run_camera)
+        self.photo_button.bind(on_press=self.camera_run)
 
         # Define position of set color 1 button
         self.set_color1_button_pos = FloatLayout(size=(75, 25))
@@ -2331,8 +2331,8 @@ class AddNewClothWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-    # Function run camera module iin popup
-    def run_camera(self, *args):
+    # Function run camera module in popup
+    def camera_run(self, *args):
         return self.camera_module_new_cloth.PopupRun().run()
 
     # Function run color palette module in popup
