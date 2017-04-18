@@ -19,6 +19,7 @@ data_text_color = 0.17, 0.47, 1, 1
 data_label_background_color = 1, 0.2, 0.11, 1
 ornaments_color = 1, 1, 1, 1
 
+# Define window size for app
 Window.size = (800, 600)
 
 
@@ -2337,12 +2338,11 @@ class AddNewClothWindow(Screen):
 
     # Function run color palette module in popup
     def pick_color1(self, *args):
-        self.color3 = self.color_palette.PopupRun().run()
-        return self.color_palette.PopupRun().run()
+        self.color_palette.PopupRun().run()
 
     # Function run color palette module in popup
     def pick_color2(self, *args):
-        self.color3 = self.color_palette.PopupRun().run()
+        self.color2 = self.color_palette.PopupRun().run()
         return self.color_palette.PopupRun().run()
 
     # Function run color palette module in popup
@@ -2408,9 +2408,8 @@ class AddNewClothWindow(Screen):
         next_id = data_base.next_id_value()
 
         # Take value of color from pick_color1/2/3 functions
-        input_color_1 = '37ff26'
-        input_color_2 = '37ff25'
-        input_color_3 = '37ff24'
+        input_color_2 = 'None'
+        input_color_3 = 'None'
 
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
@@ -2425,7 +2424,7 @@ class AddNewClothWindow(Screen):
                                 "[b]Kind:[/b] {}".format \
             (next_id,
              self.input_name.text,
-             input_color_1,
+             self.color_from_pick_color1,
              input_color_2,
              input_color_3,
              next_id,
@@ -2437,7 +2436,7 @@ class AddNewClothWindow(Screen):
         # Function commit in database changed name, description and exclusion
         # Test color code
         data_base.insert_new_data(self.input_name.text,
-                                  '37ff26',
+                                  self.color_from_pick_color1,
                                   '37ff26',
                                   '37ff26',
                                   self.input_description.text,
