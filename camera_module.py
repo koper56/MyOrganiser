@@ -18,8 +18,8 @@ Builder.load_string('''
 		height: '44sp'
     Camera:
         id: camera
-        resolution: (480, 600)
         play: True
+        resolution: (600, 600)
 		Button:
 			text: 'TAKE PHOTO'
 			color: 0.435, 0.725, 0.56, 1
@@ -59,7 +59,7 @@ class PopupRun(App):
         self.popup = Popup(title="Camera module for sets",
                            content=content,
                            size_hint=(None, None),
-                           size=(480, 600),
+                           size=(600, 600),
                            auto_dismiss=False)
         self.popup.open()
 
