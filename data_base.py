@@ -19,9 +19,9 @@ class ClothesData(data_base):
     __tablename__ = 'ClothesData'
     id = Column(Integer, primary_key=True)
     name = Column(String(20), nullable=False)
-    color_1 = Column(String(20), nullable=False)
-    color_2 = Column(String(20), nullable=False)
-    color_3 = Column(String(20), nullable=False)
+    color_1 = Column(String(8), nullable=False)
+    color_2 = Column(String(8), nullable=False)
+    color_3 = Column(String(8), nullable=False)
     photo_source = Column(String(20), nullable=False)
     description = Column(String(100), nullable=False)
     exclusion = Column(String(250), nullable=False)
