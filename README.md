@@ -12,7 +12,9 @@ _import:_
       SQLAlchemy
 
 In first run app create file _weatherdata.txt_ with weather info from _weather.py_.
+
 With first data app create _file.db_ and two tables: _ClothesData_ and _HistoryData_
 
 Store clothes photos (png files) in ./photo.
+
 Store sets photos (png files) in ./sets.
