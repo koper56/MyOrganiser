@@ -36,8 +36,9 @@ class PaintWindow(BoxLayout):
 class PopupColor(Popup):
     def on_press_dismiss(self, colorpicker, *args):
         self.dismiss()
+        # Take hex color code without #
         hex_color = str(colorpicker.hex_color)[1:]
-        print('Picked color HEX code: #', hex_color)
+        print('Picked color HEX code: #{}'.format(hex_color))
 
         return hex_color
 
