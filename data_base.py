@@ -99,15 +99,15 @@ def get_kinds_clothes_data_row():
     return [row[0] for row in connection.execute(select_data)]
 
 
-# Return all names with input name of kind
 def get_names_clothes_by_kind(input_kind):
+    # Return all names with input name of kind
     select_data = select([ClothesData]).where(
         ClothesData.kind == input_kind)
     return [row[1] for row in connection.execute(select_data)]
 
 
-# Return all names with input value of rate
 def get_names_clothes_by_rate(input_rate):
+    # Return all names with input value of rate
     select_data = select([ClothesData]).where(
         ClothesData.rate == input_rate)
     return [row[1] for row in connection.execute(select_data)]
@@ -200,3 +200,33 @@ def insert_new_history_data(input_description, input_rate):
                                                  time_format,
                                                  input_description,
                                                  input_rate))
+
+
+def update_rate_history(input_date, input_rate):
+    # Function change rate by typed date of set
+    update_data = update(ClothesData).where(
+        HistoryData.date == input_date).values(
+        rate='{}'.format(input_rate))
+    # Commits changes in HistoryData table
+    connection.execute(update_data)
+
+
+def print_one_data_by_date(input_date):
+    # Function return all columns for typed date of set from HistoryData
+    select_data = select([HistoryData]).where(
+        HistoryData.date == input_date)
+    for row in connection.execute(select_data):
+        return row
+
+
+def get_date_sets_by_rate(input_rate):
+    # Return all date of sets with input value of rate
+    select_data = select([HistoryData]).where(
+        HistoryData.rate == input_rate)
+    return [row[1] for row in connection.execute(select_data)]
+
+
+def get_date_sets_data_row():
+    # Return all dates with data in HistoryData table
+    select_data = select([HistoryData.data])
+    return [row[0] for row in connection.execute(select_data)]
