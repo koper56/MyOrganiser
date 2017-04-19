@@ -8,11 +8,11 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
 from kivy.graphics import *
-from kivy.uix.colorpicker import ColorPicker
 from color_palette import PopupRunColorPalette, PopupColor
 from camera_module_new_cloth import PopupRunCameraNewCloth
 from camera_module import PopupRunCameraSet
 import data_base
+import time
 
 
 # From rgba to kivy code: rgba code/255.0
@@ -426,7 +426,7 @@ class HistoryWindow(Screen):
         # Define position, size of history day by day button
         self.Float_Layout = FloatLayout(size=(450, 100))
 
-        self.button = Button(text='Day by day',
+        self.button = Button(text='Add new set',
                              size_hint=(None, None),
                              size=(450, 50),
                              pos=(0, 400),
@@ -1839,24 +1839,189 @@ class RateSetWindow(Screen):
 
 
 class HistoryDayWindow(Screen):
-    # Rate of set
-    # Photo of set
-    # Elements of set
-
     def __init__(self, **kwargs):
         super(HistoryDayWindow, self).__init__(**kwargs)
         self.name = "dayhistorywindow"
 
-        # Define position of photo label
+        # Default value of input_rate.text
+        self.input_rate = '?'
+
+        # Define position of add cloth window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > History by day < < <',
+        label_settings = Label(text='> > > Add new set to history < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
                                color=label_text_color)
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
+
+        # Define position, size of 1st star
+        self.one_star_button_pos = FloatLayout(size=(100, 100))
+        self.one_star_button = Button(text='1',
+                                      markup=True,
+                                      size=(100, 100),
+                                      pos=(150, 400),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.one_star_button_pos.add_widget(self.one_star_button)
+        self.add_widget(self.one_star_button_pos)
+        # Run function press_button_one_star and press_check_button after press '1'
+        self.one_star_button.bind(on_press=self.press_button_one_star)
+        self.one_star_button.bind(on_press=self.press_button_rate)
+
+        # Define position, size of 2nd star
+        self.two_star_button_pos = FloatLayout(size=(100, 100))
+        self.two_star_button = Button(text='2',
+                                      markup=True,
+                                      size=(100, 100),
+                                      pos=(250, 400),
+                                      color=button_text_color,
+                                      size_hint=(None, None),
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
+                                      size_hint_x=None)
+
+        self.two_star_button_pos.add_widget(self.two_star_button)
+        self.add_widget(self.two_star_button_pos)
+        # Run function press_button_two_star and press_check_button after press '2'
+        self.two_star_button.bind(on_press=self.press_button_two_star)
+        self.two_star_button.bind(on_press=self.press_button_rate)
+
+        # Define position, size of 3rd star
+        self.three_star_button_pos = FloatLayout(size=(100, 100))
+        self.three_star_button = Button(text='3',
+                                        markup=True,
+                                        size=(100, 100),
+                                        pos=(350, 400),
+                                        color=button_text_color,
+                                        size_hint=(None, None),
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
+                                        size_hint_x=None)
+
+        self.three_star_button_pos.add_widget(self.three_star_button)
+        self.add_widget(self.three_star_button_pos)
+        # Run function press_button_three_star and press_check_button after press '3'
+        self.three_star_button.bind(on_press=self.press_button_three_star)
+        self.three_star_button.bind(on_press=self.press_button_rate)
+
+        # Define position, size of 4th star
+        self.four_star_button_pos = FloatLayout(size=(100, 100))
+        self.four_star_button = Button(text='4',
+                                       markup=True,
+                                       size=(100, 100),
+                                       pos=(450, 400),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.four_star_button_pos.add_widget(self.four_star_button)
+        self.add_widget(self.four_star_button_pos)
+        # Run function press_button_four_star and press_check_button after press '4'
+        self.four_star_button.bind(on_press=self.press_button_four_star)
+        self.four_star_button.bind(on_press=self.press_button_rate)
+
+        # Define position, size of 5th star
+        self.five_star_button_pos = FloatLayout(size=(100, 100))
+        self.five_star_button = Button(text='5',
+                                       markup=True,
+                                       size=(100, 100),
+                                       pos=(550, 400),
+                                       color=button_text_color,
+                                       size_hint=(None, None),
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
+                                       size_hint_x=None)
+
+        self.five_star_button_pos.add_widget(self.five_star_button)
+        self.add_widget(self.five_star_button_pos)
+        # Run function press_button_five_star and press_check_button after press '5'
+        self.five_star_button.bind(on_press=self.press_button_five_star)
+        self.five_star_button.bind(on_press=self.press_button_rate)
+
+        # Define position of input new name box
+        time_format = time.strftime("%d_%m_%Y")
+        self.input_date_pos = FloatLayout(size=(300, 50))
+        self.input_date = TextInput(text='{}'.format(time_format),
+                                    multiline=False,
+                                    size=(300, 50),
+                                    pos=(150, 300),
+                                    size_hint=(None, None))
+        self.input_date_pos.add_widget(self.input_date)
+        self.add_widget(self.input_date_pos)
+
+        # Define position of input new description box
+        self.input_description_pos = FloatLayout(size=(300, 50))
+        self.input_description = TextInput(text='Description',
+                                           multiline=False,
+                                           size=(300, 50),
+                                           pos=(150, 250),
+                                           size_hint=(None, None))
+        self.input_description_pos.add_widget(self.input_description)
+        self.add_widget(self.input_description_pos)
+
+        # Define position of take photo button
+        self.photo_button_pos = FloatLayout(size=(75, 25))
+        self.photo_button = Button(text='Photo',
+                                   font_size=12,
+                                   size_hint=(None, None),
+                                   size=(75, 25),
+                                   pos=(150, 200),
+                                   color=button_text_color,
+                                   background_color=button_background)
+        self.photo_button_pos.add_widget(self.photo_button)
+        self.add_widget(self.photo_button_pos)
+
+        # Run camera from camera_module_new_cloth.py after press photo
+        self.photo_button.bind(on_press=self.camera_run)
+
+        # Define position of info label
+        self.info_label_pos = AnchorLayout(anchor_x='center',
+                                           anchor_y='bottom')
+        self.info_label = Label(text='Select rate to check data',
+                                size=(100, 50),
+                                color=label_text_color,
+                                size_hint=(None, None))
+        self.info_label_pos.add_widget(self.info_label)
+        self.add_widget(self.info_label_pos)
+
+        # Define position of save button
+        self.save_button_pos = AnchorLayout(anchor_x='right',
+                                            anchor_y='bottom')
+        self.save_button = Button(text='SAVE',
+                                  size=(100, 50),
+                                  color=button_text_color,
+                                  background_color=button_background,
+                                  size_hint=(None, None))
+        self.save_button_pos.add_widget(self.save_button)
+        self.add_widget(self.save_button_pos)
+
+        # Run function press button after press SAVE
+        self.save_button.bind(on_press=self.press_save_button)
+
+        # Check data label, shows full data of clothes
+        # Define position of check data label
+        self.check_label_pos = AnchorLayout(anchor_y='center',
+                                            anchor_x='right')
+        # text_size=self.size -> Wrapping text
+        self.check_label = Label(text='[i]Check new set[/i]',
+                                 markup=True,
+                                 font_size='16sp',
+                                 text_size=(300, 400),
+                                 valign='middle',
+                                 halign='left',
+                                 size_hint=(None, None),
+                                 color=data_text_color)
+        self.check_label_pos.add_widget(self.check_label)
+        self.add_widget(self.check_label_pos)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -1872,6 +2037,46 @@ class HistoryDayWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
+
+    def press_button_one_star(self, btn):
+        self.input_rate = '1'
+
+    def press_button_two_star(self, btn):
+        self.input_rate = '2'
+
+    def press_button_three_star(self, btn):
+        self.input_rate = '3'
+
+    def press_button_four_star(self, btn):
+        self.input_rate = '4'
+
+    def press_button_five_star(self, btn):
+        self.input_rate = '5'
+
+    # Function run camera module in popup
+    def camera_run(self, btn):
+        PopupRunCameraSet().run()
+
+    def press_button_rate(self, btn):
+        next_id = data_base.next_id_history()
+
+        # Take value of color from pick_color1/2/3 functions
+        self.check_label.text = "[i]New set:[/i] \n" \
+                                "[b]ID:[/b] {}\n" \
+                                "[b]Date:[/b] {}\n" \
+                                "[b]Description:[/b] {}\n" \
+                                "[b]Photo:[/b] \nsets/{}.png \n" \
+                                "[b]Rate:[/b] {}".format \
+            (next_id,
+             self.input_date.text,
+             self.input_description.text,
+             self.input_date.text,
+             self.input_rate)
+
+    def press_save_button(self, btn):
+        data_base.insert_new_history_data(self.input_date.text,
+                                          self.input_description.text,
+                                          self.input_rate)
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -2345,10 +2550,12 @@ class AddNewClothWindow(Screen):
 
     # Function run color palette module in popup
     def press_button_color2(self, btn):
+        self.input_color2 ='ff987364'
         PopupRunColorPalette().run()
 
     # Function run color palette module in popup
     def press_button_color3(self, btn):
+        self.input_color3 ='ff987364'
         PopupRunColorPalette().run()
 
 
@@ -2408,9 +2615,6 @@ class AddNewClothWindow(Screen):
 
     def press_button_kind(self, btn):
         next_id = data_base.next_id_value()
-
-        self.input_color2 ='ff987364'
-        self.input_color3 ='ff987364'
 
         # Take value of color from pick_color1/2/3 functions
         self.check_label.text = "[i]Check data:[/i] \n" \
