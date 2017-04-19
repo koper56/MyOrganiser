@@ -8,7 +8,12 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
 from kivy.graphics import *
+from kivy.uix.colorpicker import ColorPicker
+from color_palette import PopupRunColorPalette, PopupColor
+from camera_module_new_cloth import PopupRunCameraNewCloth
+from camera_module import PopupRunCameraSet
 import data_base
+
 
 # From rgba to kivy code: rgba code/255.0
 # Colors in app
@@ -1874,7 +1879,6 @@ class HistoryDayWindow(Screen):
 
 
 class PhotoWindow(Screen):
-    import camera_module
 
     def __init__(self, **kwargs):
         super(PhotoWindow, self).__init__(**kwargs)
@@ -1920,7 +1924,7 @@ class PhotoWindow(Screen):
         self.add_widget(self.Anchor_Layout)
 
     def camera_run(self, *args):
-        return self.camera_module.PopupRun().run()
+        return PopupRunCameraSet().run()
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -1928,8 +1932,6 @@ class PhotoWindow(Screen):
 
 
 class AddNewClothWindow(Screen):
-    import camera_module_new_cloth
-    import color_palette
 
     def __init__(self, **kwargs):
         super(AddNewClothWindow, self).__init__(**kwargs)
@@ -2333,20 +2335,22 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.Anchor_Layout)
 
     # Function run camera module in popup
-    def camera_run(self, *args):
-        self.camera_module_new_cloth.PopupRun().run()
+    def camera_run(self, btn):
+        PopupRunCameraNewCloth().run()
 
     # Function run color palette module in popup
     def press_button_color1(self, btn):
-        self.color_palette.PopupRun().run()
+        self.input_color1 ='ff987364'
+        PopupRunColorPalette().run()
 
     # Function run color palette module in popup
     def press_button_color2(self, btn):
-        self.color_palette.PopupRun().run()
+        PopupRunColorPalette().run()
 
     # Function run color palette module in popup
     def press_button_color3(self, btn):
-        self.color_palette.PopupRun().run()
+        PopupRunColorPalette().run()
+
 
     # Functions under define 'kind_name" for press_button_kind
     # and press_save_button
@@ -2405,6 +2409,9 @@ class AddNewClothWindow(Screen):
     def press_button_kind(self, btn):
         next_id = data_base.next_id_value()
 
+        self.input_color2 ='ff987364'
+        self.input_color3 ='ff987364'
+
         # Take value of color from pick_color1/2/3 functions
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
@@ -2419,9 +2426,9 @@ class AddNewClothWindow(Screen):
                                 "[b]Kind:[/b] {}".format \
             (next_id,
              self.input_name.text,
-             self.press_button_color1,
-             self.press_button_color2,
-             self.press_button_color3,
+             self.input_color1,
+             self.input_color2,
+             self.input_color3,
              next_id,
              self.input_description.text,
              self.input_exclusions.text,
@@ -2431,9 +2438,9 @@ class AddNewClothWindow(Screen):
         # Function commit in database changed name, description and exclusion
         # Test color code
         data_base.insert_new_data(self.input_name.text,
-                                  self.press_button_color1,
-                                  self.press_button_color2,
-                                  self.press_button_color3,
+                                  self.input_color1,
+                                  self.input_color2,
+                                  self.input_color3,
                                   self.input_description.text,
                                   self.input_exclusions.text,
                                   self.kind_name)
