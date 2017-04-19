@@ -1747,10 +1747,9 @@ class RateClothWindow(Screen):
         # for typed data in input_box
         self.show_photo.source = str(function_from_database[5])
 
-        '''
-
-        # Change color of value in star to red for rate of selected cloth
+        # TODO: Change color of value in star to red for rate of selected cloth
         # after press CHECK
+        '''
         if function_from_database[9] == '1':
             self.one_star_button.text = '[color=FF0000]1[/color]'
         elif function_from_database[9] == '2':
