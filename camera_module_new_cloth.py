@@ -53,7 +53,7 @@ class ConfirmPopup(GridLayout):
         print("Captured as '{}.png' in photo/ ".format(id_data))
 
 
-class PopupRun(App):
+class PopupRunCameraNewCloth(App):
     def build(self):
         content = ConfirmPopup()
         content.bind(on_answer=self._on_answer)
