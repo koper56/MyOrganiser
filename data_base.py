@@ -204,7 +204,7 @@ def insert_new_history_data(input_description, input_rate):
 
 def update_rate_history(input_date, input_rate):
     # Function change rate by typed date of set
-    update_data = update(ClothesData).where(
+    update_data = update(HistoryData).where(
         HistoryData.date == input_date).values(
         rate='{}'.format(input_rate))
     # Commits changes in HistoryData table
