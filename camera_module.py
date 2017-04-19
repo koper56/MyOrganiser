@@ -52,7 +52,7 @@ class ConfirmPopup(GridLayout):
         print("Captured as 'Set_from_{}.png'".format(time_format))
 
 
-class PopupRun(App):
+class PopupRunCameraSet(App):
     def build(self):
         content = ConfirmPopup()
         content.bind(on_answer=self._on_answer)
