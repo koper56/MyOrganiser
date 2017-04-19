@@ -175,7 +175,7 @@ def next_id_history():
     return next_id
 
 
-def insert_new_history_data(input_description, input_rate):
+def insert_new_history_data(input_date, input_description, input_rate):
     # Insert new history to HistoryData table
     # Default ID = last ID + 1, for first item ID = 1
     # Default photo source 'sets/Set_from_d_m_y.png'
@@ -184,9 +184,8 @@ def insert_new_history_data(input_description, input_rate):
     time_format = time.strftime("%d_%m_%Y")
 
     new_data = HistoryData(id=next_id_history(),
-                           date='{}'.format(time_format),
-                           photo_source='sets/Set_from_{}.png'.format(
-                               time_format),
+                           date='{}'.format(input_date),
+                           photo_source='sets/Set_from_{}.png'.format(input_date),
                            description='{}'.format(
                                input_description),
                            rate='{}'.format(input_rate))
