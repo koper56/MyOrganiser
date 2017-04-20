@@ -440,7 +440,7 @@ class HistoryWindow(Screen):
         # Define position, size of photo button
         self.Float_Layout = FloatLayout(size=(450, 100))
 
-        self.button = Button(text='Photo',
+        self.button = Button(text='Change set data',
                              size_hint=(None, None),
                              size=(450, 50),
                              pos=(0, 350),
@@ -468,11 +468,11 @@ class HistoryWindow(Screen):
 
     # Define move after press day by day button
     def move_direction_day_history(self, *args):
-        self.manager.current = "dayhistorywindow"
+        self.manager.current = "addhistorywindow"
 
     # Define move after press photo button
     def move_direction_photo(self, *args):
-        self.manager.current = "photowindow"
+        self.manager.current = "changehistorywindow"
 
     # Define move after press back button
     def move_direction_main_window(self, *args):
@@ -1837,10 +1837,10 @@ class RateSetWindow(Screen):
         self.manager.current = "ratewindow"
 
 
-class HistoryDayWindow(Screen):
+class AddHistoryWindow(Screen):
     def __init__(self, **kwargs):
-        super(HistoryDayWindow, self).__init__(**kwargs)
-        self.name = "dayhistorywindow"
+        super(AddHistoryWindow, self).__init__(**kwargs)
+        self.name = "addhistorywindow"
 
         # Default value of input_rate.text
         # Necessary to run function press_button_x_star
@@ -2085,16 +2085,16 @@ class HistoryDayWindow(Screen):
         self.manager.current = "historywindow"
 
 
-class PhotoWindow(Screen):
+class ChangeHistoryWindow(Screen):
 
     def __init__(self, **kwargs):
-        super(PhotoWindow, self).__init__(**kwargs)
-        self.name = "photowindow"
+        super(ChangeHistoryWindow, self).__init__(**kwargs)
+        self.name = "changehistorywindow"
 
         # Define position of photo window label
         label_position = AnchorLayout(anchor_x='center',
                                       anchor_y='top')
-        label_settings = Label(text='> > > Photo < < <',
+        label_settings = Label(text='> > > Change set data < < <',
                                font_size='20sp',
                                size=(200, 50),
                                size_hint=(None, None),
@@ -2102,18 +2102,6 @@ class PhotoWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
-        # Take camera screen from camera_module.py after press button
-        self.Float_Layout = FloatLayout(size=(450, 100))
-        self.button = Button(text='Turn on camera',
-                             size_hint=(None, None),
-                             size=(450, 50),
-                             pos=(0, 400),
-                             color=button_text_color,
-                             background_color=button_background)
-        self.button.bind(on_release=self.camera_run)
-
-        self.Float_Layout.add_widget(self.button)
-        self.add_widget(self.Float_Layout)
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -2130,8 +2118,6 @@ class PhotoWindow(Screen):
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
 
-    def camera_run(self, *args):
-        return PopupRunCameraSet().run()
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -3233,8 +3219,8 @@ class MyOrganiser(App):
         screen_manager.add_widget(RateSetWindow())
 
         # For History Window
-        screen_manager.add_widget(HistoryDayWindow())
-        screen_manager.add_widget(PhotoWindow())
+        screen_manager.add_widget(AddHistoryWindow())
+        screen_manager.add_widget(ChangeHistoryWindow())
 
         # For Change Window
         screen_manager.add_widget(AddNewClothWindow())
