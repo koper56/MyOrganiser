@@ -2078,6 +2078,7 @@ class HistoryDayWindow(Screen):
         data_base.insert_new_history_data(self.input_date.text,
                                           self.input_description.text,
                                           self.input_rate)
+        self.check_label.text = 'New set added!'
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
