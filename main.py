@@ -1842,8 +1842,9 @@ class HistoryDayWindow(Screen):
         super(HistoryDayWindow, self).__init__(**kwargs)
         self.name = "dayhistorywindow"
 
-        # Necessary to run function press_button_x_star
         # Default value of input_rate.text
+        # Necessary to run function press_button_x_star
+
         self.input_rate = '?'
 
         # Define position of add cloth window label
