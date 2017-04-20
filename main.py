@@ -1843,6 +1843,7 @@ class HistoryDayWindow(Screen):
         self.name = "dayhistorywindow"
 
         # Default value of input_rate.text
+        # Necessary to run function press_button_x_star
         self.input_rate = '?'
 
         # Define position of add cloth window label
