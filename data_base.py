@@ -201,10 +201,11 @@ def insert_new_history_data(input_date, input_description, input_rate):
                                                  input_rate))
 
 
-def update_rate_history(input_date, input_rate):
-    # Function change rate by typed date of set
+def update_description_and_rate_history(input_date, input_description, input_rate):
+    # Function change description and rate by typed date of set
     update_data = update(HistoryData).where(
         HistoryData.date == input_date).values(
+        description='{}'.format(input_description),
         rate='{}'.format(input_rate))
     # Commits changes in HistoryData table
     connection.execute(update_data)
@@ -227,5 +228,5 @@ def get_date_sets_by_rate(input_rate):
 
 def get_date_sets_data_row():
     # Return all dates with data in HistoryData table
-    select_data = select([HistoryData.data])
+    select_data = select([HistoryData.date])
     return [row[0] for row in connection.execute(select_data)]
