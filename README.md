@@ -1,5 +1,6 @@
 MyOrganiser
 ===========
+<img align="right" height="250" src="http://i.imgur.com/0yPtcWq.png"/>
 _My first project, started on February 9th 2017._
 
 
