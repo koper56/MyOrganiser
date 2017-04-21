@@ -1177,14 +1177,14 @@ class ChooseKinds(Screen):
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        # ||||| characters
         self.search_result.text = "[i]Result:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
                                   "[b]Colors: " \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███[/color][/b] \n" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]|||||[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
@@ -1454,14 +1454,14 @@ class ChooseRates(Screen):
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        # ||||| characters
         self.search_result.text = "[i]Result:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
                                   "[b]Colors: " \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███[/color][/b] \n" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]|||||[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
@@ -1773,14 +1773,14 @@ class RateClothWindow(Screen):
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        # ||||| characters
         self.search_result.text = "[i]Result:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
                                   "[b]Colors: " \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███[/color][/b] \n" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]|||||[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
@@ -2852,9 +2852,9 @@ class AddNewClothWindow(Screen):
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \
                                 "[b]Colors: " \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███[/color][/b] \n" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]|||||[/color][/b] \n" \
                                 "[b]Photo:[/b] photo/{}.jpg \n" \
                                 "[b]Description:[/b] {}\n" \
                                 "[b]Exclusions:[/b] {}\n" \
@@ -3033,14 +3033,14 @@ class ChangeClearWindow(Screen):
         # Data for text in check_label with new data and data from data base
         # for typed name in input_name
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        #||||| characters
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \
                                 "[b]Colors: " \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███[/color][/b] \n" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]|||||[/color][/b] \n" \
                                 "[b]Photo:[/b] {}\n" \
                                 "[b]Description:[/b] {}\n" \
                                 "[b]Exclusions:[/b] {}\n" \
@@ -3230,14 +3230,14 @@ class ChangeClothData(Screen):
         # Data for text in check_label with new data and data from data base
         # for typed name in input_name
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        # ||||| characters
         self.check_label.text = "[i]Check data:[/i] \n" \
                                 "[b]ID:[/b] {}\n" \
                                 "[b]Name:[/b] {}\n" \
                                 "[b]Colors: " \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███ [/color]" \
-                                "[color={}]███[/color][/b] \n" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]||||| [/color]" \
+                                "[color={}]|||||[/color][/b] \n" \
                                 "[b]Photo:[/b] {}\n" \
                                 "[b]Description:[/b] {}\n" \
                                 "[b]Exclusions:[/b] {}\n" \
@@ -3396,14 +3396,14 @@ class DeleteCloth(Screen):
         # Data for text in search_result from all columns in data base
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
-        # ███ characters
+        # ||||| characters
         self.search_result.text = "[i][color=FF0000]Delete:[/color][/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Name:[/b] {}\n" \
                                   "[b]Colors: " \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███ [/color]" \
-                                  "[color={}]███[/color][/b] \n" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]|||||[/color][/b] \n" \
                                   "[b]Photo:[/b] {}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Exclusions:[/b] {}\n" \
