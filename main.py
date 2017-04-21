@@ -3337,15 +3337,15 @@ class ChangeClearWindow(Screen):
         self.save_button.bind(on_press=self.press_button_save)
 
         # Define position of label with all data
-        self.all_data_pos = FloatLayout(size=(100, 450))
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database,
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 450),
-                              pos=(0, 450),
+                              text_size=(100, 400),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -3541,15 +3541,15 @@ class ChangeClothData(Screen):
         self.save_button.bind(on_press=self.press_button_save)
 
         # Define position of label with all data
-        self.all_data_pos = FloatLayout(size=(100, 450))
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database,
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 450),
-                              pos=(0, 450),
+                              text_size=(100, 400),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
