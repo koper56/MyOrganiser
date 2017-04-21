@@ -4,7 +4,6 @@ sets/
 workspace.py
 weatherdata.txt
 test_sqlalchemy.db
-*.png
 .DS_Store
 .idea/.DS_Store
 .idea/MyOrganiser_git_null.iml
