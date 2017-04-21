@@ -64,6 +64,15 @@ class MainWindow(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position of logo image
+        logo_position = AnchorLayout(anchor_x='right',
+                                      anchor_y='top')
+        logo = Image(source='png/logo_morg_100.png',
+                     size=(100, 100),
+                     size_hint=(None, None))
+        logo_position.add_widget(logo)
+        self.add_widget(logo_position)
+
         # Define position, size of choose
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='center')
