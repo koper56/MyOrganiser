@@ -3,7 +3,6 @@ photo/
 sets/
 workspace.py
 weatherdata.txt
-test_sqlalchemy.db
 .DS_Store
 .idea/
 
@@ -96,3 +95,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+data_base_file.db
