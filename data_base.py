@@ -5,13 +5,8 @@ from sqlalchemy.sql import func
 import time
 
 
-# Connect with database file, Echo = True returns commands in SQL language
+# Create tables in data base
 data_base = declarative_base()
-engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
-data_base.metadata.create_all(engine)
-data_base_session = sessionmaker(bind=engine)
-session = data_base_session()
-connection = engine.connect()
 
 
 # Create table with clothes data
@@ -39,6 +34,13 @@ class HistoryData(data_base):
     description = Column(String(100), nullable=False)
     rate = Column(Integer, nullable=False)
 
+
+# Connect with database file, Echo = True returns commands in SQL language
+engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
+data_base.metadata.create_all(engine)
+data_base_session = sessionmaker(bind=engine)
+session = data_base_session()
+connection = engine.connect()
 
 # Return last value of id number + 1
 def next_id_value():
