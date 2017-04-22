@@ -136,6 +136,8 @@ def update_item(input_name, input_new_name, input_description,
         exclusion='{}'.format(input_exclusion))
     # Commits changes in ClothesData table
     connection.execute(update_data)
+    print('Changes commited in {} -> {}'.format(input_name, input_new_name))
+
 
 
 def delete_item(input_id):
@@ -144,6 +146,8 @@ def delete_item(input_id):
     session.delete(selected_item)
     # Commit delete
     session.commit()
+    print('Cloth id {} deleted'.format(input_id))
+
 
 
 def update_clear(input_name, input_clear):
@@ -152,6 +156,8 @@ def update_clear(input_name, input_clear):
         clear='{}'.format(input_clear))
     # Commits changes in ClothesData table
     connection.execute(update_data)
+    print('Changes commited in {}'.format(input_name))
+
 
 
 def update_rate(input_name, input_rate):
@@ -160,6 +166,8 @@ def update_rate(input_name, input_rate):
         rate='{}'.format(input_rate))
     # Commits changes in ClothesData table
     connection.execute(update_data)
+    print('Changes commited in {}'.format(input_name))
+
 
 
 # Return last value of id number + 1
@@ -209,6 +217,7 @@ def update_description_and_rate_history(input_date, input_description, input_rat
         rate='{}'.format(input_rate))
     # Commits changes in HistoryData table
     connection.execute(update_data)
+    print('Changes commited in {}'.format(input_date))
 
 
 def print_one_data_by_date(input_date):
