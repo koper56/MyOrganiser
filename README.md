@@ -7,6 +7,9 @@ _My first project, started on February 9th 2017._
 
 Description
 -----------
+_Put your wardrobe to python!_
+
+
 App for manage clothes and sets of clothes. 
  - search
  - rate
