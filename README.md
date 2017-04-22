@@ -36,7 +36,7 @@ How to use
 ----------
 In first run app create file _weatherdata.txt_ with weather info from _weather.py_.
 
-In first run app create _file.db_ with two tables: _ClothesData_ and _HistoryData_.
+In first run app create _data_base_file.db_ with two tables: _ClothesData_ and _HistoryData_.
 
 Store clothes photos (png files) in ./photo.
 

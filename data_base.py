@@ -36,7 +36,7 @@ class HistoryData(data_base):
 
 
 # Connect with database file, Echo = True returns commands in SQL language
-engine = create_engine('sqlite:///test_sqlalchemy.db', echo=False)
+engine = create_engine('sqlite:///data_base_file.db', echo=False)
 data_base.metadata.create_all(engine)
 data_base_session = sessionmaker(bind=engine)
 session = data_base_session()
