@@ -5,11 +5,7 @@ workspace.py
 weatherdata.txt
 test_sqlalchemy.db
 .DS_Store
-.idea/.DS_Store
-.idea/MyOrganiser_git_null.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
