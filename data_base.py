@@ -84,7 +84,7 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
     print('New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
           'Photo Source: photo/{}.png, Description: {}, Exclusion: {}, '
           'Clear: True, '
-          'Rate: 0, Kind: {}'.format(next_id_value(), input_name,
+          'Rate: 0, Kind: {}'.format(next_id_value()-1, input_name,
                                      input_color_1, input_color_2,
                                      input_color_3, next_id_value(),
                                      input_description, input_exclusion,
