@@ -30,7 +30,7 @@ Python _3.6_
 
 [Pyowm](https://github.com/csparpa/pyowm)   _2.6.1_     [API](https://home.openweathermap.org/): 3680a47900fb30de7d81ef3cb1a7d9fb
 
-[SQLAlchemy](www.sqlalchemy.org)
+[SQLAlchemy](https://sqlalchemy.org)
 
 How to use
 ----------
