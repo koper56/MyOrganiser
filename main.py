@@ -11,6 +11,7 @@ from kivy.graphics import *
 from color_palette import PopupRunColorPalette, PopupColor
 from camera_module_new_cloth import PopupRunCameraNewCloth
 from camera_module import PopupRunCameraSet
+from weather import print_weather_warsaw
 import data_base
 import time
 
@@ -268,6 +269,7 @@ class ChooseWindow(Screen):
         # Define position of weather label,
         # run print_weather_warsaw from weather.py,
         # print text from weatherdata.txt
+        print_weather_warsaw()
         with open('weatherdata.txt', encoding='utf-8') as weatherdata:
             read_weatherdata = weatherdata.read()
 
