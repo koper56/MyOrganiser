@@ -96,6 +96,26 @@ def get_names_clothes_data_row():
     return [row[0] for row in connection.execute(select_data)]
 
 
+def get_id_clothes_data_row():
+    select_data = select([ClothesData.id])
+    return [row[0] for row in connection.execute(select_data)]
+
+
+def get_color1_clothes_data_row():
+    select_data = select([ClothesData.color_1])
+    return [row[0] for row in connection.execute(select_data)]
+
+
+def get_color2_clothes_data_row():
+    select_data = select([ClothesData.color_2])
+    return [row[0] for row in connection.execute(select_data)]
+
+
+def get_color3_clothes_data_row():
+    select_data = select([ClothesData.color_3])
+    return [row[0] for row in connection.execute(select_data)]
+
+
 def get_kinds_clothes_data_row():
     select_data = select([ClothesData.kind])
     return [row[0] for row in connection.execute(select_data)]
@@ -125,6 +145,13 @@ def print_all_name_from_all():
 def print_one_data_by_name(input_name):
     select_data = select([ClothesData]).where(
         ClothesData.name == input_name)
+    for row in connection.execute(select_data):
+        return row
+
+
+def print_one_data_by_id(input_id):
+    select_data = select([ClothesData]).where(
+        ClothesData.id == input_id)
     for row in connection.execute(select_data):
         return row
 
