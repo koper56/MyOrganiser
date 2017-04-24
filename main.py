@@ -1226,6 +1226,147 @@ class ChooseColors(Screen):
         label_position.add_widget(label_settings)
         self.add_widget(label_position)
 
+        # Define position of text input box
+        self.input_box_pos = AnchorLayout(anchor_x='center',
+                                          anchor_y='bottom')
+        self.input_box = TextInput(text='Type ID',
+                                   multiline=False,
+                                   size=(100, 50),
+                                   size_hint=(None, None))
+        self.input_box_pos.add_widget(self.input_box)
+        self.add_widget(self.input_box_pos)
+
+        # Define position of search button
+        self.search_button_pos = AnchorLayout(anchor_x='right',
+                                              anchor_y='bottom')
+        self.search_button = Button(text='OK',
+                                    size=(100, 50),
+                                    color=button_text_color,
+                                    background_color=button_background,
+                                    size_hint=(None, None))
+        self.search_button_pos.add_widget(self.search_button)
+        self.add_widget(self.search_button_pos)
+
+        # Run function press button after press OK
+        self.search_button.bind(on_press=self.press_button)
+
+        # Search result label, shows full data of clothes
+        # Define position of search result label
+        self.search_result_pos = AnchorLayout(anchor_y='center',
+                                              anchor_x='center')
+        # text_size=self.size -> Wrapping text
+        self.search_result = Label(text='[i]Search result[/i]',
+                                   markup=True,
+                                   font_size='16sp',
+                                   text_size=(250, 400),
+                                   valign='middle',
+                                   halign='left',
+                                   size_hint=(None, None),
+                                   color=data_text_color)
+        self.search_result_pos.add_widget(self.search_result)
+        self.add_widget(self.search_result_pos)
+
+        # Define position of label with all data
+        self.all_data_pos = AnchorLayout(anchor_y='center',
+                                         anchor_x='left')
+        # Take all names from data_base.py get_names_clothes_data_row func
+        # and return in label
+        id_from_database = data_base.get_id_clothes_data_row()
+        for id_number in id_from_database:
+            self.id_number_add = 'ID: {}'.format(id_number)
+
+        color_1_from_database = data_base.get_color1_clothes_data_row()
+        for color1 in color_1_from_database:
+            self.color_1_value = '[color={}]|||||[/color]'.format(color1)
+
+        color_2_from_database = data_base.get_color2_clothes_data_row()
+        for color2 in color_2_from_database:
+            self.color_2_value = '[color={}]|||||[/color]'.format(color2)
+
+        color_3_from_database = data_base.get_color3_clothes_data_row()
+        for color3 in color_3_from_database:
+            self.color_3_value = '[color={}]|||||[/color]'.format(color3)
+
+        self.all_data_id_colors = self.id_number_add, self.color_1_value, \
+                                  self.color_2_value, self.color_3_value
+        self.all_data = Label(text=str(self.all_data_id_colors),
+                              markup=True,
+                              font_size='16sp',
+                              text_size=(100, 400),
+                              valign='middle',
+                              halign='left',
+                              size_hint=(None, None),
+                              color=data_text_color)
+        self.all_data_pos.add_widget(self.all_data)
+        self.add_widget(self.all_data_pos)
+
+        # Define position of label with photo
+        self.show_photo_pos = AnchorLayout(anchor_y='center',
+                                           anchor_x='right')
+        # Default icon in source
+        self.show_photo = Image(source='png/database.png',
+                                size=(200, 360),
+                                size_hint=(None, None))
+        self.show_photo_pos.add_widget(self.show_photo)
+        self.add_widget(self.show_photo_pos)
+
+        # Define position, size of back button
+        self.Anchor_Layout = AnchorLayout(anchor_x='left',
+                                          anchor_y='bottom')
+        self.button = Button(text='back',
+                             size=(100, 100),
+                             color=button_text_color,
+                             size_hint=(None, None),
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
+                             size_hint_x=None)
+        self.button.bind(on_release=self.move_direction_choose_window)
+
+        self.Anchor_Layout.add_widget(self.button)
+        self.add_widget(self.Anchor_Layout)
+
+    def press_button(self, btn):
+        # Send text after press button OK from input box to function in data
+        # base, take data and return in search_result label and photo_source
+
+        # Connect with function print_one_data_by_name form data_base.py
+        # Give data from list row, return from  print_one_data_by_name
+        function_from_database = \
+            data_base.print_one_data_by_id(self.input_box.text)
+
+        # Data for source in show_photo from photo_source in data base
+        # for typed data in input_box
+        self.show_photo.source = str(function_from_database[5])
+
+        # Data for text in search_result from all columns in data base
+        # for typed data in input_box
+        # Colors take hex color code from data base and set this code for
+        # ||||| characters
+        self.search_result.text = "[i]Result:[/i] \n" \
+                                  "[b]ID:[/b] {}\n" \
+                                  "[b]Name:[/b] {}\n" \
+                                  "[b]Colors: " \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]||||| [/color]" \
+                                  "[color={}]|||||[/color][/b] \n" \
+                                  "[b]Photo:[/b] {}\n" \
+                                  "[b]Description:[/b] {}\n" \
+                                  "[b]Exclusions:[/b] {}\n" \
+                                  "[b]Clear:[/b] {}\n" \
+                                  "[b]Rate:[/b] {}\n" \
+                                  "[b]Kind:[/b] {}".format \
+            (function_from_database[0],
+             function_from_database[1],
+             function_from_database[2],
+             function_from_database[3],
+             function_from_database[4],
+             function_from_database[5],
+             function_from_database[6],
+             function_from_database[7],
+             function_from_database[8],
+             function_from_database[9],
+             function_from_database[10])
+
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
                                           anchor_y='bottom')
