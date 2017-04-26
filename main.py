@@ -3596,38 +3596,45 @@ class ChangeClearWindow(Screen):
 
         # Connect with function print_one_data_by_name form data_base.py
         # Give data from list row, return from  print_one_data_by_name
-        function_from_database = \
-            data_base.print_one_data_by_name(self.input_name.text)
+        try:
+            function_from_database = \
+                data_base.print_one_data_by_name(self.input_name.text)
+        except TypeError:
+            pass
 
         # Data for text in check_label with new data and data from data base
         # for typed name in input_name
         # Colors take hex color code from data base and set this code for
         # ||||| characters
-        self.check_label.text = "[i]Check data:[/i] \n" \
-                                "[b]ID:[/b] {}\n" \
-                                "[b]Name:[/b] {}\n" \
-                                "[b]Colors: " \
-                                "[color={}]||||| [/color]" \
-                                "[color={}]||||| [/color]" \
-                                "[color={}]|||||[/color][/b] \n" \
-                                "[b]Photo:[/b] {}\n" \
-                                "[b]Description:[/b] {}\n" \
-                                "[b]Exclusions:[/b] {}\n" \
-                                "[b]Clear:[/b] {} -> {}\n" \
-                                "[b]Rate:[/b] {}\n" \
-                                "[b]Kind:[/b] {}".format \
-            (function_from_database[0],
-             self.input_name.text,
-             function_from_database[2],
-             function_from_database[3],
-             function_from_database[4],
-             function_from_database[5],
-             function_from_database[6],
-             function_from_database[7],
-             function_from_database[8],
-             self.select_clear,
-             function_from_database[9],
-             function_from_database[10])
+        try:
+            self.check_label.text = "[i]Check data:[/i] \n" \
+                                    "[b]ID:[/b] {}\n" \
+                                    "[b]Name:[/b] {}\n" \
+                                    "[b]Colors: " \
+                                    "[color={}]||||| [/color]" \
+                                    "[color={}]||||| [/color]" \
+                                    "[color={}]|||||[/color][/b] \n" \
+                                    "[b]Photo:[/b] {}\n" \
+                                    "[b]Description:[/b] {}\n" \
+                                    "[b]Exclusions:[/b] {}\n" \
+                                    "[b]Clear:[/b] {} -> {}\n" \
+                                    "[b]Rate:[/b] {}\n" \
+                                    "[b]Kind:[/b] {}".format \
+                (function_from_database[0],
+                 self.input_name.text,
+                 function_from_database[2],
+                 function_from_database[3],
+                 function_from_database[4],
+                 function_from_database[5],
+                 function_from_database[6],
+                 function_from_database[7],
+                 function_from_database[8],
+                 self.select_clear,
+                 function_from_database[9],
+                 function_from_database[10])
+        except TypeError:
+            self.search_result.text = '[color=FF0000]Invalid input data\n' \
+                                      'Type name from list[/color]'
 
     def press_button_save(self, btn):
         # Function commit in database changed name, description and exclusion
