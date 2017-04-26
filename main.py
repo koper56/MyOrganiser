@@ -2363,18 +2363,18 @@ class RateSetWindow(Screen):
         # ||||| characters
         try:
             self.search_result.text = "[i]Check set:[/i] \n" \
-                                  "[b]ID:[/b] {}\n" \
-                                  "[b]Date:[/b] {}\n" \
-                                  "[b]Photo:[/b] \n{}\n" \
-                                  "[b]Description:[/b] {}\n" \
-                                  "[b]Rate:[/b] {} -> " \
-                                  "[color=FF0000]{}[/color]".format \
+                                      "[b]ID:[/b] {}\n" \
+                                      "[b]Date:[/b] {}\n" \
+                                      "[b]Photo:[/b] \n{}\n" \
+                                      "[b]Description:[/b] {}\n" \
+                                      "[b]Rate:[/b] {} -> " \
+                                      "[color=FF0000]{}[/color]".format \
                 (function_from_database[0],
-             function_from_database[1],
-             function_from_database[2],
-             function_from_database[3],
-             function_from_database[4],
-             self.input_rate)
+                 function_from_database[1],
+                 function_from_database[2],
+                 function_from_database[3],
+                 function_from_database[4],
+                 self.input_rate)
         except TypeError:
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type date from list[/color]'
@@ -2887,23 +2887,30 @@ class ChangeHistoryWindow(Screen):
 
         # Data for source in show_photo from photo_source in data base
         # for typed date in input_box
-        self.show_photo.source = str(from_database[2])
+        try:
+            self.show_photo.source = str(from_database[2])
+        except TypeError:
+            pass
 
         # Take data from data base and from input boxes
-        self.check_label.text = "[i]Check set:[/i] \n" \
-                                "[b]ID:[/b] {}\n" \
-                                "[b]Date:[/b] {}\n" \
-                                "[b]Photo:[/b] \n{}\n" \
-                                "[b]Old description:[/b] {}\n" \
-                                "[b]New description:[/b] [color=FF0000]{}[/color]\n" \
-                                "[b]Rate:[/b] {} -> [color=FF0000]{}[/color]".format \
-            (from_database[0],
-             from_database[1],
-             from_database[2],
-             from_database[3],
-             self.input_description.text,
-             from_database[4],
-             self.input_rate)
+        try:
+            self.check_label.text = "[i]Check set:[/i] \n" \
+                                    "[b]ID:[/b] {}\n" \
+                                    "[b]Date:[/b] {}\n" \
+                                    "[b]Photo:[/b] \n{}\n" \
+                                    "[b]Old description:[/b] {}\n" \
+                                    "[b]New description:[/b] [color=FF0000]{}[/color]\n" \
+                                    "[b]Rate:[/b] {} -> [color=FF0000]{}[/color]".format \
+                (from_database[0],
+                 from_database[1],
+                 from_database[2],
+                 from_database[3],
+                 self.input_description.text,
+                 from_database[4],
+                 self.input_rate)
+        except TypeError:
+            self.search_result.text = '[color=FF0000]Invalid input data\n' \
+                                      'Type date from list[/color]'
 
     def press_save_button(self, btn):
         data_base.update_description_and_rate_history(self.input_date.text,
