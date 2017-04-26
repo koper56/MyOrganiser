@@ -2044,7 +2044,10 @@ class RateClothWindow(Screen):
 
         # Data for source in show_photo from photo_source in data base
         # for typed data in input_box
-        self.show_photo.source = str(function_from_database[5])
+        try:
+            self.show_photo.source = str(function_from_database[5])
+        except TypeError:
+            pass
 
         # TODO: Change color of value in star to red for rate of selected cloth
         # after press CHECK
@@ -2065,31 +2068,35 @@ class RateClothWindow(Screen):
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
         # ||||| characters
-        self.search_result.text = "[i]Result:[/i] \n" \
-                                  "[b]ID:[/b] {}\n" \
-                                  "[b]Name:[/b] {}\n" \
-                                  "[b]Colors: " \
-                                  "[color={}]||||| [/color]" \
-                                  "[color={}]||||| [/color]" \
-                                  "[color={}]|||||[/color][/b] \n" \
-                                  "[b]Photo:[/b] {}\n" \
-                                  "[b]Description:[/b] {}\n" \
-                                  "[b]Exclusions:[/b] {}\n" \
-                                  "[b]Clear:[/b] {}\n" \
-                                  "[b]Rate:[/b] {} -> {}\n" \
-                                  "[b]Kind:[/b] {}".format \
-            (function_from_database[0],
-             function_from_database[1],
-             function_from_database[2],
-             function_from_database[3],
-             function_from_database[4],
-             function_from_database[5],
-             function_from_database[6],
-             function_from_database[7],
-             function_from_database[8],
-             function_from_database[9],
-             self.input_rate,
-             function_from_database[10])
+        try:
+            self.search_result.text = "[i]Result:[/i] \n" \
+                                      "[b]ID:[/b] {}\n" \
+                                      "[b]Name:[/b] {}\n" \
+                                      "[b]Colors: " \
+                                      "[color={}]||||| [/color]" \
+                                      "[color={}]||||| [/color]" \
+                                      "[color={}]|||||[/color][/b] \n" \
+                                      "[b]Photo:[/b] {}\n" \
+                                      "[b]Description:[/b] {}\n" \
+                                      "[b]Exclusions:[/b] {}\n" \
+                                      "[b]Clear:[/b] {}\n" \
+                                      "[b]Rate:[/b] {} -> {}\n" \
+                                      "[b]Kind:[/b] {}".format \
+                (function_from_database[0],
+                 function_from_database[1],
+                 function_from_database[2],
+                 function_from_database[3],
+                 function_from_database[4],
+                 function_from_database[5],
+                 function_from_database[6],
+                 function_from_database[7],
+                 function_from_database[8],
+                 function_from_database[9],
+                 self.input_rate,
+                 function_from_database[10])
+        except TypeError:
+            self.search_result.text = '[color=FF0000]Invalid input data\n' \
+                                      'Type name from list[/color]'
 
     # Commit changes after press button SAVE
     def press_save_button(self, btn):
