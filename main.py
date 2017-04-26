@@ -1384,7 +1384,7 @@ class ChooseColors(Screen):
                  function_from_database[10])
         except TypeError:
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
-                                      'Type name from list[/color]'
+                                      'Type ID from list[/color]'
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
@@ -1786,7 +1786,7 @@ class ChooseSets(Screen):
                  function_from_database[4])
         except TypeError:
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
-                                      'Type name from list[/color]'
+                                      'Type date from list[/color]'
 
     # Define move after press back button
     def move_direction_choose_window(self, *args):
@@ -2337,7 +2337,10 @@ class RateSetWindow(Screen):
 
         # Data for source in show_photo from photo_source in data base
         # for typed data in input_box
-        self.show_photo.source = str(function_from_database[2])
+        try:
+            self.show_photo.source = str(function_from_database[5])
+        except TypeError:
+            pass
 
         # TODO: Change color of value in star to red for rate of selected cloth
         # after press CHECK
@@ -2358,19 +2361,23 @@ class RateSetWindow(Screen):
         # for typed data in input_box
         # Colors take hex color code from data base and set this code for
         # ||||| characters
-        self.search_result.text = "[i]Check set:[/i] \n" \
+        try:
+            self.search_result.text = "[i]Check set:[/i] \n" \
                                   "[b]ID:[/b] {}\n" \
                                   "[b]Date:[/b] {}\n" \
                                   "[b]Photo:[/b] \n{}\n" \
                                   "[b]Description:[/b] {}\n" \
                                   "[b]Rate:[/b] {} -> " \
                                   "[color=FF0000]{}[/color]".format \
-            (function_from_database[0],
+                (function_from_database[0],
              function_from_database[1],
              function_from_database[2],
              function_from_database[3],
              function_from_database[4],
              self.input_rate)
+        except TypeError:
+            self.search_result.text = '[color=FF0000]Invalid input data\n' \
+                                      'Type date from list[/color]'
 
     # Commit changes after press button SAVE
     def press_save_button(self, btn):
