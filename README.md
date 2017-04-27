@@ -13,7 +13,7 @@ _Put your wardrobe to python!_
 App for manage clothes and sets of clothes. 
  - search (by name, kind, rate, sets)
  - rate (1 - 5)
- - add (with name, description, exclusions, rate, clear, photo and colors)
+ - add (with name, description, exclusions, rate, clear, photo, colors and kind)
  - change
  - delete 
 
