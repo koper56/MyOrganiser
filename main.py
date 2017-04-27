@@ -1283,18 +1283,22 @@ class ChooseColors(Screen):
                                          anchor_x='left')
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
+        self.id_number_add = "ID: ?"
         id_from_database = data_base.get_id_clothes_data_row()
         for id_number in id_from_database:
             self.id_number_add = 'ID: {}'.format(id_number)
 
+        self.color_1_value = " "
         color_1_from_database = data_base.get_color1_clothes_data_row()
         for color1 in color_1_from_database:
             self.color_1_value = '[color={}]|||||[/color]'.format(color1)
 
+        self.color_2_value = " "
         color_2_from_database = data_base.get_color2_clothes_data_row()
         for color2 in color_2_from_database:
             self.color_2_value = '[color={}]|||||[/color]'.format(color2)
 
+        self.color_3_value = " "
         color_3_from_database = data_base.get_color3_clothes_data_row()
         for color3 in color_3_from_database:
             self.color_3_value = '[color={}]|||||[/color]'.format(color3)
