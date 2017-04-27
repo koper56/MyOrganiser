@@ -46,7 +46,10 @@ Store sets photos (png files) in ./sets.
 
 Store png files used in app in ./png.
 
-To start app run _main.py_ file. 
+    cd <directory>
+    git clone https://github.com/koper56/morg.git (or manually download)
+    pip install -r requirements.txt
+    python3 main.py
 
 Screens
 -------
