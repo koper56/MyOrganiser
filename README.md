@@ -36,6 +36,12 @@ Required
 
 How to use
 ----------
+
+    git clone https://github.com/koper56/morg.git (or manually download)
+    cd morg
+    pip install -r requirements.txt
+    python3 main.py
+    
 In first run app create file _weatherdata.txt_ with weather info from _weather.py_.
 
 In first run app create _data_base_file.db_ with two tables: _ClothesData_ and _HistoryData_.
@@ -46,10 +52,6 @@ Store sets photos (png files) in ./sets.
 
 Store png files used in app in ./png.
 
-    cd <directory>
-    git clone https://github.com/koper56/morg.git (or manually download)
-    pip install -r requirements.txt
-    python3 main.py
 
 Screens
 -------
