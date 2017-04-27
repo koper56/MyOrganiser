@@ -55,7 +55,7 @@ Store png files used in app in ./png.
 
 Screens
 -------
-few screen from app
+few screens from app
 
 
 <img align="left" height="300" src="http://i.imgur.com/ch37U7V.png"/>
