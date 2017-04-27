@@ -48,7 +48,7 @@ To start app run _main.py_ file.
 
 Screens
 -------
-
+few screen from app
 <img align="left" height="300" src="http://i.imgur.com/ch37U7V.png"/>
 <img align="right" height="300" src="http://i.imgur.com/CQRaV82.png"/>
 
