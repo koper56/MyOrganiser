@@ -3844,6 +3844,7 @@ class ChangeClothData(Screen):
         data_base.update_item(self.input_name.text, self.input_new_name.text,
                               self.input_description.text,
                               self.input_exclusions.text)
+        self.check_label.text = 'SAVED!'
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
