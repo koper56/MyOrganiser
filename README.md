@@ -67,4 +67,4 @@ few screens from app
 <img align="left" height="300" src="http://i.imgur.com/yok3Pf2.png"/>
 <img align="right" height="300" src="http://i.imgur.com/tcJbgRt.png"/>
 
-<img align="left" height="300" src="http://i.imgur.com/Und9pkF.png"/>
+<img align="left" height="300" src="http://i.imgur.com/fqVybrJ.png"/>
