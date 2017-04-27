@@ -45,3 +45,17 @@ Store sets photos (png files) in ./sets.
 Store png files used in app in ./png.
 
 To start app run _main.py_ file. 
+
+Screens
+-------
+
+<img align="left" height="300" src="http://i.imgur.com/ch37U7V.png"/>
+<img align="right" height="300" src="http://i.imgur.com/CQRaV82.png"/>
+
+<img align="left" height="300" src="http://i.imgur.com/PQldAEC.png"/>
+<img align="right" height="300" src="http://i.imgur.com/WIN5qXO.png"/>
+
+<img align="left" height="300" src="http://i.imgur.com/yok3Pf2.png"/>
+<img align="right" height="300" src="http://i.imgur.com/tcJbgRt.png"/>
+
+<img align="left" height="300" src="http://i.imgur.com/Und9pkF.png"/>
