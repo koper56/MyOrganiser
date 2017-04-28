@@ -2348,7 +2348,7 @@ class RateSetWindow(Screen):
         # Data for source in show_photo from photo_source in data base
         # for typed data in input_box
         try:
-            self.show_photo.source = str(function_from_database[5])
+            self.show_photo.source = str(function_from_database[2])
         except TypeError:
             pass
 
@@ -2391,8 +2391,14 @@ class RateSetWindow(Screen):
 
     # Commit changes after press button SAVE
     def press_save_button(self, btn):
+        # Send new data to data base
         data_base.update_rate(self.input_date.text, self.input_rate)
-        self.input_date.txt = "SAVED!"
+        # Change text in search_result label
+        self.search_result.text = "NEW RATE SAVED!"
+        # Refresh all_data label after press button
+        dates_from_database = str(data_base.get_date_sets_data_row())
+        self.all_data.text = dates_from_database
+
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
