@@ -3472,6 +3472,8 @@ class AddNewClothWindow(Screen):
                                   self.input_exclusions.text,
                                   self.kind_name)
         self.check_label.text = "SAVED!"
+        # Refresh data base
+        data_base.get_names_clothes_data_row()
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
@@ -3662,6 +3664,11 @@ class ChangeClearWindow(Screen):
     def press_button_save(self, btn):
         # Function commit in database changed name, description and exclusion
         data_base.update_clear(self.input_name.text, self.select_clear)
+        # Change text in label
+        self.check_label.text = "CLEAR SAVED!"
+        # Refresh all_data label after press button
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data.text = names_from_database
 
         # Define position, size of back button
         self.Anchor_Layout = AnchorLayout(anchor_x='left',
