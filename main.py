@@ -2104,7 +2104,13 @@ class RateClothWindow(Screen):
 
     # Commit changes after press button SAVE
     def press_save_button(self, btn):
+        # Send data to data base
         data_base.update_rate(self.input_name.text, self.input_rate)
+        # Change text in search_result label
+        self.search_result.text = 'NEW RATE SAVED!'
+        # Refresh all_data label after press button
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data.text = names_from_database
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
