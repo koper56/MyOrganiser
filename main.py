@@ -2929,9 +2929,16 @@ class ChangeHistoryWindow(Screen):
                                       'Type date from list[/color]'
 
     def press_save_button(self, btn):
+        # Commit changes in data base
         data_base.update_description_and_rate_history(self.input_date.text,
                                                       self.input_description.text,
                                                       self.input_rate)
+        # Change text in check_label
+        self.check_label.text = "SAVED!"
+        # Refresh all_data label after press button
+        dates_from_database = str(data_base.get_date_sets_data_row())
+        self.all_dates.text = dates_from_database
+
         self.check_label.text = 'Set changed!'
 
         # Define position, size of back button
