@@ -3875,6 +3875,9 @@ class ChangeClothData(Screen):
                               self.input_description.text,
                               self.input_exclusions.text)
         self.check_label.text = 'SAVED!'
+        # Refresh all_data label after press button
+        names_from_database = str(data_base.get_names_clothes_data_row())
+        self.all_data.text = names_from_database
 
     # Define move after press back button
     def move_direction_change_window(self, *args):
