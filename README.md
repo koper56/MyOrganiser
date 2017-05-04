@@ -37,7 +37,7 @@ Required
 How to use
 ----------
 
-    git clone https://github.com/koper56/morg.git (or manually download)
+    git clone https://github.com/mkopr/morg.git (or manually download)
     cd morg
     pip install -r requirements.txt
     python3 main.py
