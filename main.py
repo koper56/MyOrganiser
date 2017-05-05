@@ -675,10 +675,10 @@ class ChooseNames(Screen):
         # Define position of label with all data
         self.all_data_pos = AnchorLayout(anchor_y='center',
                                          anchor_x='left')
-        # Take all names from data_base.py get_names_clothes_data_row func
-        # and return in label
+        # Take all names from data_base.py get_names_clothes_data_row
+        # func and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
-        self.all_data = Label(text=names_from_database,
+        self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -1305,7 +1305,7 @@ class ChooseColors(Screen):
 
         self.all_data_id_colors = self.id_number_add, self.color_1_value, \
                                   self.color_2_value, self.color_3_value
-        self.all_data = Label(text=str(self.all_data_id_colors),
+        self.all_data = Label(text=str(self.all_data_id_colors)[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -1720,7 +1720,7 @@ class ChooseSets(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         dates_from_database = str(data_base.get_date_sets_data_row())
-        self.all_data = Label(text=dates_from_database,
+        self.all_data = Label(text=dates_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -1957,7 +1957,7 @@ class RateClothWindow(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
-        self.all_data = Label(text=names_from_database,
+        self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -2256,7 +2256,7 @@ class RateSetWindow(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         dates_from_database = str(data_base.get_date_sets_data_row())
-        self.all_data = Label(text=dates_from_database,
+        self.all_data = Label(text=dates_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -2796,7 +2796,7 @@ class ChangeHistoryWindow(Screen):
         # Take all dates from data_base.py get_date_sets_data_row func
         # and return in label
         dates_from_database = str(data_base.get_date_sets_data_row())
-        self.all_dates = Label(text=dates_from_database,
+        self.all_dates = Label(text=dates_from_database[1:-1],
                                markup=True,
                                font_size='16sp',
                                text_size=(100, 400),
@@ -3564,7 +3564,7 @@ class ChangeClearWindow(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
-        self.all_data = Label(text=names_from_database,
+        self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -3780,7 +3780,7 @@ class ChangeClothData(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
-        self.all_data = Label(text=names_from_database,
+        self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
@@ -3961,7 +3961,7 @@ class DeleteCloth(Screen):
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
-        self.all_data = Label(text=names_from_database,
+        self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
                               text_size=(100, 400),
