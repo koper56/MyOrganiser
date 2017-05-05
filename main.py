@@ -673,15 +673,15 @@ class ChooseNames(Screen):
         self.add_widget(self.search_result_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row
         # func and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -1279,36 +1279,17 @@ class ChooseColors(Screen):
         self.add_widget(self.search_result_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
-        # Take all names from data_base.py get_names_clothes_data_row func
-        # and return in label
-        self.id_number_add = "ID: ?"
-        id_from_database = data_base.get_id_clothes_data_row()
-        for id_number in id_from_database:
-            self.id_number_add = 'ID: {}'.format(id_number)
+        self.all_data_pos = FloatLayout()
+        # Take all names with color1, color2, color3 and return this data
+        # in label, set color data as metadata for |||||
 
-        self.color_1_value = " "
-        color_1_from_database = data_base.get_color1_clothes_data_row()
-        for color1 in color_1_from_database:
-            self.color_1_value = '[color={}]|||||[/color]'.format(color1)
-
-        self.color_2_value = " "
-        color_2_from_database = data_base.get_color2_clothes_data_row()
-        for color2 in color_2_from_database:
-            self.color_2_value = '[color={}]|||||[/color]'.format(color2)
-
-        self.color_3_value = " "
-        color_3_from_database = data_base.get_color3_clothes_data_row()
-        for color3 in color_3_from_database:
-            self.color_3_value = '[color={}]|||||[/color]'.format(color3)
-
-        self.all_data_id_colors = self.id_number_add, self.color_1_value, \
-                                  self.color_2_value, self.color_3_value
-        self.all_data = Label(text=str(self.all_data_id_colors)[1:-1],
+        names_colors_from_database = \
+            str(data_base.get_colors_names_clothes_data_row())
+        self.all_data = Label(text=str(names_colors_from_database)[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -1715,15 +1696,15 @@ class ChooseSets(Screen):
         self.add_widget(self.search_result_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         dates_from_database = str(data_base.get_date_sets_data_row())
         self.all_data = Label(text=dates_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -1952,15 +1933,15 @@ class RateClothWindow(Screen):
         self.add_widget(self.show_photo_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -2251,15 +2232,15 @@ class RateSetWindow(Screen):
         self.add_widget(self.show_photo_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         dates_from_database = str(data_base.get_date_sets_data_row())
         self.all_data = Label(text=dates_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -2790,8 +2771,7 @@ class ChangeHistoryWindow(Screen):
         self.add_widget(self.show_photo_pos)
 
         # Define position of label with all dates
-        self.all_dates_pos = AnchorLayout(anchor_y='center',
-                                          anchor_x='left')
+        self.all_dates_pos = FloatLayout()
 
         # Take all dates from data_base.py get_date_sets_data_row func
         # and return in label
@@ -2799,7 +2779,8 @@ class ChangeHistoryWindow(Screen):
         self.all_dates = Label(text=dates_from_database[1:-1],
                                markup=True,
                                font_size='16sp',
-                               text_size=(100, 400),
+                               text_size=(150, 400),
+                               pos=(50, 300),
                                valign='middle',
                                halign='left',
                                size_hint=(None, None),
@@ -3559,15 +3540,15 @@ class ChangeClearWindow(Screen):
         self.save_button.bind(on_press=self.press_button_save)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -3775,15 +3756,15 @@ class ChangeClothData(Screen):
         self.save_button.bind(on_press=self.press_button_save)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
@@ -3956,15 +3937,15 @@ class DeleteCloth(Screen):
         self.add_widget(self.search_result_pos)
 
         # Define position of label with all data
-        self.all_data_pos = AnchorLayout(anchor_y='center',
-                                         anchor_x='left')
+        self.all_data_pos = FloatLayout()
         # Take all names from data_base.py get_names_clothes_data_row func
         # and return in label
         names_from_database = str(data_base.get_names_clothes_data_row())
         self.all_data = Label(text=names_from_database[1:-1],
                               markup=True,
                               font_size='16sp',
-                              text_size=(100, 400),
+                              text_size=(150, 400),
+                              pos=(50, 300),
                               valign='middle',
                               halign='left',
                               size_hint=(None, None),
