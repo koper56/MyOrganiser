@@ -3482,7 +3482,7 @@ class ChangeClearWindow(Screen):
         self.input_name = TextInput(text='Type name of cloth',
                                     multiline=False,
                                     size=(300, 50),
-                                    pos=(150, 400),
+                                    pos=(200, 400),
                                     size_hint=(None, None))
         self.input_name_pos.add_widget(self.input_name)
         self.add_widget(self.input_name_pos)
@@ -3491,8 +3491,8 @@ class ChangeClearWindow(Screen):
         self.question_label_pos = FloatLayout(size=(300, 50))
         self.question_label = Label(text='[i]Select clear: [/i]',
                                     markup=True,
-                                    pos=(-125, 0),
-                                    font_size='16sp',
+                                    pos=(-75, 0),
+                                    font_size='12sp',
                                     color=label_text_color)
         self.question_label_pos.add_widget(self.question_label)
         self.add_widget(self.question_label_pos)
@@ -3500,7 +3500,7 @@ class ChangeClearWindow(Screen):
         # Define size, position, colors of True button
         self.true_clear_button_pos = FloatLayout(size=(150, 50))
         self.true_clear_button = Button(text='True',
-                                        pos=(150, 150),
+                                        pos=(200, 150),
                                         color=button_text_color,
                                         background_color=button_background,
                                         size_hint=(None, None))
@@ -3514,7 +3514,7 @@ class ChangeClearWindow(Screen):
         # Define size, position, colors of False button
         self.false_clear_button_pos = FloatLayout(size=(150, 50))
         self.false_clear_button = Button(text='False',
-                                         pos=(300, 150),
+                                         pos=(350, 150),
                                          color=button_text_color,
                                          background_color=button_background,
                                          size_hint=(None, None))
@@ -3692,7 +3692,7 @@ class ChangeClothData(Screen):
         self.input_name = TextInput(text='Type name of cloth',
                                     multiline=False,
                                     size=(300, 50),
-                                    pos=(150, 450),
+                                    pos=(200, 450),
                                     size_hint=(None, None))
         self.input_name_pos.add_widget(self.input_name)
         self.add_widget(self.input_name_pos)
@@ -3702,7 +3702,7 @@ class ChangeClothData(Screen):
         self.input_new_name = TextInput(text='New name',
                                         multiline=False,
                                         size=(300, 50),
-                                        pos=(150, 350),
+                                        pos=(200, 350),
                                         size_hint=(None, None))
         self.input_new_name_pos.add_widget(self.input_new_name)
         self.add_widget(self.input_new_name_pos)
@@ -3712,7 +3712,7 @@ class ChangeClothData(Screen):
         self.input_description = TextInput(text='New description',
                                            multiline=False,
                                            size=(300, 50),
-                                           pos=(150, 250),
+                                           pos=(200, 250),
                                            size_hint=(None, None))
         self.input_description_pos.add_widget(self.input_description)
         self.add_widget(self.input_description_pos)
@@ -3722,7 +3722,7 @@ class ChangeClothData(Screen):
         self.input_exclusions = TextInput(text='New exclusions',
                                           multiline=False,
                                           size=(300, 50),
-                                          pos=(150, 150),
+                                          pos=(200, 150),
                                           size_hint=(None, None))
         self.input_exclusions_pos.add_widget(self.input_exclusions)
         self.add_widget(self.input_exclusions_pos)
