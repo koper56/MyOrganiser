@@ -101,6 +101,11 @@ def get_id_clothes_data_row():
     return [row[0] for row in connection.execute(select_data)]
 
 
+def get_colors_names_clothes_data_row():
+    select_data = select([ClothesData])
+    return [row[1:5] for row in connection.execute(select_data)]
+
+
 def get_color1_clothes_data_row():
     select_data = select([ClothesData.color_1])
     return [row[0] for row in connection.execute(select_data)]
@@ -133,13 +138,6 @@ def get_names_clothes_by_rate(input_rate):
     select_data = select([ClothesData]).where(
         ClothesData.rate == input_rate)
     return [row[1] for row in connection.execute(select_data)]
-
-
-def print_all_name_from_all():
-    select_data = select([ClothesData])
-    result = connection.execute(select_data)
-    for row in result:
-        print('ID:', row[0], 'Name:', row[1])
 
 
 def print_one_data_by_name(input_name):
