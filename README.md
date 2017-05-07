@@ -37,10 +37,21 @@ Required
 How to use
 ----------
 
-    git clone https://github.com/mkopr/morg.git(or manually download)
+    git clone https://github.com/mkopr/morg.git (or manually download)
     cd morg
     pip install -r requirements.txt
     python3 main.py
+    
+    
+For virtualenv:
+
+    git clone https://github.com/mkopr/morg.git (or manually download)
+    cd morg
+    mkvirtualenv -a <morg dir> -p python3 morg
+    pip install -r requirements.txt 
+    python main.py
+
+
     
 In first run app create file _weatherdata.txt_ with weather info from _weather.py_.
 
