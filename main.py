@@ -1,21 +1,19 @@
-import os
-import time
 from kivy.app import App
-from kivy.core.window import Window
-from kivy.graphics import *
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.image import Image
-from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.image import Image
+from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.floatlayout import FloatLayout
+from kivy.core.window import Window
 from kivy.uix.textinput import TextInput
-from morg import data_base
-from morg import IMAGES_DIR
-from morg.camera_module import PopupRunCameraSet
-from morg.camera_module_new_cloth import PopupRunCameraNewCloth
-from morg.color_palette import PopupRunColorPalette
-from morg.weather import print_weather_warsaw
+from kivy.graphics import *
+from color_palette import PopupRunColorPalette, PopupColor
+from camera_module_new_cloth import PopupRunCameraNewCloth
+from camera_module import PopupRunCameraSet
+from weather import print_weather_warsaw
+import data_base
+import time
 
 # From rgba to kivy code: rgba code/255.0
 # Colors in app
@@ -29,12 +27,6 @@ ornaments_color = 1, 1, 1, 1
 # Define window size for app
 Window.size = (800, 600)
 
-# Add files from assets/images
-BACK_ARROW_IMG_PATH = os.path.join(IMAGES_DIR, 'back.png')
-DATABASE_IMG_PATH = os.path.join(IMAGES_DIR, 'database.png')
-MORG_LOGO_IMG_PATH = os.path.join(IMAGES_DIR, 'logo_morg_100.png')
-W_STAR_IMG_PATH = os.path.join(IMAGES_DIR, 'w_star.png')
-G_STAR_IMG_PATH = os.path.join(IMAGES_DIR, 'g_star.png')
 
 class MainWindow(Screen):
     def __init__(self, **kwargs):
@@ -76,7 +68,7 @@ class MainWindow(Screen):
         # Define position of logo image
         logo_position = AnchorLayout(anchor_x='right',
                                      anchor_y='top')
-        logo = Image(source=MORG_LOGO_IMG_PATH,
+        logo = Image(source='png/logo_morg_100.png',
                      size=(100, 100),
                      size_hint=(None, None))
         logo_position.add_widget(logo)
@@ -266,8 +258,8 @@ class ChooseWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -387,8 +379,8 @@ class RateWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -476,8 +468,8 @@ class HistoryWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -595,8 +587,8 @@ class ChangeWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_main_window)
 
@@ -701,7 +693,7 @@ class ChooseNames(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -714,8 +706,8 @@ class ChooseNames(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1045,7 +1037,7 @@ class ChooseKinds(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -1058,8 +1050,8 @@ class ChooseKinds(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1309,7 +1301,7 @@ class ChooseColors(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -1322,8 +1314,8 @@ class ChooseColors(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1386,8 +1378,8 @@ class ChooseColors(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1422,8 +1414,8 @@ class ChooseRates(Screen):
                                       pos=(150, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.one_star_button_pos.add_widget(self.one_star_button)
@@ -1438,8 +1430,8 @@ class ChooseRates(Screen):
                                       pos=(250, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.two_star_button_pos.add_widget(self.two_star_button)
@@ -1454,8 +1446,8 @@ class ChooseRates(Screen):
                                         pos=(350, 450),
                                         color=button_text_color,
                                         size_hint=(None, None),
-                                        background_normal=W_STAR_IMG_PATH,
-                                        background_down=G_STAR_IMG_PATH,
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
                                         size_hint_x=None)
 
         self.three_star_button_pos.add_widget(self.three_star_button)
@@ -1470,8 +1462,8 @@ class ChooseRates(Screen):
                                        pos=(450, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.four_star_button_pos.add_widget(self.four_star_button)
@@ -1486,8 +1478,8 @@ class ChooseRates(Screen):
                                        pos=(550, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.five_star_button_pos.add_widget(self.five_star_button)
@@ -1539,7 +1531,7 @@ class ChooseRates(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -1552,8 +1544,8 @@ class ChooseRates(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1724,7 +1716,7 @@ class ChooseSets(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -1737,8 +1729,8 @@ class ChooseSets(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1792,8 +1784,8 @@ class ChooseSets(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_choose_window)
 
@@ -1832,8 +1824,8 @@ class RateClothWindow(Screen):
                                       pos=(150, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.one_star_button_pos.add_widget(self.one_star_button)
@@ -1850,8 +1842,8 @@ class RateClothWindow(Screen):
                                       pos=(250, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.two_star_button_pos.add_widget(self.two_star_button)
@@ -1868,8 +1860,8 @@ class RateClothWindow(Screen):
                                         pos=(350, 450),
                                         color=button_text_color,
                                         size_hint=(None, None),
-                                        background_normal=W_STAR_IMG_PATH,
-                                        background_down=G_STAR_IMG_PATH,
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
                                         size_hint_x=None)
 
         self.three_star_button_pos.add_widget(self.three_star_button)
@@ -1886,8 +1878,8 @@ class RateClothWindow(Screen):
                                        pos=(450, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.four_star_button_pos.add_widget(self.four_star_button)
@@ -1904,8 +1896,8 @@ class RateClothWindow(Screen):
                                        pos=(550, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.five_star_button_pos.add_widget(self.five_star_button)
@@ -1934,7 +1926,7 @@ class RateClothWindow(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -2002,8 +1994,8 @@ class RateClothWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -2131,8 +2123,8 @@ class RateSetWindow(Screen):
                                       pos=(150, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.one_star_button_pos.add_widget(self.one_star_button)
@@ -2149,8 +2141,8 @@ class RateSetWindow(Screen):
                                       pos=(250, 450),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.two_star_button_pos.add_widget(self.two_star_button)
@@ -2167,8 +2159,8 @@ class RateSetWindow(Screen):
                                         pos=(350, 450),
                                         color=button_text_color,
                                         size_hint=(None, None),
-                                        background_normal=W_STAR_IMG_PATH,
-                                        background_down=G_STAR_IMG_PATH,
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
                                         size_hint_x=None)
 
         self.three_star_button_pos.add_widget(self.three_star_button)
@@ -2185,8 +2177,8 @@ class RateSetWindow(Screen):
                                        pos=(450, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.four_star_button_pos.add_widget(self.four_star_button)
@@ -2203,8 +2195,8 @@ class RateSetWindow(Screen):
                                        pos=(550, 450),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.five_star_button_pos.add_widget(self.five_star_button)
@@ -2233,7 +2225,7 @@ class RateSetWindow(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -2301,8 +2293,8 @@ class RateSetWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -2400,8 +2392,8 @@ class RateSetWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -2442,8 +2434,8 @@ class AddHistoryWindow(Screen):
                                       pos=(150, 400),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.one_star_button_pos.add_widget(self.one_star_button)
@@ -2460,8 +2452,8 @@ class AddHistoryWindow(Screen):
                                       pos=(250, 400),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.two_star_button_pos.add_widget(self.two_star_button)
@@ -2478,8 +2470,8 @@ class AddHistoryWindow(Screen):
                                         pos=(350, 400),
                                         color=button_text_color,
                                         size_hint=(None, None),
-                                        background_normal=W_STAR_IMG_PATH,
-                                        background_down=G_STAR_IMG_PATH,
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
                                         size_hint_x=None)
 
         self.three_star_button_pos.add_widget(self.three_star_button)
@@ -2496,8 +2488,8 @@ class AddHistoryWindow(Screen):
                                        pos=(450, 400),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.four_star_button_pos.add_widget(self.four_star_button)
@@ -2514,8 +2506,8 @@ class AddHistoryWindow(Screen):
                                        pos=(550, 400),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.five_star_button_pos.add_widget(self.five_star_button)
@@ -2607,8 +2599,8 @@ class AddHistoryWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -2686,8 +2678,8 @@ class ChangeHistoryWindow(Screen):
                                       pos=(150, 400),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.one_star_button_pos.add_widget(self.one_star_button)
@@ -2704,8 +2696,8 @@ class ChangeHistoryWindow(Screen):
                                       pos=(250, 400),
                                       color=button_text_color,
                                       size_hint=(None, None),
-                                      background_normal=W_STAR_IMG_PATH,
-                                      background_down=G_STAR_IMG_PATH,
+                                      background_normal="./png/w_star.png",
+                                      background_down="./png/g_star.png",
                                       size_hint_x=None)
 
         self.two_star_button_pos.add_widget(self.two_star_button)
@@ -2722,8 +2714,8 @@ class ChangeHistoryWindow(Screen):
                                         pos=(350, 400),
                                         color=button_text_color,
                                         size_hint=(None, None),
-                                        background_normal=W_STAR_IMG_PATH,
-                                        background_down=G_STAR_IMG_PATH,
+                                        background_normal="./png/w_star.png",
+                                        background_down="./png/g_star.png",
                                         size_hint_x=None)
 
         self.three_star_button_pos.add_widget(self.three_star_button)
@@ -2740,8 +2732,8 @@ class ChangeHistoryWindow(Screen):
                                        pos=(450, 400),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.four_star_button_pos.add_widget(self.four_star_button)
@@ -2758,8 +2750,8 @@ class ChangeHistoryWindow(Screen):
                                        pos=(550, 400),
                                        color=button_text_color,
                                        size_hint=(None, None),
-                                       background_normal=W_STAR_IMG_PATH,
-                                       background_down=G_STAR_IMG_PATH,
+                                       background_normal="./png/w_star.png",
+                                       background_down="./png/g_star.png",
                                        size_hint_x=None)
 
         self.five_star_button_pos.add_widget(self.five_star_button)
@@ -2772,7 +2764,7 @@ class ChangeHistoryWindow(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -2863,8 +2855,8 @@ class ChangeHistoryWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -2937,8 +2929,8 @@ class ChangeHistoryWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -3344,8 +3336,8 @@ class AddNewClothWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -3587,8 +3579,8 @@ class ChangeClearWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -3666,8 +3658,8 @@ class ChangeClearWindow(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -3803,8 +3795,8 @@ class ChangeClothData(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
@@ -3965,7 +3957,7 @@ class DeleteCloth(Screen):
         self.show_photo_pos = AnchorLayout(anchor_y='center',
                                            anchor_x='right')
         # Default icon in source
-        self.show_photo = Image(source=DATABASE_IMG_PATH,
+        self.show_photo = Image(source='png/database.png',
                                 size=(200, 360),
                                 size_hint=(None, None))
         self.show_photo_pos.add_widget(self.show_photo)
@@ -3978,8 +3970,8 @@ class DeleteCloth(Screen):
                              size=(100, 100),
                              color=button_text_color,
                              size_hint=(None, None),
-                             background_normal=BACK_ARROW_IMG_PATH,
-                             background_down=BACK_ARROW_IMG_PATH,
+                             background_normal="./png/back.png",
+                             background_down="./png/back.png",
                              size_hint_x=None)
         self.button.bind(on_release=self.move_direction_change_window)
 
