@@ -61,7 +61,7 @@ Store clothes photos (png files) in ./photo.
 
 Store sets photos (png files) in ./sets.
 
-Store png files used in app in ./png.
+Store png files used in app in assets/images.
 
 
 Screens

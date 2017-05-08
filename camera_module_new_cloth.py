@@ -3,7 +3,7 @@ from kivy.uix.popup import Popup
 from kivy.properties import StringProperty
 from kivy.app import App
 from kivy.lang import Builder
-from data_base import next_id_value
+from morg.data_base import next_id_value
 
 # Camera module for Add New Cloth
 
