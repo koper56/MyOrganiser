@@ -39,8 +39,8 @@ How to use
 
     git clone https://github.com/mkopr/morg.git (or manually download)
     cd morg
-    pip install -r requirements.txt
-    python3 main.py
+    pip install .
+    morg
     
     
 For virtualenv:
@@ -48,8 +48,8 @@ For virtualenv:
     git clone https://github.com/mkopr/morg.git (or manually download)
     cd morg
     mkvirtualenv -a <morg dir> -p python3 morg
-    pip install -r requirements.txt 
-    python main.py
+    pip install .
+    morg
 
 
     
