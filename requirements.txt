@@ -1,5 +1,5 @@
 Cython==0.25.2
-Kivy==1.9.1
+Kivy==1.10.0
 pygame==1.9.3
 pyowm==2.6.1
 SQLAlchemy==1.1.9

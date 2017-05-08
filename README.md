@@ -28,7 +28,7 @@ Required
 
 [Pygame](https://www.pygame.org/)  _1.9.3_
 
-[Kivy](https://kivy.org/)    _1.9.1_
+[Kivy](https://kivy.org/)    _1.10.0_
 
 [Pyowm](https://github.com/csparpa/pyowm)   _2.6.1_     [API](https://home.openweathermap.org/): 3680a47900fb30de7d81ef3cb1a7d9fb
 
