@@ -16,7 +16,7 @@ time_format_info = time.strftime("%Y_%m_%d - %T")
 time_format = time.strftime("%Y_%m_%d")
 
 # Set logging config, create file with logging info f.ex. morg_09_05_2017.log
-logging.basicConfig(filename='morg_{}.log'.format(time_format),
+logging.basicConfig(filename='logs/morg_{}.log'.format(time_format),
                     level=logging.INFO)
 
 
