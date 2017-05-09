@@ -1,3 +1,6 @@
+import time
+import logging
+
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.properties import StringProperty
@@ -6,6 +9,24 @@ from kivy.lang import Builder
 from morg.data_base import next_id_value
 
 # Camera module for Add New Cloth
+
+# Take time and store in format day_month_year - 09_05_2017
+time_format = time.strftime("%Y_%m_%d")
+
+# Create specific logger different than Kivy logger
+logger = logging.getLogger(__name__)
+
+# Set level of logger
+logger.setLevel(logging.INFO)
+
+# Logging info format f.ex.
+# "[2017-05-09 15:33:58,217]	data_base_test_log.py	message"
+format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
+
+# Create file with logging info f.ex. "morg_09_05_2017.log"
+file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
+file_handler.setFormatter(format_of_logger)
+logger.addHandler(file_handler)
 
 Builder.load_string('''
 <ConfirmPopup>:
@@ -50,7 +71,7 @@ class ConfirmPopup(GridLayout):
         # Function takes next ID value for new cloth from data base
         id_data = next_id_value()
         camera.export_to_png("photo/{}.png".format(id_data))
-        print("Captured as '{}.png' in photo/ ".format(id_data))
+        logger.info("Captured as '{}.png' in photo/ ".format(id_data))
 
 
 class PopupRunCameraNewCloth(App):

@@ -1,6 +1,26 @@
 # TODO: print weather for all day, hour by hour
 
 import pyowm
+import logging
+import time
+
+# Take time and store in format day_month_year - 09_05_2017
+time_format = time.strftime("%Y_%m_%d")
+
+# Create specific logger different than Kivy logger
+logger = logging.getLogger(__name__)
+
+# Set level of logger
+logger.setLevel(logging.INFO)
+
+# Logging info format f.ex.
+# "[2017-05-09 15:33:58,217]	data_base_test_log.py	message"
+format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
+
+# Create file with logging info f.ex. "morg_09_05_2017.log"
+file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
+file_handler.setFormatter(format_of_logger)
+logger.addHandler(file_handler)
 
 # API key and type of subscription from http://openweathermap.org/
 api_data = pyowm.OWM(API_key='3680a47900fb30de7d81ef3cb1a7d9fb',
@@ -59,7 +79,7 @@ def print_weather_warsaw():
 
     # if is_api_online == True
     if is_api_online:
-        print('API is online...')
+        logger.info('API is online...')
 
         city_input = 'Warsaw, pl'
 
@@ -99,9 +119,9 @@ def print_weather_warsaw():
                 weather_file.close()
                 # if weather_file.closed == True
                 if weather_file.closed:
-                    print('weather data saved in text file')
+                    logger.info('weather data saved in text file')
         except:
-            print('Error with text file')
+            logger.info('Error with text file')
             pass
 
     else:

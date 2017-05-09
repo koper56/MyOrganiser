@@ -57,11 +57,13 @@ In first run app create file _weatherdata.txt_ with weather info from _weather.p
 
 In first run app create _data_base_file.db_ with two tables: _ClothesData_ and _HistoryData_.
 
+App crate _morg_RRRR_MM_DD.log_ file in ./logs with logging info. 
+
 Store clothes photos (png files) in ./photo.
 
 Store sets photos (png files) in ./sets.
 
-Store png files used in app in assets/images.
+Store png files used in app in ./assets/images.
 
 
 Screens

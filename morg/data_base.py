@@ -12,11 +12,20 @@ data_base = declarative_base()
 # Take time and store in format day_month_year - 09_05_2017
 time_format = time.strftime("%Y_%m_%d")
 
-# Set logging config, create file with logging info f.ex. morg_09_05_2017.log
-# Logging info format
-logging.basicConfig(filename='morg_{}.log'.format(time_format),
-                    level=logging.INFO,
-                    format='[%(asctime)s]\t%(pathname)s\t%(message)s')
+# Create specific logger different than Kivy logger
+logger = logging.getLogger(__name__)
+
+# Set level of logger
+logger.setLevel(logging.INFO)
+
+# Logging info format f.ex.
+# "[2017-05-09 15:33:58,217]	data_base_test_log.py	message"
+format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
+
+# Create file with logging info f.ex. "morg_09_05_2017.log"
+file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
+file_handler.setFormatter(format_of_logger)
+logger.addHandler(file_handler)
 
 
 # Create table with clothes data
@@ -61,7 +70,7 @@ def next_id_value():
         next_id = select_max.max_id_data + 1
     # Except error when id = 0, set next id value equal 1
     except TypeError:
-        logging.info('First data in data base - ClothesData')
+        logger.info('First data in data base - ClothesData')
         next_id = 1
     return next_id
 
@@ -92,7 +101,7 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
     # Commit new data
     session.add(new_data)
     session.commit()
-    logging.info(
+    logger.info(
         'New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
         'Photo Source: photo/{}.png, Description: {}, Exclusion: {}, '
         'Clear: True, '
@@ -176,7 +185,7 @@ def update_item(input_name, input_new_name, input_description,
         exclusion='{}'.format(input_exclusion))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-    logging.info(
+    logger.info(
         'Changes commited in {} -> {}'.format(input_name,
                                               input_new_name))
 
@@ -187,7 +196,7 @@ def delete_item(input_id):
     session.delete(selected_item)
     # Commit delete
     session.commit()
-    logging.info(
+    logger.info(
         'Cloth id {} deleted'.format(input_id))
 
 
@@ -197,7 +206,7 @@ def update_clear(input_name, input_clear):
         clear='{}'.format(input_clear))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-    logging.info('Changes commited in {}'.format(
+    logger.info('Changes commited in {}'.format(
         input_name))
 
 
@@ -207,7 +216,7 @@ def update_rate(input_name, input_rate):
         rate='{}'.format(input_rate))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-    logging.info('Changes commited in {}'.format(
+    logger.info('Changes commited in {}'.format(
         input_name))
 
 
@@ -219,7 +228,7 @@ def next_id_history():
         next_id = select_max.max_id_data + 1
     # Except error when id = 0, set next id value equal 1
     except TypeError:
-        logging.info(
+        logger.info(
             'First data in data base - HistoryData')
         next_id = 1
     return next_id
@@ -242,7 +251,7 @@ def insert_new_history_data(input_date, input_description, input_rate):
     # Commit new data
     session.add(new_data)
     session.commit()
-    logging.info(
+    logger.info(
         'New Data: ID: {}, Date: {}, Photo: sets/Set_from_{}.png, '
         'Description: {}, Set rate: {}'.format(
             next_id_history() - 1,
@@ -261,7 +270,7 @@ def update_description_and_rate_history(input_date, input_description,
         rate='{}'.format(input_rate))
     # Commits changes in HistoryData table
     connection.execute(update_data)
-    logging.info('Changes commited in {}'.format(
+    logger.info('Changes commited in {}'.format(
         input_date))
 
 
