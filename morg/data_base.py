@@ -9,15 +9,14 @@ from sqlalchemy.sql import func
 # Create tables in data base
 data_base = declarative_base()
 
-# Return currently date and time for logging info - 09_05_2017 - 12:42:59
-time_format_info = time.strftime("%Y_%m_%d - %T")
-
 # Take time and store in format day_month_year - 09_05_2017
 time_format = time.strftime("%Y_%m_%d")
 
 # Set logging config, create file with logging info f.ex. morg_09_05_2017.log
+# Logging info format [2017-05-09 15:10:28,160]    message
 logging.basicConfig(filename='morg_{}.log'.format(time_format),
-                    level=logging.INFO)
+                    level=logging.INFO,
+                    format='[%(asctime)s]    %(message)s')
 
 
 # Create table with clothes data
@@ -62,8 +61,7 @@ def next_id_value():
         next_id = select_max.max_id_data + 1
     # Except error when id = 0, set next id value equal 1
     except TypeError:
-        logging.info(
-            '{}    ||    First data in data base'.format(time_format_info))
+        logging.info('First data in data base - ClothesData')
         next_id = 1
     return next_id
 
@@ -95,10 +93,10 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
     session.add(new_data)
     session.commit()
     logging.info(
-        '{}    ||    New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
+        'New Data: ID: {}, Name: {}, Color 1: {}, Color 2: {}, Color 3: {}, '
         'Photo Source: photo/{}.png, Description: {}, Exclusion: {}, '
         'Clear: True, '
-        'Rate: 0, Kind: {}'.format(time_format_info, next_id_value() - 1,
+        'Rate: 0, Kind: {}'.format(next_id_value() - 1,
                                    input_name,
                                    input_color_1, input_color_2,
                                    input_color_3, next_id_value(),
@@ -179,9 +177,8 @@ def update_item(input_name, input_new_name, input_description,
     # Commits changes in ClothesData table
     connection.execute(update_data)
     logging.info(
-        '{}    ||    Changes commited in {} -> {}'.format(time_format_info,
-                                                          input_name,
-                                                          input_new_name))
+        'Changes commited in {} -> {}'.format(input_name,
+                                              input_new_name))
 
 
 def delete_item(input_id):
@@ -191,7 +188,7 @@ def delete_item(input_id):
     # Commit delete
     session.commit()
     logging.info(
-        '{}    ||    Cloth id {} deleted'.format(time_format_info, input_id))
+        'Cloth id {} deleted'.format(input_id))
 
 
 def update_clear(input_name, input_clear):
@@ -200,8 +197,8 @@ def update_clear(input_name, input_clear):
         clear='{}'.format(input_clear))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-    logging.info('{}    ||    Changes commited in {}'.format(time_format_info,
-                                                             input_name))
+    logging.info('Changes commited in {}'.format(
+        input_name))
 
 
 def update_rate(input_name, input_rate):
@@ -210,8 +207,8 @@ def update_rate(input_name, input_rate):
         rate='{}'.format(input_rate))
     # Commits changes in ClothesData table
     connection.execute(update_data)
-    logging.info('{}    ||    Changes commited in {}'.format(time_format_info,
-                                                             input_name))
+    logging.info('Changes commited in {}'.format(
+        input_name))
 
 
 # Return last value of id number + 1
@@ -223,7 +220,7 @@ def next_id_history():
     # Except error when id = 0, set next id value equal 1
     except TypeError:
         logging.info(
-            '{}    ||    First data in data base'.format(time_format_info))
+            'First data in data base - HistoryData')
         next_id = 1
     return next_id
 
@@ -246,13 +243,13 @@ def insert_new_history_data(input_date, input_description, input_rate):
     session.add(new_data)
     session.commit()
     logging.info(
-        '{}    ||    New Data: ID: {}, Date: {}, Photo: sets/Set_from_{}.png, '
-        'Description: {}, Set rate: {}'.format(time_format_info,
-                                               next_id_history() - 1,
-                                               time_format,
-                                               time_format,
-                                               input_description,
-                                               input_rate))
+        'New Data: ID: {}, Date: {}, Photo: sets/Set_from_{}.png, '
+        'Description: {}, Set rate: {}'.format(
+            next_id_history() - 1,
+            time_format,
+            time_format,
+            input_description,
+            input_rate))
 
 
 def update_description_and_rate_history(input_date, input_description,
@@ -264,8 +261,8 @@ def update_description_and_rate_history(input_date, input_description,
         rate='{}'.format(input_rate))
     # Commits changes in HistoryData table
     connection.execute(update_data)
-    logging.info('{}    ||    Changes commited in {}'.format(time_format_info,
-                                                             input_date))
+    logging.info('Changes commited in {}'.format(
+        input_date))
 
 
 def print_one_data_by_date(input_date):
