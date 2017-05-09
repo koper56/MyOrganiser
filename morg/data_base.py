@@ -16,7 +16,7 @@ time_format_info = time.strftime("%Y_%m_%d - %T")
 time_format = time.strftime("%Y_%m_%d")
 
 # Set logging config, create file with logging info f.ex. morg_09_05_2017.log
-logging.basicConfig(filename='logs/morg_{}.log'.format(time_format),
+logging.basicConfig(filename='morg_{}.log'.format(time_format),
                     level=logging.INFO)
 
 
@@ -104,7 +104,6 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
                                    input_color_3, next_id_value(),
                                    input_description, input_exclusion,
                                    input_kind))
-
 
 
 def get_names_clothes_data_row():
