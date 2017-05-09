@@ -13,10 +13,10 @@ data_base = declarative_base()
 time_format = time.strftime("%Y_%m_%d")
 
 # Set logging config, create file with logging info f.ex. morg_09_05_2017.log
-# Logging info format [2017-05-09 15:10:28,160]    message
+# Logging info format
 logging.basicConfig(filename='morg_{}.log'.format(time_format),
                     level=logging.INFO,
-                    format='[%(asctime)s]    %(message)s')
+                    format='[%(asctime)s]\t%(pathname)s\t%(message)s')
 
 
 # Create table with clothes data
@@ -103,7 +103,7 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
                                    input_description, input_exclusion,
                                    input_kind))
 
-
+insert_new_data(";a;a", ";a;a", ";a;a", ";a;a", ";a;a", ";a;a", ";a;a")
 def get_names_clothes_data_row():
     select_data = select([ClothesData.name])
     return [row[0] for row in connection.execute(select_data)]
