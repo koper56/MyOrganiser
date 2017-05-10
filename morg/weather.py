@@ -15,7 +15,8 @@ logger.setLevel(logging.INFO)
 
 # Logging info format f.ex.
 # "[2017-05-09 15:33:58,217]	data_base_test_log.py	message"
-format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
+format_of_logger = logging.Formatter(
+    '[%(asctime)s]\t%(pathname)s\t%(message)s')
 
 # Create file with logging info f.ex. "morg_09_05_2017.log"
 file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
@@ -57,17 +58,20 @@ def print_weather():
         status = weather.get_detailed_status()
 
         # Print weather data from details
-        print(f'Weather now in {city_input} \n'
+        print('Weather now in {} \n'
               '\n'
-              f'Clouds\t\t\t:\t{clouds} %\n'
-              f'Rain\t\t\t:\t{rain} %\n'
-              f'Wind speed\t\t:\t{wind_speed}\n'
-              f'Wind degree\t\t:\t{wind_deg}\n'
-              f'Humidity\t\t:\t{humidity} %\n'
-              f'Temperature\t\t:\t{temperature_temp} celsius\n'
-              f'Max temperature\t:\t{temperature_max} celsius\n'
-              f'Min temperature\t:\t{temperature_min} celsius\n'
-              f'Weather status\t:\t{status}')
+              'Clouds\t\t\t:\t{} %\n'
+              'Rain\t\t\t:\t{} %\n'
+              'Wind speed\t\t:\t{}\n'
+              'Wind degree\t\t:\t{}\n'
+              'Humidity\t\t:\t{} %\n'
+              'Temperature\t\t:\t{} celsius\n'
+              'Max temperature\t:\t{} celsius\n'
+              'Min temperature\t:\t{} celsius\n'
+              'Weather status\t:\t{}'.format(city_input, clouds, rain,
+                                             wind_speed, wind_deg, humidity,
+                                             temperature_temp, temperature_max,
+                                             temperature_min, status))
 
     else:
         print('API is offline...')
@@ -76,7 +80,6 @@ def print_weather():
 # print_weather()
 
 def print_weather_warsaw():
-
     # if is_api_online == True
     if is_api_online:
         logger.info('API is online...')
@@ -106,16 +109,22 @@ def print_weather_warsaw():
 
                 # weather data saved in text file in new line
                 weather_file.write(
-                    f'Weather now in {city_input} \n'
+                    'Weather now in {} \n'
                     '\n'
-                    f'Clouds: {clouds} %\n'
-                    f'Rain: {rain} %\n'
-                    f'Wind speed: {wind_speed}\n'
-                    f'Humidity: {humidity} %\n'
-                    f'Temperature: {temperature_temp} celsius\n'
-                    f'Max temperature: {temperature_max} celsius\n'
-                    f'Min temperature: {temperature_min} celsius\n'
-                    f'Weather status: {status}')
+                    'Clouds: {} %\n'
+                    'Rain: {} %\n'
+                    'Wind speed: {}\n'
+                    'Humidity: {} %\n'
+                    'Temperature: {} celsius\n'
+                    'Max temperature: {} celsius\n'
+                    'Min temperature: {} celsius\n'
+                    'Weather status: {}'.format(city_input, clouds,
+                                                rain, wind_speed,
+                                                humidity,
+                                                temperature_temp,
+                                                temperature_max,
+                                                temperature_min,
+                                                status))
                 weather_file.close()
                 # if weather_file.closed == True
                 if weather_file.closed:
