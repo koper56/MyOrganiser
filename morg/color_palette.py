@@ -7,6 +7,8 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.colorpicker import ColorPicker
 
+from morg import LOG_FILE_PATH
+
 # Take time and store in format day_month_year - 09_05_2017
 time_format = time.strftime("%Y_%m_%d")
 
@@ -21,7 +23,7 @@ logger.setLevel(logging.INFO)
 format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
 
 # Create file with logging info f.ex. "morg_09_05_2017.log"
-file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
+file_handler = logging.FileHandler(LOG_FILE_PATH)
 file_handler.setFormatter(format_of_logger)
 logger.addHandler(file_handler)
 

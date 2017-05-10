@@ -8,6 +8,8 @@ from kivy.app import App
 from kivy.lang import Builder
 from morg.data_base import next_id_value
 
+from morg import LOG_FILE_PATH
+
 # Camera module for Add New Cloth
 
 # Take time and store in format day_month_year - 09_05_2017
@@ -24,7 +26,7 @@ logger.setLevel(logging.INFO)
 format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
 
 # Create file with logging info f.ex. "morg_09_05_2017.log"
-file_handler = logging.FileHandler('logs/morg_{}.log'.format(time_format))
+file_handler = logging.FileHandler(LOG_FILE_PATH)
 file_handler.setFormatter(format_of_logger)
 logger.addHandler(file_handler)
 
