@@ -112,7 +112,7 @@ def insert_new_data(input_name, input_color_1, input_color_2, input_color_3,
                                    input_description, input_exclusion,
                                    input_kind))
 
-insert_new_data(";a;a", ";a;a", ";a;a", ";a;a", ";a;a", ";a;a", ";a;a")
+
 def get_names_clothes_data_row():
     select_data = select([ClothesData.name])
     return [row[0] for row in connection.execute(select_data)]
