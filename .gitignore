@@ -1,7 +1,6 @@
 # Data files for project
 photo/
 sets/
-workspace.py
 weatherdata.txt
 .DS_Store
 .idea/
