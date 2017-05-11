@@ -23,16 +23,17 @@ App for manage clothes and sets of clothes.
 
 Required
 --------
+Module                                                     | Version
+-------                                                    |--------
+[Cyton](http://cython.org/)	                               |_0.25.2_
+[Pygame](https://www.pygame.org/)                          |_1.9.3_
+[Kivy](https://kivy.org/)                                  |_1.10.0_
+[Pyowm](https://github.com/csparpa/pyowm)                  |_2.6.1_ 
+[SQLAlchemy](https://sqlalchemy.org)                       |_1.1.9_
+[opencv-python](https://pypi.python.org/pypi/opencv-python)|_3.2.0.7_
 
-[Cyton](http://cython.org/)	  _0.25.2_
-
-[Pygame](https://www.pygame.org/)  _1.9.3_
-
-[Kivy](https://kivy.org/)    _1.9.1_
-
-[Pyowm](https://github.com/csparpa/pyowm)   _2.6.1_     [API](https://home.openweathermap.org/): 3680a47900fb30de7d81ef3cb1a7d9fb
-
-[SQLAlchemy](https://sqlalchemy.org)
+> **NOTE:** You can generate your own weather API:
+>- [Pyowm API](https://home.openweathermap.org/)
 
 How to use
 ----------
