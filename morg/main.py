@@ -2390,7 +2390,6 @@ class RateSetWindow(Screen):
         dates_from_database = str(data_base.get_date_sets_data_row())
         self.all_data.text = dates_from_database
 
-
     # Define move after press back button
     def move_direction_change_window(self, *args):
         self.manager.current = "ratewindow"
@@ -2999,19 +2998,33 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.input_exclusions_pos)
 
         # Define position of take photo button
-        self.photo_button_pos = FloatLayout(size=(75, 25))
-        self.photo_button = Button(text='Photo',
-                                   font_size=12,
-                                   size_hint=(None, None),
-                                   size=(75, 25),
-                                   pos=(150, 250),
-                                   color=button_text_color,
-                                   background_color=button_background)
+        self.take_photo_button_pos = FloatLayout(size=(75, 25))
+        self.take_photo_button = Button(text='Take photo',
+                                        font_size=12,
+                                        size_hint=(None, None),
+                                        size=(75, 25),
+                                        pos=(150, 250),
+                                        color=button_text_color,
+                                        background_color=button_background)
+        self.take_photo_button_pos.add_widget(self.take_photo_button)
+        self.add_widget(self.take_photo_button_pos)
+
+        # Run camera from camera_module_new_cloth.py after press photo
+        self.take_photo_button.bind(on_press=self.camera_run)
+
+        # Define position of add photo button
+        self.add_photo_button_pos = FloatLayout(size=(75, 25))
+        self.add_photo_button = Button(text='Add photo',
+                                       font_size=12,
+                                       size_hint=(None, None),
+                                       size=(75, 25),
+                                       pos=(250, 250),
+                                       color=button_text_color,
+                                       background_color=button_background)
         self.photo_button_pos.add_widget(self.photo_button)
         self.add_widget(self.photo_button_pos)
 
-        # Run camera from camera_module_new_cloth.py after press photo
-        self.photo_button.bind(on_press=self.camera_run)
+        #Run text in label with info about add photo "hard way"
 
         # Define position of set color 1 button
         self.set_color1_button_pos = FloatLayout(size=(75, 25))
