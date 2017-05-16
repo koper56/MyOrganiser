@@ -1,5 +1,6 @@
 import os
 import time
+import logging
 
 from kivy.app import App
 from kivy.core.window import Window
@@ -14,10 +15,26 @@ from kivy.uix.textinput import TextInput
 
 from morg import data_base
 from morg import IMAGES_DIR
+from morg import LOG_FILE_PATH
 from morg.camera_module import PopupRunCameraSet
 from morg.camera_module_new_cloth import PopupRunCameraNewCloth
 from morg.color_palette import PopupRunColorPalette
 from morg.weather import print_weather_warsaw
+
+# Create specific logger different than Kivy logger
+logger = logging.getLogger(__name__)
+
+# Set level of logger
+logger.setLevel(logging.INFO)
+
+# Logging info format f.ex.
+# "[2017-05-09 15:33:58,217]	data_base_test_log.py	message"
+format_of_logger = logging.Formatter('[%(asctime)s]\t%(pathname)s\t%(message)s')
+
+# Create file with logging info f.ex. "morg_09_05_2017.log"
+file_handler = logging.FileHandler(LOG_FILE_PATH)
+file_handler.setFormatter(format_of_logger)
+logger.addHandler(file_handler)
 
 # From rgba to kivy code: rgba code/255.0
 # Colors in app
@@ -769,7 +786,11 @@ class ChooseNames(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChooseNames class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -1223,7 +1244,11 @@ class ChooseKinds(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChooseKinds class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -1377,7 +1402,11 @@ class ChooseColors(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChooseColors class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type ID from list[/color]'
 
@@ -1640,7 +1669,11 @@ class ChooseRates(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChooseRate class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -1779,7 +1812,11 @@ class ChooseSets(Screen):
                  function_from_database[2],
                  function_from_database[3],
                  function_from_database[4])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChooseSets class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type date from list[/color]'
 
@@ -1801,10 +1838,6 @@ class ChooseSets(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
-
-    # Define move after press back button
-    def move_direction_choose_window(self, *args):
-        self.manager.current = "choosewindow"
 
 
 class RateClothWindow(Screen):
@@ -2089,7 +2122,11 @@ class RateClothWindow(Screen):
                  function_from_database[9],
                  self.input_rate,
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in RateClothWindow "
+                         "class".format(self.name_name.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -2376,7 +2413,11 @@ class RateSetWindow(Screen):
                  function_from_database[3],
                  function_from_database[4],
                  self.input_rate)
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in RateSetWindow class"
+                         .format(self.input_date.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type date from list[/color]'
 
@@ -2408,10 +2449,6 @@ class RateSetWindow(Screen):
 
         self.Anchor_Layout.add_widget(self.button)
         self.add_widget(self.Anchor_Layout)
-
-    # Define move after press back button
-    def move_direction_change_window(self, *args):
-        self.manager.current = "ratewindow"
 
 
 class AddHistoryWindow(Screen):
@@ -2545,7 +2582,7 @@ class AddHistoryWindow(Screen):
                                            size_hint=(None, None))
         self.input_description_pos.add_widget(self.input_description)
         self.add_widget(self.input_description_pos)
-        
+
         # Define position of take photo button
         self.take_photo_button_pos = FloatLayout(size=(75, 25))
         self.take_photo_button = Button(text='Take photo',
@@ -2928,7 +2965,12 @@ class ChangeHistoryWindow(Screen):
                  self.input_description.text,
                  from_database[4],
                  self.input_rate)
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in "
+                         "ChangeHistoryWindow class"
+                         .format(self.input_date.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type date from list[/color]'
 
@@ -3675,7 +3717,12 @@ class ChangeClearWindow(Screen):
                  self.select_clear,
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' ChangeClearWindow "
+                         "class"
+                         .format(self.input_name.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -3883,7 +3930,12 @@ class ChangeClothData(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in ChangeClothData "
+                         "class"
+                         .format(self.input_name.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
@@ -4060,7 +4112,11 @@ class DeleteCloth(Screen):
                  function_from_database[8],
                  function_from_database[9],
                  function_from_database[10])
+
         except TypeError:
+            logger.error("TypeError, Invalid input '{}' in DeleteCloth class"
+                         .format(self.input_box.text))
+
             self.search_result.text = '[color=FF0000]Invalid input data\n' \
                                       'Type name from list[/color]'
 
