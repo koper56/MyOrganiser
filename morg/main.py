@@ -2598,7 +2598,8 @@ class AddHistoryWindow(Screen):
         # Run camera from camera_module_new_cloth.py after press photo
         self.take_photo_button.bind(on_press=self.camera_run)
 
-        # Define position of add photo button
+        ''' 
+        Define position of add photo button
         self.add_photo_button_pos = FloatLayout(size=(75, 25))
         self.add_photo_button = Button(text='Add photo',
                                        font_size=12,
@@ -2611,6 +2612,7 @@ class AddHistoryWindow(Screen):
         self.add_widget(self.photo_button_pos)
 
         #Run text in label with info about add photo "hard way"
+        '''
 
         # Define position of info label
         self.info_label_pos = AnchorLayout(anchor_x='center',
@@ -3068,6 +3070,7 @@ class AddNewClothWindow(Screen):
         # Run camera from camera_module_new_cloth.py after press photo
         self.take_photo_button.bind(on_press=self.camera_run)
 
+        '''
         # Define position of add photo button
         self.add_photo_button_pos = FloatLayout(size=(75, 25))
         self.add_photo_button = Button(text='Add photo',
@@ -3081,6 +3084,7 @@ class AddNewClothWindow(Screen):
         self.add_widget(self.photo_button_pos)
 
         #Run text in label with info about add photo "hard way"
+        '''
 
         # Define position of set color 1 button
         self.set_color1_button_pos = FloatLayout(size=(75, 25))
