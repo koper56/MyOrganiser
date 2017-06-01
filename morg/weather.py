@@ -1,4 +1,4 @@
-import pyowm
+import requests
 import logging
 import time
 
@@ -23,116 +23,83 @@ file_handler = logging.FileHandler(LOG_FILE_PATH)
 file_handler.setFormatter(format_of_logger)
 logger.addHandler(file_handler)
 
-# API key and type of subscription from http://openweathermap.org/
-api_data = pyowm.OWM(API_key='3680a47900fb30de7d81ef3cb1a7d9fb',
-                     subscription_type='free')
+# Wunderground API
+# Return weather for now and amount times weather for +time_segment time for
+# selected city (refine country!) in metric or english measurement system.
+# Select format: .json or .xml
+# List of types of weather in docs
+# Create your api token: https://www.wunderground.com
 
-# Check API
-is_api_online = api_data.is_API_online()
+# Your own data, f.ex:
+# type_of_weather = 'hourly'
+# country = 'Poland'
+# city_name = 'Warsaw'
+# measurement_system = 'metric'
+# data_format = 'json
+# time_segment = 3
+# amount = 4
 
-
-def print_weather():
-    if is_api_online == True:
-        print('API is online...')
-
-        # Choose city
-        city_input = input("Type your City and country symbol"
-                           "\nf.ex. Warsaw, pl"
-                           "\n-->:")
-
-        # Set city for weather search in ('City, country symbol')
-        observation = api_data.weather_at_place(city_input)
-        weather = observation.get_weather()
-
-        # Weather details
-        clouds = weather.get_clouds()
-        rain = weather.get_rain()
-        wind = weather.get_wind()
-        wind_speed = wind['speed']
-        wind_deg = wind['deg']
-        humidity = weather.get_humidity()
-        temperature = weather.get_temperature('celsius')
-        temperature_temp = temperature['temp']
-        temperature_max = temperature['temp_max']
-        temperature_min = temperature['temp_min']
-        status = weather.get_detailed_status()
-
-        # Print weather data from details
-        print('Weather now in {} \n'
-              '\n'
-              'Clouds\t\t\t:\t{} %\n'
-              'Rain\t\t\t:\t{} %\n'
-              'Wind speed\t\t:\t{}\n'
-              'Wind degree\t\t:\t{}\n'
-              'Humidity\t\t:\t{} %\n'
-              'Temperature\t\t:\t{} celsius\n'
-              'Max temperature\t:\t{} celsius\n'
-              'Min temperature\t:\t{} celsius\n'
-              'Weather status\t:\t{}'.format(city_input, clouds, rain,
-                                             wind_speed, wind_deg, humidity,
-                                             temperature_temp, temperature_max,
-                                             temperature_min, status))
-
-    else:
-        print('API is offline...')
+# Static data
+WUNDERGROUND_API_URL = 'http://api.wunderground.com/api/'
+WUNDERGROUND_API_TOKEN = 'a25c676ff3b56dc0'
 
 
-# print_weather()
+def print_weather(type_of_weather, country, city_name, data_format,
+                  measurement_system, time_segment, amount):
+    # Give basic info after initiation of functions
+    logger.info('Taken from API {} weather for {}/{}:'.format(
+        type_of_weather, country, city_name))
 
-def print_weather_warsaw():
-    # if is_api_online == True
-    if is_api_online:
-        logger.info('API is online...')
+    # Put your data to request url
+    request_url = WUNDERGROUND_API_URL + WUNDERGROUND_API_TOKEN + '/' + \
+                  type_of_weather + '/q/' + country + '/' + city_name + '.' \
+                  + data_format
+    requests_result = requests.get(request_url)
 
-        city_input = 'Warsaw, pl'
+    # Take all data in readable version
+    json_wunderground_data = requests_result.json()
 
-        # Set city for weather search
-        observation = api_data.weather_at_place(city_input)
-        weather = observation.get_weather()
+    # Take specific part od json data with weather
+    hourly_forecast_json_wunderground_data = json_wunderground_data[
+        'hourly_forecast']
 
-        # Weather details
-        clouds = weather.get_clouds()
-        rain = weather.get_rain()
-        wind = weather.get_wind()
-        wind_speed = wind['speed']
-        humidity = weather.get_humidity()
-        temperature = weather.get_temperature('celsius')
-        temperature_temp = temperature['temp']
-        temperature_max = temperature['temp_max']
-        temperature_min = temperature['temp_min']
-        status = weather.get_detailed_status()
+    with open('weatherdata.txt', mode='w',
+              encoding='utf-8') as weather_file:
+        hour = -time_segment
 
-        # Print weather data from details
-        try:
-            with open('weatherdata.txt', mode='w',
-                      encoding='utf-8') as weather_file:
+        while hour < time_segment * amount:
+            hour += time_segment
 
-                # weather data saved in text file in new line
-                weather_file.write(
-                    'Weather now in {} \n'
-                    '\n'
-                    'Clouds: {} %\n'
-                    'Rain: {} %\n'
-                    'Wind speed: {}\n'
-                    'Humidity: {} %\n'
-                    'Temperature: {} celsius\n'
-                    'Max temperature: {} celsius\n'
-                    'Min temperature: {} celsius\n'
-                    'Weather status: {}'.format(city_input, clouds,
-                                                rain, wind_speed,
-                                                humidity,
-                                                temperature_temp,
-                                                temperature_max,
-                                                temperature_min,
-                                                status))
-                weather_file.close()
-                # if weather_file.closed == True
-                if weather_file.closed:
-                    logger.info('weather data saved in text file')
-        except:
-            logger.info('Error with text file')
-            pass
+            all_data_hourly_forecast_json_wunderground_data = \
+                hourly_forecast_json_wunderground_data[hour]
+            # Take detail about hour H:MM format
+            hour_detail = \
+                all_data_hourly_forecast_json_wunderground_data['FCTTIME'][
+                    'civil']
+            air_temp = all_data_hourly_forecast_json_wunderground_data['temp'][
+                measurement_system]
+            dewpoint_temp = \
+                all_data_hourly_forecast_json_wunderground_data['dewpoint'][
+                    measurement_system]
+            feelslike_temp = all_data_hourly_forecast_json_wunderground_data[
+                'feelslike'][measurement_system]
+            sky_condition = all_data_hourly_forecast_json_wunderground_data[
+                'condition']
+            rain = all_data_hourly_forecast_json_wunderground_data['qpf'][
+                measurement_system]
+            snow = all_data_hourly_forecast_json_wunderground_data[
+                'snow'][measurement_system]
+            pressure = all_data_hourly_forecast_json_wunderground_data[
+                'mslp'][measurement_system]
 
-    else:
-        result = 'API is offline...'
-        return result
+            weather_file.write(
+                '---- {} ------------------------------------\n'
+                '    Temp (C):    {}({})    feelslike {}\n'
+                '    Sky: {}       Rain: {}\n'
+                '    Snow: {}      Pressure: {}\n'.format(hour_detail,
+                                                          air_temp,
+                                                          dewpoint_temp,
+                                                          feelslike_temp,
+                                                          sky_condition,
+                                                          rain, snow,
+                                                          pressure))

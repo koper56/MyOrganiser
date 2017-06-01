@@ -19,7 +19,7 @@ App for manage clothes and sets of clothes.
  - add (with name, description, exclusions, rate, clear, photo, colors and kind)
  - change
  - delete 
-
+ - check weather for now, + 3h, + 6h, +9h 
 
 Required
 --------
@@ -28,12 +28,13 @@ Module                                                     | Version
 [Cyton](http://cython.org/)	                               |_0.25.2_
 [Pygame](https://www.pygame.org/)                          |_1.9.3_
 [Kivy](https://kivy.org/)                                  |_1.10.0_
-[Pyowm](https://github.com/csparpa/pyowm)                  |_2.6.1_ 
+[Requests](http://docs.python-requests.org/)               |_2.14.2_
 [SQLAlchemy](https://sqlalchemy.org)                       |_1.1.9_
 [opencv-python](https://pypi.python.org/pypi/opencv-python)|_3.2.0.7_
 
-> **NOTE:** You can generate your own weather API:
->- [Pyowm API](https://home.openweathermap.org/)
+> **NOTE:** You can generate your own weather API token:
+>- [Weather API](https://www.wunderground.com)
+>- Put your API token to _WUNDERGROUND_API_TOKEN_ in _morg/weather.py_
 
 How to use
 ----------

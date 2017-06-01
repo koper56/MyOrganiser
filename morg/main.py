@@ -19,7 +19,7 @@ from morg import LOG_FILE_PATH
 from morg.camera_module import PopupRunCameraSet
 from morg.camera_module_new_cloth import PopupRunCameraNewCloth
 from morg.color_palette import PopupRunColorPalette
-from morg.weather import print_weather_warsaw
+from morg.weather import print_weather
 
 # Create specific logger different than Kivy logger
 logger = logging.getLogger(__name__)
@@ -193,9 +193,7 @@ class ChooseWindow(Screen):
             Line(points=[600, 550, 600, 600], width=1)
             Line(points=[525, 0, 525, 550], width=1)
             Line(points=[525, 325, 450, 325], width=1)
-            Line(points=[575, 0, 575, 200], width=1)
-            Line(points=[575, 200, 800, 200], width=1)
-            Line(points=[575, 100, 525, 100], width=1)
+
 
         # Define position of choose window label
         label_position = AnchorLayout(anchor_x='center',
@@ -296,7 +294,9 @@ class ChooseWindow(Screen):
         # Define position of weather label,
         # run print_weather_warsaw from weather.py,
         # print text from weatherdata.txt
-        print_weather_warsaw()
+        # Take specified data form API
+        print_weather('hourly', 'Poland', 'Warsaw', '.json', 'metric',
+                          3, 3)
         with open('weatherdata.txt', encoding='utf-8') as weatherdata:
             read_weatherdata = weatherdata.read()
 
@@ -305,7 +305,7 @@ class ChooseWindow(Screen):
         label_settings = Label(text=read_weatherdata,
                                font_size='12sp',
                                size_hint=(None, None),
-                               size=(200, 200),
+                               size=(200, 250),
                                color=data_text_color)
 
         label_position.add_widget(label_settings)
